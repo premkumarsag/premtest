@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Values version="2.0">
+  <value name="name">getUniqueTransactionIDs</value>
+  <array name="sig" type="value" depth="1">
+    <value>[i] record:1:required input_document</value>
+    <value>[i] - field:0:required TRANSACTION_ID</value>
+    <value>[o] field:0:required unique_transaction_ids</value>
+    <value>[o] field:0:required no_of_unique_transactions</value>
+  </array>
+  <value name="sigtype">java 3.5</value>
+  <value name="encodeutf8">true</value>
+  <value name="body">Ly8gcGlwZWxpbmUNCg0KSURhdGFDdXJzb3IgcGlwZWxpbmVDdXJzb3IgPSBwaXBlbGluZS5nZXRD
+dXJzb3IoKTsNCg0KDQoJLy8gaW5wdXRfZG9jdW1lbnQNCglJRGF0YVtdCWlucHV0X2RvY3VtZW50
+ID0gSURhdGFVdGlsLmdldElEYXRhQXJyYXkoIHBpcGVsaW5lQ3Vyc29yLCAiaW5wdXRfZG9jdW1l
+bnQiICk7DQoJQXJyYXlMaXN0IDxTdHJpbmc+IHRyYW5zYWN0aW9uX2lkcyA9IG5ldyBBcnJheUxp
+c3Q8U3RyaW5nPigpOw0KCVN0cmluZyB1bmlxdWVfdHJhbnNhY3Rpb25zID0gIiI7DQoJaWYgKCBp
+bnB1dF9kb2N1bWVudCAhPSBudWxsKQ0KCXsNCgkJZm9yICggSURhdGEgc2luZ2xlSXRlbSA6IGlu
+cHV0X2RvY3VtZW50ICkNCgkJew0KCQkJSURhdGFDdXJzb3IgaW5wdXRfZG9jdW1lbnRDdXJzb3Ig
+PSBzaW5nbGVJdGVtLmdldEN1cnNvcigpOw0KCQkJLy9TeXN0ZW0ub3V0LnByaW50bG4oSURzW2ld
+KTsNCgkJCVN0cmluZyBpZCA9IElEYXRhVXRpbC5nZXRTdHJpbmcoIGlucHV0X2RvY3VtZW50Q3Vy
+c29yLCAiVFJBTlNBQ1RJT05fSUQiICk7DQoJCQkvL1N5c3RlbS5vdXQucHJpbnRsbihJRHNbaV0p
+Ow0KCQkJaWYoIXRyYW5zYWN0aW9uX2lkcy5jb250YWlucyhpZCkpew0KCQkJCXRyYW5zYWN0aW9u
+X2lkcy5hZGQoaWQpOw0KCQkJCXVuaXF1ZV90cmFuc2FjdGlvbnMrPSIsIisiJyIraWQrIiciOw0K
+CQkJfQ0KCQkJaW5wdXRfZG9jdW1lbnRDdXJzb3IuZGVzdHJveSgpOw0KCQl9DQoJCQ0KCQkvL3Vu
+aXF1ZV90cmFuc2FjdGlvbnMgPSB1bmlxdWVfdHJhbnNhY3Rpb25zLnN1YnN0cmluZygwLHVuaXF1
+ZV90cmFuc2FjdGlvbnMubGVuZ3RoKCktMSk7DQoJfQkNCglpbnQgbm9fb2ZfdW5pcXVlX3RyYW5z
+YWN0aW9ucyA9IHRyYW5zYWN0aW9uX2lkcy5zaXplKCk7DQoJaWYobm9fb2ZfdW5pcXVlX3RyYW5z
+YWN0aW9ucz4wKXsNCgkJLy9JRGF0YVV0aWwucHV0KHBpcGVsaW5lQ3Vyc29yLCAidW5pcXVlX3Ry
+YW5zYWN0aW9uc19saXN0IiwgIHRyYW5zYWN0aW9uX2lkcy50b0FycmF5KG5ldyBTdHJpbmdbbm9f
+b2ZfdW5pcXVlX3RyYW5zYWN0aW9uc10pKTsNCgkJSURhdGFVdGlsLnB1dChwaXBlbGluZUN1cnNv
+ciwgInVuaXF1ZV90cmFuc2FjdGlvbl9pZHMiLCAgdW5pcXVlX3RyYW5zYWN0aW9ucy5zdWJzdHJp
+bmcoMSkpOw0KCX0NCglJRGF0YVV0aWwucHV0KHBpcGVsaW5lQ3Vyc29yLCAibm9fb2ZfdW5pcXVl
+X3RyYW5zYWN0aW9ucyIsIG5vX29mX3VuaXF1ZV90cmFuc2FjdGlvbnMrIiIpOw0KCXBpcGVsaW5l
+Q3Vyc29yLmRlc3Ryb3koKTsNCg==</value>
+</Values>

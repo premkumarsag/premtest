@@ -1,0 +1,6 @@
+
+
+# Should the config files of WxConfig* be shown in the file and values list?
+showWxConfigFiles=false
+showWxConfigFiles.includePkg=WxConfig
+showWxConfigFiles.includePkg=WxConfigTest

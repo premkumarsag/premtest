@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Values version="2.0">
+  <value name="name">newLineTag</value>
+  <array name="sig" type="value" depth="1">
+    <value>[i] field:0:optional debug</value>
+    <value>[i] field:0:required sessionId</value>
+    <value>[i] field:0:required action</value>
+    <value>[i] field:0:required name</value>
+  </array>
+  <value name="sigtype">java 3.5</value>
+  <value name="encodeutf8">true</value>
+  <value name="body">CklEYXRhTWFwIHBpcGVNYXAgPSBuZXcgSURhdGFNYXAocGlwZWxpbmUpOwkJCQkKSURhdGEgcmVx
+dWVzdCA9IHBpcGVsaW5lOwoKYm9vbGVhbiBkZWJ1ZyA9IGdldERlYnVnKCBwaXBlTWFwICk7CQkK
+U3RyaW5nIHNlc3Npb25JZCA9IGdldFNlc3Npb25JZCggcGlwZU1hcCApOwpTdHJpbmcgYWN0aW9u
+ID0gZ2V0QWN0aW9uKCBwaXBlTWFwICk7ClN0cmluZyB0YWdTdmNOYW1lID0gZ2V0VGFnU3ZjTmFt
+ZShwaXBlTWFwKTsKClN0cmluZyBuYW1lID0gcGlwZU1hcC5nZXRBc1N0cmluZyggIm5hbWUiICk7
+IC8vIENvbnN0YW50cy5OQU1FX1AKClJlcG9ydGVyIHJlcG9ydGVyID0gSlNQTWFuYWdlci5nZXRJ
+bnN0YW5jZSgpLmdldFJlcG9ydGVyKHNlc3Npb25JZCx0YWdTdmNOYW1lKTsKaWYgKCByZXBvcnRl
+ciA9PSBudWxsICkgewoJcmVwb3J0ZXIgPSBKU1BNYW5hZ2VyLmdldEluc3RhbmNlKCkuY3JlYXRl
+UmVwb3J0ZXIoc2Vzc2lvbklkLHRhZ1N2Y05hbWUsIHJlcXVlc3QpOwp9CQkJCnJlcG9ydGVyLnNl
+dFdyaXRlciggZ2V0V3JpdGVyKCBwaXBlTWFwICkgKTsKCmlmICggZGVidWcgKSB7CglTeXN0ZW0u
+ZXJyLnByaW50bG4oU3RyaW5nLmZvcm1hdCgiXG5bJXNdOiVzIiwgdGFnU3ZjTmFtZSwgbmV3IGph
+dmEudXRpbC5EYXRlKCkpKTsKCVN5c3RlbS5lcnIucHJpbnRsbihTdHJpbmcuZm9ybWF0KCJSZXBv
+cnRlcjogJXMiLCByZXBvcnRlcikpOwoJU3lzdGVtLmVyci5wcmludGxuKFN0cmluZy5mb3JtYXQo
+IlNlc3Npb25JZDogJXMiLCBzZXNzaW9uSWQpKTsKCVN5c3RlbS5lcnIucHJpbnRsbihTdHJpbmcu
+Zm9ybWF0KCJhY3Rpb246ICVzIiwgYWN0aW9uKSk7CglTeXN0ZW0uZXJyLnByaW50bG4oU3RyaW5n
+LmZvcm1hdCgiVmFyczogbmFtZT0lcyIsIG5hbWUgKSk7CglTeXN0ZW0uZXJyLnByaW50bG4oU3Ry
+aW5nLmZvcm1hdCgiY3VycmVudFRva2VuOiAlcyIsIEpTUE1hbmFnZXIuZ2V0SW5zdGFuY2UoKS5n
+ZXRUZW1wbGF0ZVRva2VuKHNlc3Npb25JZCx0YWdTdmNOYW1lKSApKTsKfQoKaWYgKCAic3RhcnQi
+LmVxdWFscyhhY3Rpb24pKSB7CgkKfSBlbHNlIHsKCQoJTmV3bGluZVRva2VuIHRva2VuID0gbmV3
+IE5ld2xpbmVUb2tlbigiIik7Cgl0b2tlbi5ldmFsKCByZXBvcnRlciApOwoJSlNQTWFuYWdlci5n
+ZXRJbnN0YW5jZSgpLnVwZGF0ZVRva2VuKCBzZXNzaW9uSWQsdGFnU3ZjTmFtZSwgdG9rZW4pOwoK
+fQo=</value>
+</Values>

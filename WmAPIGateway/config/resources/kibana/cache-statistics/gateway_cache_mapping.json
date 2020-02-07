@@ -1,0 +1,18 @@
+{
+  "indexName": "gateway_{0}_cache",
+  "types": [
+    {
+      "name": "cachestatistics",
+      "fields": [
+        {
+          "name": "creationDate",
+          "type": "date"
+        },
+        {
+          "name": "nodeName",
+          "type": "keyword"
+        }
+      ]
+    }
+  ]
+}

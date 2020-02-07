@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>  <!-- The root element is ignored for XPath queries -->
+    <!-- Uncomment the following line to change the file's reload interval -->
+    <!-- <wx.config.reloadInterval>40000</wx.config.reloadInterval> -->
+    
+    <key id="id1">value</key>
+</config>

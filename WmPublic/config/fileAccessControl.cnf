@@ -1,0 +1,3 @@
+allowedWritePaths=C:/project/ERP/**;C:/project/ERP/IN/**;C:/project/ERP/OUT/**;C:/project/ERP/ERROR/**
+allowedReadPaths=C:/project/ERP/**;C:/project/ERP/IN/**;C:/project/ERP/OUT/**;C:/project/ERP/ERROR/**
+allowedDeletePaths=C:/project/ERP/**;C:/project/ERP/IN/**;C:/project/ERP/OUT/**;C:/project/ERP/ERROR/**

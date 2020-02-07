@@ -1,0 +1,43 @@
+# WxConfig: Export of encrypted values
+
+# For automatic import during startup of WxConfig this file needs to copied 
+# (name must not be changed) to the path specified by the location alias
+# "BULK_IMPORT_ENCRYPTED_VALUES". By default it points to "${wx.config.encValues.bulkImport.location.default}",
+# which resolves to
+#
+#   $SAG_HOME/IntegrationServer/instances/default/${wx.config.encValues.bulkImport.location.default}
+#
+# To change the file location go to "Settings / File Location Aliases" in
+# the web UI of WxConfig and click the edit icon next to the current value.
+#
+# At startup of the WxConfig package this file will be picked up
+# (search pattern = ${const:com.softwareag.wx.is.config.security.BulkExportImport.BULK_EXPORT_IMPORT_FILEMASK}), 
+# processed, and renamed afterwards to prevent duplicate processing. 
+# The new name contains the date/time when it was processed and "SUCCESS" 
+# or "FAILURE" to indicate the result of the operation. 
+# Further details can be determined from the WxConfig log
+# file ($SAG_HOME/IntegrationServer/instances/default/logs/WxConfig.log).
+#
+# It also possible to have the bulk-import triggered when a package's
+# configuration gets loaded by WxConfig. Two parameters exist to control
+# this:
+#
+#   - ${const:com.softwareag.wx.is.config.security.BulkExportImport.KEY_EXECUTE_ON_PACKAGE_LOAD}={true|false}
+#
+#       If set to "true" (default: false), when a package's values get loaded
+#		into WxConfig, there will also be a bulk-import of encrypted values
+#       from files (see next paragraph for selection of files).
+#
+#   - ${const:com.softwareag.wx.is.config.security.BulkExportImport.KEY_LIMIT_FILE_SEARCH_ON_PACKAGE_LOAD}=EncVals_MYPKG*.txt
+#
+#       This wildcard expression controls what files are being processed 
+#		during package loading bulk-import of encrypted values.
+#		This avoids picking up files that belong to other packages and
+#		should be processed at a different time. If not specified, the
+#		default (${const:com.softwareag.wx.is.config.security.BulkExportImport.BULK_EXPORT_IMPORT_FILEMASK}) will be used.
+#		During startup of WxConfig itself (as opposed to loading the config 
+#		values for a package), this value has no effect; in that situation the 
+#		aforementioed default kicks in.
+#
+# For a successful import, it is required to replace the placeholders with
+# the actual passwords as described below.

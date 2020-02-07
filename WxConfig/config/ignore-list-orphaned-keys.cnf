@@ -1,0 +1,3 @@
+# This file contains items to be skipped when checking for potentially orphaned keys
+#
+# Format:  PACKAGE_NAME/SERVICE_NAMESPACE

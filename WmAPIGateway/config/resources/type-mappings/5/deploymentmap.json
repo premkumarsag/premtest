@@ -1,0 +1,18 @@
+{
+  "deploymentmap": {
+    "properties": {
+      "apigatewayId": {
+        "type": "keyword"
+      },
+      "id": {
+        "type": "keyword"
+      },
+      "portalRefId": {
+        "type": "keyword"
+      },
+      "providerRefId": {
+        "type": "keyword"
+      }
+    }
+  }
+}

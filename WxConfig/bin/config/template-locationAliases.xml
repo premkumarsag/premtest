@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+	<aliasList>
+		<alias name="TEMP">
+			<type>PATH</type>
+			<value>${sys:java.io.tmpdir}</value>
+		</alias>
+	</aliasList>
+</config>

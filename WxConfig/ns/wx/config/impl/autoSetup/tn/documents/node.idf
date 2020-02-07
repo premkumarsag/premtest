@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Values version="2.0">
+  <value name="encodeutf8">true</value>
+  <array name="imports" type="value" depth="1">
+    <value>com.softwareag.wx.is.config.autoSetup.tn.docType.DocumentType</value>
+    <value>com.wm.app.tn.db.BizDocAttributeStore</value>
+    <value>com.wm.app.tn.doc.BizDocAttribute</value>
+    <value>com.wm.app.tn.doc.FFDocType</value>
+  </array>
+</Values>

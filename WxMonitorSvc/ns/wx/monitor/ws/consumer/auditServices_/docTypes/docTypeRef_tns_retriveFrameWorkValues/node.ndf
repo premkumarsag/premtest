@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Values version="2.0">
+  <record name="record" javaclass="com.wm.util.Values">
+    <value name="node_type">record</value>
+    <value name="node_subtype">unknown</value>
+    <value name="node_nsName">wx.monitor.ws.consumer.auditServices_.docTypes:docTypeRef_tns_retriveFrameWorkValues</value>
+    <value name="node_pkg">WxMonitorSvc</value>
+    <value name="is_public">false</value>
+    <value name="field_type">record</value>
+    <value name="field_dim">0</value>
+    <value name="nillable">true</value>
+    <value name="form_qualified">false</value>
+    <value name="is_global">false</value>
+    <value name="schemaDomain">5173d41a40e0432a1573c4bad22</value>
+    <value name="docTypeDomain">7fd34dd03ffd1c9b86c5ffffffff85f3</value>
+    <value name="originURI">http://mcsrpr01.eur.ad.sag:4444/ws/wx.audit.ws.provider:wxAuditServices?WSDL</value>
+    <array name="rec_fields" type="record" depth="1">
+    </array>
+    <record name="schemaType" javaclass="com.wm.util.Values">
+      <value name="xmlns">https://WxAuditServices.com/WxAuditNameSpace</value>
+      <value name="ncName">retriveFrameWorkValues</value>
+    </record>
+    <value name="schemaRegistered">true</value>
+    <value name="modifiable">false</value>
+  </record>
+</Values>

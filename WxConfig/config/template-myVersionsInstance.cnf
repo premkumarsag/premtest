@@ -1,0 +1,11 @@
+# ===== MyVersions WxConfig Plugin configuration file for server instance =========
+#
+# This file contains the values that shall "survive" updates of WxConfig.
+# It is therefore located not in the package but the server's config
+# directory and there in a "WxConfig" sub-directory
+
+# Template for commit message
+myversions.message.commit.template=IssueID #123 [issueDescription]: change
+
+# The following packages are excluded from myversions
+myversions.excludePackage=WxConfig

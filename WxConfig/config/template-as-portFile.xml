@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?><config>
+<autoConfig>
+	<ports>
+		<file alias="filePort1" updateIfExists="true" autoStart="true" autoShutdown="false" destroyOnShutdown="true">
+			<description>Sample file port</description>
+			<dir>
+				<monitor>c:/tmp/poll/in</monitor>   <!-- If the other directories sit underneath this 
+														(e.g. if it was 'c:/tmp/poll'), the element
+														'allowRecursivePolling' must be set to 'no' -->
+				<work>c:/tmp/poll/work</work>		<!-- optional -->
+				<done>c:/tmp/poll/done</done> 		<!-- optional -->
+				<error>c:/tmp/poll/error</error>	<!-- optional -->
+				<isNfsMount>no</isNfsMount>
+			</dir>
+			<filter>	<!-- optional -->
+				<fileName>order*.xml</fileName>			<!-- optional -->
+				<fileAgeSeconds>20</fileAgeSeconds>		<!-- optional -->
+			</filter>
+			<defaultContentType>text/xml</defaultContentType>			<!-- optional -->
+			<pollingIntervalSeconds>10</pollingIntervalSeconds>
+			<allowRecursivePolling>yes</allowRecursivePolling>			<!-- optional -->
+			<enableClustering>no</enableClustering>
+			<lockFileExtension>.lck</lockFileExtension>					<!-- optional -->
+			<numberOfFilesPerInterval>100</numberOfFilesPerInterval>	<!-- optional -->
+			<processing>
+				<runAsUser>Administrator</runAsUser>
+				<processingService>myPkg:normalFileProcessingService</processingService>		<!-- add this to the serviceAccess exceptionList,
+																									if the latter is in mode 'deny' -->
+				<cleanupAtStartup>no</cleanupAtStartup>
+				<cleanupService>myPkg:moveOldFilesToSpecialLocationService</cleanupService>		<!-- optional 
+																										add this to the serviceAccess exceptionList,
+																										if the latter is in mode 'deny'-->
+				<cleanupFileAgeDays>10</cleanupFileAgeDays>										<!-- optional -->
+				<cleanupIntervalDays>2</cleanupIntervalDays>									<!-- optional -->
+				<maxThreads>1</maxThreads>
+				<logOnlyDirAvailabilityChange>no</logOnlyDirAvailabilityChange>
+			</processing>
+			<serviceAccess>   <!-- optional, default: mode = global default -->
+				<mode>deny</mode>  <!-- allow  = allow by default
+										deny   = deny by default -->
+				<exceptionList cleanBeforeAdding="true">
+					<exception>myPkg:normalFileProcessingService</exception>
+					<exception>myPkg:moveOldFilesToSpecialLocationService</exception>
+					<exception>pub.json</exception>  <!-- Entire folder , not only single service-->
+				</exceptionList>
+			</serviceAccess>
+			<ipAccess> <!-- optional, default: mode = global default -->
+				<mode>deny</mode>  <!-- allow  = allow by default
+										deny   = deny by default -->
+				<exceptionList cleanBeforeAdding="true">
+					<exception>www.softwareag.com</exception>
+					<exception>intranet.acme.com</exception>
+				</exceptionList>
+			</ipAccess>
+		</file>
+    </ports>
+</autoConfig>
+</config>
+	

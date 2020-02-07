@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?><config>
+<autoConfig>
+	<tn>
+		<profile>	<!-- If a profile with this name already exists, nothing will happen
+							Exception: If users are defined, they will be added also to 
+								an already existing profile. -->
+			<name>
+				<corporation>My Corporation</corporation>
+				<organizationUnit>My Unit</organizationUnit>
+			</name>
+			<isActive>true</isActive>
+			<isMyEnterprise>true</isMyEnterprise>
+			<externalIds>
+				<externalId type="MyOrg ID">1</externalId>
+			</externalIds>
+			<addresses> 							<!-- optional -->
+				<address>
+					<line1></line1>
+					<line2></line2>					<!-- optional -->
+					<line3></line3>					<!-- optional -->
+					<city></city>
+					<stateProvince></stateProvince>
+					<postalCode></postalCode>		<!-- optional -->
+					<country></country>				<!-- optional -->
+				</address>
+				<address>
+					<line1></line1>
+					<line2></line2>					<!-- optional -->
+					<line3></line3>					<!-- optional -->
+					<city></city>
+					<stateProvince></stateProvince>
+					<postalCode></postalCode>		<!-- optional -->
+					<country></country>				<!-- optional -->
+				</address>
+			</addresses>
+			<extendedFields>
+				<extendedField name="test1" group="group1">Value 1</extendedField>
+			</extendedFields>
+			<users>
+			    <user>user1</user>      <!-- Add user to profile (e.g. to grant access via tn.doc:view) -->
+			    <user>user2</user>
+			</users>
+		</profile>
+		
+		
+		<extendedField name="test1" group="group1">
+			<enabled>true</enabled>
+			<required>false</required>
+			<description>Dropdown with default on second value</description>					<!-- optional -->
+			<data>
+				<type>String</type>  					<!-- String/Binary  (case-sensitive !!!)-->
+				<maxLength>20</maxLength>				<!-- No limit: -1 (minues one) -->
+				<defaultValue>Value 2</defaultValue>	<!-- optional -->
+				<validValues>  							<!-- optional -->
+					<validValue>Value 1</validValue>
+					<validValue>Value 2</validValue>
+					<validValue>Value 3</validValue>
+				</validValues>
+			</data>
+		</extendedField>
+		
+		<extendedField name="test2" group="group1">
+			<enabled>true</enabled>
+			<required>false</required>
+			<description>Free text without max. length</description>					<!-- optional -->
+			<data>
+				<type>String</type>  					<!-- String/Binary  (case-sensitive !!!)-->
+				<maxLength>-1</maxLength>				<!-- No limit: -1 (minues one) -->
+			</data>
+		</extendedField>
+		
+		<documentType name="Flat File Document Type 1" type="flatFile" updateIfExists="true">  
+		        <!-- 
+		            type            Only type="flatFile" supported at present 
+		            updateIfExists  (optional) Default is "false"
+		        -->
+			<enabled>true</enabled>
+			<description></description>						<!-- optional -->
+			<pipelineMatching>								<!-- optional -->
+				<match name="match1">value1</match>
+			</pipelineMatching>
+			<extractedAttributes>							<!-- optional -->
+				<attribute name="MessageVersion">
+					<required>false</required>
+					<transformation type="service">			<!-- optional -->
+						<name>MyOrg.app.tn.helper:getTnMsgVerFromHeader</name>   <!-- Service must use specification 
+															wm.tn.rec:StringAttributeTransformService -->
+						<arg>DocType1</arg>
+						<includeEmptyValuesForStringType>false</includeEmptyValuesForStringType>	<!-- optional -->
+					</transformation>
+				</attribute>
+				
+				<!--Below are examples for the currently support built-in transformations.
+					Only transformations for STRING attributes are currently suppported -->
+				<attribute name="Text 1">
+					<required>false</required>
+					<transformation type="lowerCase" />
+				</attribute>
+				<attribute name="Text 2">
+					<required>false</required>
+					<transformation type="upperCase" />
+				</attribute>
+				<attribute name="Text 3">
+					<required>false</required>
+					<transformation type="stringSubstitution">
+						<arg>TEST</arg>
+					</transformation>
+				</attribute>
+			</extractedAttributes>
+			
+		</documentType>
+		
+		<documentAttribute name="My attribute" type="STRING">
+				<!-- Possible values for type:
+						- STRING
+						- NUMBER
+						- DATETIME
+						- STRING LIST
+						- NUMBER LIST
+						- DATETIME LIST
+					(see ?-?_Trading_Networks_Built-In_Services_Reference.pdf section about "wm.tn.rec:BizDocAttribute 
+					"for details)
+				-->
+			<oldName>Name from release 1</oldName>  <!-- optional: If attribute with "oldName" exists and has the same type, 
+														it will be renamed to @name instead of creating a new attribute
+														multiple old names can be provided, so that multiple releases
+														in production (with different names) can be unified back together -->
+			<oldName>Name from release 2</oldName>
+			<description>This is my custom attribute</description> 				<!-- optional -->
+			<persist>true</persist>
+		</documentAttribute>
+		
+		<!-- Properties for service wm.tn.admin:setProperties -->
+		<properties>
+			<addUpdate>
+				<!-- Add/update interval for deleting TN documents -->
+				<property name="tn.archive.deleteAfterDays" value="365" />
+			</addUpdate>
+			<delete>
+				<!-- Delete property -->
+				<property name="tn.archive.archiveAfterDays" />
+			</delete>
+		</properties>
+		
+	</tn>
+
+</autoConfig>
+
+</config>

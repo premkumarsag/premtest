@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>  <!-- The root element is ignored for XPath queries -->
+    <operation id="addCacheManager">
+        <result message="Added cache manager (.*)." success="true" />
+        <result message="Cache manager (.*) already exists." success="true" />
+    </operation>
+     <operation id="deleteCacheManager">
+        <result message="Successfully deleted cache manager (.*)." success="true" />
+        <result message="Cache manager (.*) is not started." success="true" />
+    </operation>
+    <operation id="startCacheManager">
+        <result message="Cache manager (.*) is already running." success="true" />
+        <result message="Cache manager (.*) successfully started." success="true" />
+    </operation>
+     <operation id="stopCacheManager">
+        <result message="Cache manager (.*) successfully shutdown." success="true" />
+        <result message="Cache manager (.*) is not started." success="true" />
+    </operation>
+     <operation id="addCache">
+        <result message="The (.*) cache already exists." success="true" />
+        <result message="Added cache (.*)." success="true" />
+    </operation>
+    <operation id="deleteCache">
+        <result message="Deleted cache (.*)." success="true"  compareValuesIndices="1"/>
+        <result message="There is no cache manager named (.*)." success="true" compareValuesIndices="0" />
+    </operation>
+     <operation id="startCache">
+        <result message="Enabled cache (.*) of cache manager (.*)." success="true" />
+    </operation>
+    <operation id="stopCache">
+        <result message="Disabled cache (.*) of cache manager (.*)." success="true" />
+        <result message="Cache manager (.*) is not started." success="true" compareValuesIndices="1" />
+    </operation>
+    <operation id="deleteProxyServerAlias">
+        <result message="Deleted proxy server alias .(.*).." success="true" />
+    </operation>
+     <operation id="enableProxyServerAlias">
+        <result message="Enabled proxy server alias .(.*).." success="true" />
+    </operation>
+    <operation id="disableProxyServerAlias">
+        <result message="Disabled proxy server alias .(.*).." success="true" />
+    </operation>
+     <operation id="createLocalUser">
+        <result message="User (.*) already exists." success="true" />
+        <result message="Added user (.*)" success="true" />
+    </operation>
+     <operation id="deleteLocalUser">
+        <result message="Deleted user (.*)" success="true" />
+    </operation>
+    <operation id="createLocalGroup">
+        <result message="Group \{0\} already exists." success="true" />
+        <result message="Added group (.*)" success="true" />
+    </operation>
+    <operation id="deleteLocalGroup">
+        <result message="Deleted group (.*)" success="true" />
+    </operation>
+    <operation id="createAcl">
+        <result message="ACL (.*) already exists." success="true" />
+        <result message="Added ACL (.*)" success="true" />
+    </operation>
+    <operation id="deleteAcl">
+        <result message="Deleted ACL (.*)" success="true" />
+    </operation>
+    <operation id="testJDBCPoolAlias">
+        <result message="Test of (.*) successful" success="true" />
+    </operation>
+    <operation id="testJDBCFunctionalAlias">
+        <result message="Test of (.*) successful" success="true" />
+    </operation>
+    <operation id="deleteJDBCPoolAlias">
+        <result message="Connection Pool alias (.*) deleted" success="true" />
+    </operation>
+    <operation id="createWebServiceProviderEndpoint">
+        <result message="Added Provider Endpoint Alias (.*)" success="true" />
+    </operation>
+    <operation id="updateWebServiceProviderEndpoint">
+        <result message="Edited Provider Endpoint Alias (.*)" success="true" />
+    </operation>
+     <operation id="deleteWebServiceProviderEndpoint">
+        <result message="Deleted Provider Endpoint Alias (.*)" success="true" />
+    </operation>
+    <operation id="createWebServiceConsumerEndpoint">
+        <result message="Added Consumer Endpoint Alias (.*)" success="true" />
+    </operation>
+    <operation id="updateWebServiceConsumerEndpoint">
+        <result message="Edited Consumer Endpoint Alias (.*)" success="true" />
+    </operation>
+    <operation id="deleteWebServiceConsumerEndpoint">
+        <result message="Deleted Consumer Endpoint Alias (.*)" success="true" />
+    </operation>
+    <operation id="createWebServiceMessageAddressingEndpoint">
+        <result message="Added Message Addressing Endpoint Alias (.*)" success="true" />
+    </operation>
+    <operation id="updateWebServiceMessageAddressingEndpoint">
+        <result message="Edited Message Addressing Endpoint Alias (.*)" success="true" />
+    </operation>
+    <operation id="deleteWebServiceMessageAddressingEndpoint">
+        <result message="Deleted Message Addressing Endpoint Alias (.*)" success="true" />
+    </operation>
+     <operation id="setReliableMessagingConfiguration">
+        <result message="Reliable messaging configuration saved successfully. Restart the server for the new settings to take effect." success="true" />
+    </operation>
+	<operation id="deleteRemoteServerAlias">
+        <result message="Deleted remote server (.*)" success="true" />
+    </operation>
+	<operation id="createRemoteServerAlias">
+        <result message="Added remote server (.*)" success="true" />
+    </operation>
+	<operation id="testRemoteServerAlias">
+        <result message="Connected to remote server (.*) successfully" success="true" />
+    </operation>
+	<operation id="deletePort">
+        <result message="(.*) successfully deleted." success="true" />
+    </operation>
+	<operation id="enablePort">
+        <result message="(.*) enabled." success="true" />
+    </operation>
+	<operation id="disablePort">
+        <result message="Listener on (.*) is now disabled" success="true" />
+    </operation>
+	<operation id="createEmailPort">
+        <result message="(.*) added successfully.*" success="true" />
+    </operation>
+	<operation id="createFilePort">
+        <result message="(.*) added successfully.*" success="true" />
+    </operation>
+    <operation id="createHttpPort">
+        <result message="(.*) added successfully.*" success="true" />
+		<result message="(.*) disabled.*" success="true" />
+    </operation>
+	<operation id="setPortServiceAccessType">
+        <result message="Successfully changed access mode for Port Service Access Settings" success="true" />
+    </operation>
+	<operation id="setPortServiceAccessExceptions">
+        <result message="Successfully added (.*) Folders or Services to List" success="true" />
+    </operation>
+	<operation id="setPortIpAccessType">
+        <result message="Successfully changed access mode for Port IP Access Settings" success="true" />
+    </operation>
+	<operation id="setPortIpAccessExceptionsDeny">
+        <result message="Successfully added hosts to the Allow List" success="true" />
+    </operation>
+	<operation id="setPortIpAccessExceptionsAllow">
+        <result message="Successfully added hosts to the Deny List" success="true" />
+    </operation>
+	<operation id="deletePortIpAccessException">
+        <result message="Successfully deleted host" success="true" />
+    </operation>
+    <operation id="createSftpServerAlias">
+        <result message="Server alias (.*) created successfully." success="true" />
+    </operation>
+    <operation id="updateSftpServerAlias">
+        <result message="Server alias (.*) edited successfully." success="true" />
+    </operation>
+	<operation id="deleteSftpServerAlias">
+        <result message="Server alias (.*) deleted successfully." success="true" />
+    </operation>
+	<operation id="createSftpUserAlias">
+        <result message="User alias (.*) created successfully." success="true" />
+    </operation>
+    <operation id="updateSftpUserAlias">
+        <result message="User alias (.*) edited successfully." success="true" />
+    </operation>
+	<operation id="deleteSftpUserAlias">
+        <result message="User alias (.*) deleted successfully." success="true" />
+    </operation>
+	<operation id="connectionTestSftpUserAlias">
+        <result message="Test of user alias (.*) successful." success="true" />
+    </operation>
+    <operation id="addUserToTnProfile">
+        <result message="\(username=(.*)\)already exists.No new account created.Mapping done." success="true" />
+    </operation>
+</config>

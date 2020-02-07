@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Values version="2.0">
+  <value name="shared">DQpwcml2YXRlIHN0YXRpYyBDb25maWdGaWxlTGlzdCBnZXRDb25maWdGaWxlcyhJRGF0YUN1cnNv
+ciBpZGMpIHRocm93cyBTZXJ2aWNlRXhjZXB0aW9uIHsNCglTdHJpbmcgd3hDb25maWdQa2dOYW1l
+ID0gSURhdGFVdGlsLmdldFN0cmluZyhpZGMsICJ3eENvbmZpZ1BrZ05hbWUiKTsNCglTdHJpbmcg
+ZmlsZU5hbWVXaXRoUGF0aCA9IElEYXRhVXRpbC5nZXRTdHJpbmcoaWRjLCAiZmlsZU5hbWVXaXRo
+UGF0aCIpOw0KCUNvbmZpZ0ZpbGVMaXN0IGNmZ0ZpbGVzID0gbnVsbDsNCgkNCglpZiAoU3RyaW5n
+VXRpbHMuaXNFbXB0eShmaWxlTmFtZVdpdGhQYXRoKSkgew0KCQljZmdGaWxlcyA9IFd4Q29uZmln
+LmdldEluc3RhbmNlKCkuZ2V0Q29uZmlnKHd4Q29uZmlnUGtnTmFtZSkuZ2V0Q29uZmlnRmlsZXMo
+KTsNCgl9IGVsc2Ugew0KCQljZmdGaWxlcyA9IG5ldyBDb25maWdGaWxlTGlzdCh3eENvbmZpZ1Br
+Z05hbWUpOw0KCQlDb25maWdGaWxlIGNmZ0ZpbGUgPSBBY2Nlc3MuZ2V0RmlsZU9iamVjdEZvck5h
+bWUod3hDb25maWdQa2dOYW1lLCBmaWxlTmFtZVdpdGhQYXRoKTsNCgkJY2ZnRmlsZXMuYWRkKGNm
+Z0ZpbGUpOw0KCX0NCglyZXR1cm4gY2ZnRmlsZXM7DQp9DQoNCg==</value>
+  <value name="encodeutf8">true</value>
+  <array name="imports" type="value" depth="1">
+    <value>java.io.File</value>
+    <value>java.util.ArrayList</value>
+    <value>java.util.List</value>
+    <value>org.apache.commons.configuration.reloading.FileChangedReloadingStrategy</value>
+    <value>org.apache.commons.configuration.reloading.ManagedReloadingStrategy</value>
+    <value>org.apache.commons.lang.StringUtils</value>
+    <value>com.softwareag.wx.is.config.Access</value>
+    <value>com.softwareag.wx.is.config.PkgConfig</value>
+    <value>com.softwareag.wx.is.config.WxConfig</value>
+    <value>com.softwareag.wx.is.config.file.ConfigFile</value>
+    <value>com.softwareag.wx.is.config.file.ConfigFileList</value>
+    <value>com.softwareag.wx.is.config.file.reload.DeploymentController</value>
+    <value>com.softwareag.wx.is.config.file.reload.DeploymentController.Operation</value>
+    <value>com.softwareag.wx.is.config.file.reload.FileReloadStrategy</value>
+    <value>com.softwareag.wx.is.config.file.reload.FileReloadStrategyFactory</value>
+    <value>com.softwareag.wx.is.config.file.reload.FileReloadStrategyOnChange</value>
+    <value>com.softwareag.wx.is.config.log.CfgLog</value>
+    <value>com.wm.app.b2b.server.PackageManager</value>
+  </array>
+</Values>

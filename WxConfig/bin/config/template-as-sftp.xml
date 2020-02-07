@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?><config>
+<autoConfig>
+	<sftp>
+		<server alias="sftpServer" updateIfExists="true" destroyOnShutdown="true">
+			<hostname>localhost</hostname>					<!-- hostname/IP address: string, required -->
+			<port>22</port>									<!-- port: positive integer, required -->
+			<hostKeyFingerprint></hostKeyFingerprint> 		<!-- Host Key Fingerprint: string, optional 
+																	If provided the server's public key will be checked 
+																	against this value. 
+																	
+											ATTENTION !!!!!			If it does not match a FATAL error
+																	will be logged and the alias not created -->
+		</server>
+		<server alias="localhost2" updateIfExists="true" destroyOnShutdown="true">
+			<hostname>localhost</hostname>					<!-- hostname/IP address: string, required -->
+			<port>22</port>									<!-- port: positive integer, required -->
+			<hostKeyFingerprint></hostKeyFingerprint> 		<!-- Host Key Fingerprint: string, optional 
+																	If provided the server's public key will be checked 
+																	against this value. 
+																	
+											ATTENTION !!!!!			If it does not match a FATAL error
+																	will be logged and the alias not created -->
+		</server>
+		
+		<user alias="user1" updateIfExists="true" destroyOnShutdown="true">
+			<userName></userName>
+			<authentication type="password">
+				<password></password>
+			</authentication>
+			<serverAlias>sftServer</serverAlias>
+			<preferredKeyExchangeAlgorithm>ecdh-sha2-nistp256\,ecdh-sha2-nistp384\,ecdh-sha2-nistp521\,diffie-hellman-group14-sha1\,diffie-hellman-group-exchange-sha256\,diffie-hellman-group-exchange-sha1\,diffie-hellman-group1-sha1</preferredKeyExchangeAlgorithm>
+			<!-- The commas between the algorithms MUST be escaped with a backslash, otherwise the file will not be loaded  -->
+			<connection>
+				<maximumRetries>6</maximumRetries>
+				<connectionTimeout>0</connectionTimeout>
+				<sessionTimeout>30</sessionTimeout>
+				<proxyAlias></proxyAlias>
+				<compression>none</compression>					<!-- Possible values: none,zlib -->
+				<compressionLevel>6</compressionLevel>			<!-- Only relevant if compression=zlib ; for details see IS documentation -->
+			</connection>
+		</user>
+		
+		
+		<user alias="user2" updateIfExists="true" destroyOnShutdown="true">
+			<userName></userName>
+			<authentication type="publicKey">
+				<privateKeyLocation></privateKeyLocation>
+				<passphrase></passphrase>
+			</authentication>
+			<serverAlias>sftServer</serverAlias>
+			<preferredKeyExchangeAlgorithm>ecdh-sha2-nistp256\,ecdh-sha2-nistp384\,ecdh-sha2-nistp521\,diffie-hellman-group14-sha1\,diffie-hellman-group-exchange-sha256\,diffie-hellman-group-exchange-sha1\,diffie-hellman-group1-sha1</preferredKeyExchangeAlgorithm>
+			<!-- The commas between the algorithms MUST be escaped with a backslash, otherwise the file will not be loaded  -->
+			<connection>
+				<maximumRetries>6</maximumRetries>
+				<connectionTimeout>0</connectionTimeout>
+				<sessionTimeout>30</sessionTimeout>
+				<proxyAlias></proxyAlias>
+				<compression>none</compression>					<!-- Possible values: none,zlib -->
+				<compressionLevel>6</compressionLevel>			<!-- Only relevant if compression=zlib ; for details see IS documentation -->
+			</connection>
+		</user>
+		
+	</sftp>
+</autoConfig>
+</config>

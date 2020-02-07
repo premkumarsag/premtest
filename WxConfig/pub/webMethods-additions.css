@@ -1,0 +1,15 @@
+ul.listitemsplain {
+    margin-top: 8px;
+    margin-left: 0;
+	width: 100%;
+}
+
+ul.listitemsplain li {
+    padding: 0.5em;
+    border: 0px solid #ccc;
+    height: auto;
+    list-style-type: disc; 
+    width: auto;
+    margin: 0em 0em 0.25em 3em;
+    color: black;
+}

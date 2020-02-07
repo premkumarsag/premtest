@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Values version="2.0">
+  <value name="name">renameTag</value>
+  <array name="sig" type="value" depth="1">
+    <value>[i] field:0:optional debug</value>
+    <value>[i] field:0:required sessionId</value>
+    <value>[i] field:0:required action</value>
+    <value>[i] field:0:required souce</value>
+    <value>[i] field:0:required target</value>
+    <value>[i] field:0:required copy</value>
+  </array>
+  <value name="sigtype">java 3.5</value>
+  <value name="encodeutf8">true</value>
+  <value name="body">CklEYXRhTWFwIHBpcGVNYXAgPSBuZXcgSURhdGFNYXAocGlwZWxpbmUpOwkJCQkKSURhdGEgcmVx
+dWVzdCA9IHBpcGVsaW5lOwoKYm9vbGVhbiBkZWJ1ZyA9IGdldERlYnVnKCBwaXBlTWFwICk7CQkK
+U3RyaW5nIHNlc3Npb25JZCA9IGdldFNlc3Npb25JZCggcGlwZU1hcCApOwpTdHJpbmcgYWN0aW9u
+ID0gZ2V0QWN0aW9uKCBwaXBlTWFwICk7ClN0cmluZyB0YWdTdmNOYW1lID0gZ2V0VGFnU3ZjTmFt
+ZShwaXBlTWFwKTsKClN0cmluZyBzb3VyY2UgPSBwaXBlTWFwLmdldEFzU3RyaW5nKCAic291cmNl
+VmFyIiApOyAvLyBDb25zdGFudHMuU09VUkNFX1ZBUklBQkxFX1AKU3RyaW5nIHRhcmdldCA9IHBp
+cGVNYXAuZ2V0QXNTdHJpbmcoICJ0YXJnZXRWYXIiICk7IC8vIENvbnN0YW50cy5UQVJHRVRfVkFS
+SUFCTEVfUApib29sZWFuIGNvcHkgPSBwaXBlTWFwLmdldEFzQm9vbGVhbiggImNvcHkiICk7IC8v
+IENvbnN0YW50cy5DT1BZX1AJCQoKClJlbmFtZVRva2VuIHRva2VuID0gbnVsbDsKClJlcG9ydGVy
+IHJlcG9ydGVyID0gSlNQTWFuYWdlci5nZXRJbnN0YW5jZSgpLmdldFJlcG9ydGVyKHNlc3Npb25J
+ZCx0YWdTdmNOYW1lKTsKaWYgKCByZXBvcnRlciA9PSBudWxsICkgewoJcmVwb3J0ZXIgPSBKU1BN
+YW5hZ2VyLmdldEluc3RhbmNlKCkuY3JlYXRlUmVwb3J0ZXIoc2Vzc2lvbklkLHRhZ1N2Y05hbWUs
+IHJlcXVlc3QpOwp9CQkJCnJlcG9ydGVyLnNldFdyaXRlciggZ2V0V3JpdGVyKCBwaXBlTWFwICkg
+KTsKCmlmICggZGVidWcgKSB7CglTeXN0ZW0uZXJyLnByaW50bG4oU3RyaW5nLmZvcm1hdCgiXG5b
+JXNdOiVzIiwgdGFnU3ZjTmFtZSwgbmV3IGphdmEudXRpbC5EYXRlKCkpKTsKCVN5c3RlbS5lcnIu
+cHJpbnRsbihTdHJpbmcuZm9ybWF0KCJSZXBvcnRlcjogJXMiLCByZXBvcnRlcikpOwoJU3lzdGVt
+LmVyci5wcmludGxuKFN0cmluZy5mb3JtYXQoIlNlc3Npb25JZDogJXMiLCBzZXNzaW9uSWQpKTsK
+CVN5c3RlbS5lcnIucHJpbnRsbihTdHJpbmcuZm9ybWF0KCJhY3Rpb246ICVzIiwgYWN0aW9uKSk7
+CglTeXN0ZW0uZXJyLnByaW50bG4oU3RyaW5nLmZvcm1hdCgiVmFyczogc291cmNlVmFyPSVzLCB0
+YXJnZXRWYXI9JXMsIGNvcHk9JXMiLCBzb3VyY2UsIHRhcmdldCwgY29weSApKTsKCVN5c3RlbS5l
+cnIucHJpbnRsbihTdHJpbmcuZm9ybWF0KCJjdXJyZW50VG9rZW46ICVzIiwgSlNQTWFuYWdlci5n
+ZXRJbnN0YW5jZSgpLmdldFRlbXBsYXRlVG9rZW4oc2Vzc2lvbklkLHRhZ1N2Y05hbWUpKSk7Cn0K
+CgppZiAoICJzdGFydCIuZXF1YWxzKGFjdGlvbikpIHsKCQp9IGVsc2UgewoJdG9rZW4gPSBuZXcg
+UmVuYW1lVG9rZW4oc291cmNlLCB0YXJnZXQsIGNvcHkpOwoJdG9rZW4uZXZhbChyZXBvcnRlcik7
+CglKU1BNYW5hZ2VyLmdldEluc3RhbmNlKCkudXBkYXRlVG9rZW4oIHNlc3Npb25JZCx0YWdTdmNO
+YW1lLCB0b2tlbik7Cgp9Cg==</value>
+</Values>

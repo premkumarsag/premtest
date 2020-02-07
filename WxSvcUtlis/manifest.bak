@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Values version="2.0">
+  <value name="enabled">yes</value>
+  <value name="system_package">no</value>
+  <value name="version">1.0</value>
+  <null name="startup_services"/>
+  <null name="shutdown_services"/>
+  <null name="replication_services"/>
+  <record name="requires" javaclass="com.wm.util.Values">
+    <value name="WxConfig">1.6</value>
+  </record>
+  <null name="listACL"/>
+  <value name="webappLoad">yes</value>
+  <value name="name">WxSvcUtlis</value>
+  <value name="build">9.10.212</value>
+  <value name="description">NIC_DROPII_Svcs_Optimizations_NIC_DROPII_Svcs_Optimizations</value>
+  <value name="time">2017-05-19 13:23:51 CEST</value>
+  <value name="jvm_version">1.8.0_71</value>
+  <null name="publisher"/>
+  <value name="patch_nums"></value>
+</Values>

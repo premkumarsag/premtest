@@ -1,0 +1,53 @@
+# Settings for automated update check and download
+
+wx.config.update.enabled=false
+wx.config.update.schedulerDescription=${autoConfig/scheduler/@description[../service='wx.config.impl.update:getLatestVersion']}
+wx.config.update.buildInfoFilename=build-info.xml
+wx.config.update.channelsFilename=channels.xml
+wx.config.update.authenticationType.current=basic
+wx.config.update.authenticationType.available=basic
+wx.config.update.authenticationType.available=anonymous
+wx.config.update.url.channel.id=version_1.8
+wx.config.update.url.base=https://docs.labcase.softwareag.com/alfresco/webdav/Project%20Homes/GLOBAL/Software%20AG/GCS/wmutilconfig
+wx.config.update.url.channels=${wx.config.update.url.base}/Releases/${wx.config.update.channelsFilename}
+wx.config.update.fileName=WxConfig.zip
+wx.config.update.install.activateOnInstall=true
+wx.config.update.install.archiveOnInstall=true
+wx.config.update.url.download=${wx.config.update.url.base}/${wx.config.update.fileName}
+wx.config.update.saveLocation=./replicate/inbound/${wx.config.update.fileName}
+
+# The credentials for update checks are maintained outside the package to survive updates
+# - For the user this happens by placing a file into the main config directory of 
+#   IS (outside packages). The path to this file and its inclusion are in wxconfig.cnf,
+#   since nested inclusion (inclusion from included files) is not supported.
+# - For the password this comes as a by-product of using PassMan and keeping only a
+#   reference (always the same) here.
+wx.config.update.password=[[encrypted:updatePassword]]
+wx.config.encrypted.skipLogForMissingHandle=updatePassword
+encrypted.value.desc.updatePassword=Password for automated update checks (unless a private update location is run, this is the LabCase password). Current user is ${wx.config.update.user}
+
+# Check for new release channels:
+# - It is possible to exclude release channels (based on their ID)
+#   from further consideration in the update check logic.
+#   In particular this will prevent them from showing up in the UI
+#	over and over again.
+# - This behavior is implemented by having a property list
+#   (wx.config.update.channels.ignore) with all
+#   to-be-ignored channel IDs. 
+# - To re-enable a particular release channel it only needs to be
+#   removed from the property list
+wx.config.update.channels.ignore=
+
+# The scheduler execution time is defined in auto-setup.xml
+wx.config.update.scheduler.id=0
+
+wx.config.update.docType=wx.config.impl.update:buildInfo
+wx.config.update.channelsLocalCopy=${package.cfg.dir}/${wx.config.update.channelsFilename}
+wx.config.update.buildInfoLocalCopy=${package.cfg.dir}/${wx.config.update.buildInfoFilename}
+wx.config.update.getInfo.success=
+wx.config.update.getInfo.message=
+wx.config.update.latestVersion=
+wx.config.update.latestBuildNumber=
+wx.config.update.buildNumberScheme=
+wx.config.update.latestVersion.skip=
+wx.config.update.latestBuildNumber.skip=

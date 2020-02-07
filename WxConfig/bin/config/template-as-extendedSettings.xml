@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?><config>
+<autoConfig>
+	<extendedSettings>
+	
+		<!-- "isRestartRequired" attribute
+			- optional
+			- default	: false
+			- since		: 1.7
+			- effect	: documentation only, does not change any run-time behavior
+		-->
+	
+		<setting operation="addUpdate" name="watt.server.ns.hideWmRoot" value="false" isRestartRequired="false"/>
+		<setting operation="addUpdate" name="watt.server.ns.hideWmRoot" value="true" />
+		<setting operation="remove" name="watt.server.ns.hideWmRoot" value="true" />
+		
+		<!-- operation "addAppend" means that if the property already contains a value, that value
+			will not be replaced; instead the new value will be appended using the @separator.
+			To add multiple values, they must each be provided with a separate operation, it is not
+			supported to specify multiple items in one line (see example below). -->
+		<setting operation="addAppend" name="watt.net.proxySkipList" value="localhost" separator ="\," />
+		<setting operation="addAppend" name="watt.net.proxySkipList" value="prod1.acme.int" separator ="\," />
+		
+		<!-- operation "removePart" means that if the property contains multiple separated values,
+			the specified part will be removed from the overall value.
+			To remove multiple values, they must each be provided with a separate operation, it is not
+			supported to specify multiple items in one line (see example below). -->
+		<setting operation="removePart" name="watt.net.proxySkipList" value="qa1.acme.int" separator ="\," />
+		<setting operation="removePart" name="watt.net.proxySkipList" value="qa2.acme.int" separator ="\," />
+		
+		<setting operation="show" name="watt.server.ns.hideWmRoot" />
+		<setting operation="hide" name="watt.debug.logfile" />
+	</extendedSettings>
+
+</autoConfig>
+</config>

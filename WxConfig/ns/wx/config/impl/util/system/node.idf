@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Values version="2.0">
+  <value name="shared">Ym9vbGVhbiB0ZXN0ID1DZmdMb2cuaW5pdCgpOw0KCQ0KCQ0K</value>
+  <value name="encodeutf8">true</value>
+  <array name="imports" type="value" depth="1">
+    <value>com.wm.app.b2b.server.ServiceThread</value>
+    <value>com.wm.lang.ns.NSName</value>
+    <value>com.wm.app.b2b.server.ListenerAdmin</value>
+    <value>com.softwareag.wx.is.config.environment.ServerInfo</value>
+    <value>com.softwareag.wx.is.config.log.CfgLog</value>
+  </array>
+</Values>

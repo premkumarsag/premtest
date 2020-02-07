@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?><config>
+<autoConfig>
+    <!-- Repeating Scheduler 
+    
+    	The description must be unique across all schedulers (regardless of their type)
+    	
+    -->
+	<scheduler description="Scheduler for archiving Audit DB">
+		<suspendOnUnload>true</suspendOnUnload>
+		<updateIfExists>true</updateIfExists>
+		<autoResume>true</autoResume>
+		<deleteOnUnload>false</deleteOnUnload>
+        <suspendAfterCreation>false</suspendAfterCreation>  <!-- Does not apply if scheduler gets updated -->
+        <target>any</target>   <!-- optional; relevant in cluster context only
+        							 all      = run scheduler on all IS instances belonging to the cluster
+        							 any      = run scheduler on one IS instance of all those belonging 
+        							 			to the cluster, it is not known before on which cluster
+        							 			node the server will run
+        							 HOSTNAME = run scheduler on host HOSTNAME 
+        							 
+        							 For more details check the "webMethods Integration Server 
+        							 Built-In Services Reference"
+        						-->
+        
+		<type>repeating</type> <!-- case-sensitive -->
+		<intervalSeconds>86400</intervalSeconds>
+		<doNotOverlap>true</doNotOverlap> <!-- Optional. Flag that indicates whether you want
+										executions of this task to overlap. Set to: 
+										true : Prevent executions of the scheduled task from
+												overlapping. After a scheduled task finishes executing, the
+												Scheduler waits the number of seconds specified in interval
+												before running the task again.
+										false: Allow executions of the scheduled task to overlap.
+												The Scheduler runs the task every time the value of interval
+												elapses. This is the default
+										-->
+		<latenessAction>0</latenessAction> <!-- Action to take if a task has missed its scheduled start
+										time by a number of minutes you specified with the lateness
+										parameter. Possible actions are:
+										0 - Runs the task immediately 
+										1 - Skips this execution of the task and runs it again at the next 
+										    scheduled run time
+										2 - Places the task in a suspended state until an
+											administrator resumes or cancels the task. -->
+		<runAsUser>Administrator</runAsUser> <!-- Optional. User ID under which the service is to be
+									executed. If you do not specify a user name, the “Default”
+									access rights are used. -->
+		
+		<service>wx.audit.pub:archiveAuditEntries</service>
+		
+	</scheduler>
+</autoConfig>
+</config>

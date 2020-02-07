@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?><config>
+<autoConfig>
+   <!-- WxMWS or its predecessor WxCDS package (build from Feb 19, 2013 or later for group support) must be active for centralUsers  -->
+	<centralUsers>
+
+      <user id="max" updateIfExists="false" deleteOnUnload="true">
+        <firstName>Max</firstName>
+        <lastName>Mustermann</lastName>
+        <password>manage</password>
+        <email>max.mustermann@email.com</email>
+      </user>
+
+		<!-- 
+		
+			role
+			====
+		
+			@updateDeletesRole:
+				- Only relevant if @updateIfExists=true
+				- If not set to "false", an existing role will be deleted
+					entirely. This is technically quite different from just
+					removing all members, but keeping the role in MWS. Instead
+					the role gets removed from MWS and all other settings,
+					particularly around security, are lost.
+				- Default = true; to keep behavior compatible with earlier
+					versions of WxConfig
+				- Introduced with v1.8
+		-->
+		<role id="role1" updateIfExists="false" deleteOnUnload="true"
+				updateDeletesRole="false">
+			<member userId="max" />
+		</role>
+      
+		<group id="group1" updateIfExists="false" deleteOnUnload="true">
+			<name>group1</name> 		<!-- mandatory  -->
+			<member userId="max" />  	<!-- optional  -->
+		</group>
+      
+      <group id="group2" updateIfExists="true" deleteOnUnload="false">
+      	<name>group1</name>						<!-- mandatory  -->
+      	<email>group2@localhost</email>  		<!-- optional  -->
+        <member userId="max" />					<!-- optional  -->
+      </group>
+
+    </centralUsers>
+
+</autoConfig>
+</config>

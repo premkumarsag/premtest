@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Values version="2.0">
+  <value name="enabled">yes</value>
+  <value name="system_package">no</value>
+  <value name="version">1.0</value>
+  <null name="startup_services"/>
+  <null name="shutdown_services"/>
+  <null name="replication_services"/>
+  <record name="requires" javaclass="com.wm.util.Values">
+    <value name="WxConfig">1.6</value>
+  </record>
+  <null name="listACL"/>
+  <value name="webappLoad">yes</value>
+  <array name="patch_history" type="record" depth="1">
+    <record javaclass="com.wm.util.Values">
+      <value name="name">Niranths work_myBuild_1476449560962</value>
+      <value name="version">1.0</value>
+      <value name="build">9.10.62</value>
+      <value name="description"></value>
+      <value name="time">2016-10-14 14:48:59 CEST</value>
+      <value name="jvm_version">1.8.0_71</value>
+      <null name="publisher"/>
+      <value name="patch_nums"></value>
+    </record>
+  </array>
+  <value name="name">WxMonitorSvc</value>
+  <value name="build">9.10.147</value>
+  <null name="description"/>
+  <value name="time">2016-11-20 11:35:54 CET</value>
+  <value name="jvm_version">1.8.0_71</value>
+  <value name="publisher">daevac62971.eur.ad.sag</value>
+  <value name="patch_nums"></value>
+</Values>

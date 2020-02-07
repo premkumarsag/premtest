@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>  <!-- The root element is ignored for XPath queries -->
+  <notification>
+      <email>
+          <smtpHostName>localhost</smtpHostName>
+          <smtpHostPort>25</smtpHostPort>
+          <authentication>
+              <type>none</type>
+          </authentication>
+          <recipient>
+              <emailAddress></emailAddress>
+              <name></name>
+          </recipient>
+      </email>
+  </notification>
+</config>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?><config>
+<autoConfig>
+	<proxy name="proxyAliasname" updateIfExists="true" autoStart="true" autoShutdown="false" destroyOnShutdown="true">
+        <host>localhost</host> 	   <!--	host: string, required -->
+        <port>5555</port>		   <!--	host: integer, required -->
+        <username>Admin</username> <!--	username: string, optional -->
+        <password>dasd</password>  <!--	password: string, optional -->
+        <protocol>FTP</protocol>   <!--	host: HTTP|HTTPS|FTP, required -->
+        <ftpType>2</ftpType>	   <!--	ftpType: 0. No proxy, 1. user@host no proxy auth, 2. user@host proxy auth, 3. site command, 4. open command, 5. real_user@proxy_user@real_host, 6. proxy_user@real_host, required if protocol=FTP-->	
+        <isDefault>Y</isDefault>   <!--	isDefault: Y|N, required -->
+        <status>Enabled</status>   <!--	status: Enabled|Disabled, required; deprecated, use @autoStart="true" instead -->
+    </proxy>
+
+</autoConfig>
+</config>

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>  <!-- The root element is ignored for XPath queries -->
+
+	<!-- Templates that will be installed upon first use of WxConfig.
+		 They hold default values that can later be customized. -->
+
+    <!-- Variable substitution works only within this file since
+        it will only be read as a single file during startup, thus not
+        having access to the contents of any other file -->
+        
+    <serverStoredCfgs>
+        
+        <template>
+            <prefix>template-</prefix>
+            <location>./packages/WxConfig/config</location>
+        </template>
+        
+        <cfg id="lockdown">
+        	<description>Lockdown Manager</description>
+            <fileName>lockdown.xml</fileName>
+        </cfg>
+        
+		 <cfg id="audit">
+            <description>auditing</description>
+            <fileName>audit.xml</fileName>
+        </cfg>
+		
+        <cfg id="central">
+            <description>WxConfigCentral</description>
+            <fileName>central.cnf</fileName>
+        </cfg>
+        
+        <cfg id="publish">
+            <description>publish manager</description>
+            <fileName>publish.xml</fileName>
+        </cfg>
+		
+		<cfg id="email">
+            <description>email notification</description>
+            <fileName>email.xml</fileName>
+        </cfg>
+        
+         <cfg id="environment">
+            <description>environment type</description>
+            <fileName>environment.cnf</fileName>
+        </cfg>
+        
+        <cfg id="locationAliases">
+            <description>location aliases</description>
+            <fileName>locationAliases.xml</fileName>
+        </cfg>
+        
+        <cfg id="myVersions">
+            <description>myVersions settings</description>
+            <fileName>myVersionsInstance.cnf</fileName>
+        </cfg>
+		
+		<cfg id="showHideFiles">
+            <description>show/hide files</description>
+            <fileName>showHide.cnf</fileName>
+        </cfg>
+        
+         <cfg id="update">
+            <description>update settings</description>
+            <fileName>updateUser.cnf</fileName>
+        </cfg>
+        
+    
+    </serverStoredCfgs>
+</config>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Values version="2.0">
+  <value name="encodeutf8">true</value>
+  <array name="imports" type="value" depth="1">
+    <value>java.util.ArrayList</value>
+    <value>java.util.Iterator</value>
+    <value>java.util.List</value>
+    <value>com.softwareag.wx.is.config.PkgConfig</value>
+    <value>com.softwareag.wx.is.config.WxConfig</value>
+    <value>com.softwareag.wx.is.config.environment.Stage</value>
+    <value>com.softwareag.wx.is.config.file.ConfigFileList</value>
+  </array>
+</Values>

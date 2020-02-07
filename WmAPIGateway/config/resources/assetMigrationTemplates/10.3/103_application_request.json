@@ -1,0 +1,9 @@
+<#assign addField='com.softwareag.apigateway.core.migration.transformation.AddFieldToPayload'?new()/>
+<#assign printJsonPayload='com.softwareag.apigateway.core.migration.transformation.PrintJsonPayload'?new()/>
+
+<#if !doc.accessTokens??>
+      <#assign doc =   addField([doc,{"accessTokens" : {"oauth_credentials" : {}}}]) />
+<#elseif !doc.accessTokens.oauth_credentials?? && !doc.accessTokens.oauth2Token??>
+      <#assign accessTokens = addField([doc.accessTokens, {"oauth_credentials" : {}}])/>
+</#if>
+ ${printJsonPayload(doc)}

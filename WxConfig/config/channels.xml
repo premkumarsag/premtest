@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<channels>
+	<channelList>
+        <version>1</version>
+		<channel id="trunk">
+			<name>Latest Build</name>
+			<urlSuffix>/Releases/Beta</urlSuffix>
+			<description>Contains the latest build</description>
+		</channel>
+		<channel id="version_1.8">
+        	<name>Version 1.8</name>
+			<urlSuffix>/Releases/v1.8</urlSuffix>
+			<description>Contains the latest 1.8.x release</description>
+		</channel>
+		<channel id="version_1.7">
+        	<name>Version 1.7</name>
+			<urlSuffix>/Releases/v1.7</urlSuffix>
+			<description>Contains the 1.7 release</description>
+		</channel>
+		<channel id="version_1.6">
+        	<name>Version 1.6</name>
+			<urlSuffix>/Releases/v1.6</urlSuffix>
+			<description>Contains the 1.6 release</description>
+		</channel>
+		<channel id="version_1.5">
+        	<name>Version 1.5</name>
+			<urlSuffix>/Releases/v1.5</urlSuffix>
+			<description>Contains the 1.5 release</description>
+		</channel>
+		<channel id="version_1.4">
+        	<name>Version 1.4</name>
+			<urlSuffix>/Releases/v1.4</urlSuffix>
+			<description>Contains the 1.4 release</description>
+		</channel>
+        <channel id="version_1.3">
+        	<name>Version 1.3</name>
+			<urlSuffix>/Releases/v1.3</urlSuffix>
+			<description>Contains the 1.3 release</description>
+		</channel>
+		<channel id="none">
+			<name>&lt;Base URL only&gt;</name>
+			<urlSuffix></urlSuffix>
+			<description>Use base URL only</description>
+		</channel>
+	</channelList>
+</channels>

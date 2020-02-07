@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Values version="2.0">
+  <value name="encodeutf8">true</value>
+  <array name="imports" type="value" depth="1">
+    <value>java.io.FileNotFoundException</value>
+    <value>java.io.File</value>
+    <value>org.apache.commons.io.FileUtils</value>
+    <value>org.apache.commons.lang.StringUtils</value>
+    <value>org.apache.commons.lang.exception.ExceptionUtils</value>
+    <value>java.io.IOException</value>
+    <value>com.softwareag.wx.is.config.Result</value>
+    <value>com.softwareag.wx.is.config.file.FileContentUtils</value>
+  </array>
+</Values>

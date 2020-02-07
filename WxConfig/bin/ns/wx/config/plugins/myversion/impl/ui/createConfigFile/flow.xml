@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<FLOW VERSION="3.0" CLEANUP="true">
+  <COMMENT>Set scene to save in the shared location</COMMENT>
+
+  <!-- nodes -->
+
+<INVOKE TIMEOUT="" SERVICE="wx.config.plugins.myversion.impl.ui:getMyVersionsActivated" VALIDATE-IN="$none" VALIDATE-OUT="$none">
+  <COMMENT></COMMENT>
+
+  <!-- nodes -->
+
+<MAP MODE="OUTPUT">
+</MAP>
+</INVOKE>
+
+<BRANCH TIMEOUT="" SWITCH="/myVersionsActivated">
+  <COMMENT></COMMENT>
+
+  <!-- nodes -->
+
+<INVOKE NAME="false" TIMEOUT="" SERVICE="wx.config.impl.ui:createConfigFile" VALIDATE-IN="$none" VALIDATE-OUT="$none">
+  <COMMENT>Execute main "Config Create"</COMMENT>
+
+  <!-- nodes -->
+
+<MAP MODE="INPUT">
+</MAP>
+
+<MAP MODE="OUTPUT">
+</MAP>
+</INVOKE>
+
+<INVOKE NAME="$null" TIMEOUT="" SERVICE="wx.config.impl.ui:createConfigFile" VALIDATE-IN="$none" VALIDATE-OUT="$none">
+  <COMMENT>Execute main "Config Create"</COMMENT>
+
+  <!-- nodes -->
+
+<MAP MODE="INPUT">
+</MAP>
+
+<MAP MODE="OUTPUT">
+</MAP>
+</INVOKE>
+
+<INVOKE NAME="true" TIMEOUT="" SERVICE="wx.config.plugins.myversion.impl.ui:createConfigFileImpl" VALIDATE-IN="$none" VALIDATE-OUT="$none">
+  <COMMENT>Execute myversion specific"Config Create"</COMMENT>
+</INVOKE>
+</BRANCH>
+</FLOW>

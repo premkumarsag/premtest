@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+<autoConfig>
+    <!-- Broker settings see JMS -->
+    <messaging>
+        <!-- UM Settings - null to many elements -->
+        <um>
+        	<!-- REALM Hosts - one or many elements for failover -->
+	    	<hosts>nsp://10.0.17.84:9000</hosts>
+	    	<!-- optional element - if nothing is specified the OS user is used. -->
+    		<initialContextFactory>com.pcbsys.nirvana.nSpace.NirvanaContextFactory</initialContextFactory>
+
+			<!-- ACLS for the JNDI - null to many elements -->
+        	
+            <!-- JMS Connection Factory -->
+    		<jmsConnectionFactory>
+    		  <name>WxAuditCF</name>
+    		  <connectionFactoryType>ConnectionFactory</connectionFactoryType> <!-- Allowed values : ConnectionFactory,  QueueConnectionFactory, TopicConnectionFactory, XAConnectionFactory -->
+    		  <!-- optional element-->
+    		  <deleteOnUnload>false</deleteOnUnload>
+    		</jmsConnectionFactory>
+
+        	<topic>
+    		  <name>WxAuditSvc/AuditEvents</name>
+    		  <!-- optional element-->
+    		  <deleteOnUnload>false</deleteOnUnload>
+    		  <!-- optional element-->
+    		  <type>Mixed</type><!-- allowed values Realiable, Persistent, Mixed, Simple, Transient -->
+    		  <!-- optional element-->
+    		  
+    		  <!-- optional element-->
+    		  
+    		  <!-- optional element-->
+    		  
+    		  <!-- optional element-->
+    		  
+    		  <!-- optional element-->
+    		  <storageProperties>
+    		    <autoMaintanence>true</autoMaintanence>
+    		    <honourCapacity>true</honourCapacity>
+    		    <enableCaching>true</enableCaching>
+    		    <cacheOnReaload>true</cacheOnReaload>
+    		    <enableReadBuffer>true</enableReadBuffer>
+    		    <readBufferSize>10240</readBufferSize>
+    		    <syncEachWrite>false</syncEachWrite>
+    		    <priority>4</priority>
+    		  </storageProperties>
+    		  <!-- topic ACLS - null to many elements -->
+          	  
+            </topic>
+
+   		</um>
+   		
+        <integrationServer>
+            
+            <jndiSettings>
+                <JNDIAliasName>WxAuditSvcJNDIAlias</JNDIAliasName>
+                <description>WxAuditSvcJNDIAlias</description>
+                <initialContextFactory>com.pcbsys.nirvana.nSpace.NirvanaContextFactory</initialContextFactory>
+                <providerURL>nsp://localhost:9000/</providerURL>
+                <providerURLFailoverList></providerURLFailoverList>
+                <securityPrincipal></securityPrincipal>
+                <securityCredentials></securityCredentials>
+                <otherProperties></otherProperties>
+            </jndiSettings>
+            
+            <jmsAlias>
+                <!-- General Settings -->
+                <connectionAliasName>WxAuditJMSConnection</connectionAliasName>
+                <description>WxAuditJMSConnection</description>
+                <transactionType>NO_TRANSACTION</transactionType> <!--NO_TRANSACTION,LOCAL_TRANSACTION,XA_TRANSACTION-->
+                <connectionClientID>wxaudit</connectionClientID>
+                <user></user>
+                <password></password>
+                
+                <!-- Connection Protocol Settings -->
+                <createConnectionUsing>JNDI Lookup</createConnectionUsing> <!--native Broke needs to be done-->
+                <JNDIProviderAliasName>WxAuditSvcJNDIAlias</JNDIProviderAliasName>
+                <connectionFactoryLookupName>WxAuditCF</connectionFactoryLookupName>
+                <monitorwebMethodsConnectionFactory>No</monitorwebMethodsConnectionFactory> <!--No, Yes-->
+                
+                <!-- Advanced Settings -->
+                <classLoader>INTEGRATION_SERVER</classLoader> <!-- INTEGRATION_SERVER or Package name -->
+                <maximumCSQSize>-1</maximumCSQSize>
+                <drainCSQinOrder>true</drainCSQinOrder>
+                <createTemporaryQueue>false</createTemporaryQueue>
+                <manageDestinations>true</manageDestinations>
+                <createNewConnectionperTrigger>true</createNewConnectionperTrigger>
+                
+                <!-- Producer Caching -->
+                <cachingMode>DISABLED</cachingMode> <!-- Version 1 only DISABLED is supported!! -->
+                
+                <!-- Producer Retry -->
+                <maxRetryAttempts>0</maxRetryAttempts>
+                <retryInterval>1000</retryInterval>
+            </jmsAlias>
+      </integrationServer>
+    </messaging>
+</autoConfig>
+</config>

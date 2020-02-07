@@ -1,0 +1,21 @@
+  {
+		"templateKey" : "connectTimeout",
+		"names" : [
+		   {
+			 "value" : "HTTP Connection Timeout (seconds)",
+			 "locale" : "en"
+		   }
+		 ],
+		 "descriptions" : [
+		   {
+			 "value" : "The time interval (in seconds) after which a connection attempt will timeout.",
+			 "locale" : "en"
+		   }
+		 ],
+		"type" : "INT",
+		"isRequired" :"false",
+		"isArray" : "false",
+		"defaultValues" : [
+		  30
+		]
+  }

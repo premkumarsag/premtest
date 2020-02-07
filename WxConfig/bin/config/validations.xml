@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>  <!-- The root element is ignored for XPath queries -->
+    
+	<!-- All auto-setup validations can be found in asConfig.xml -->
+	
+	<!-- Sample 
+	
+	<documentValidationList>
+        <documentValidation id="testValidation">
+            <documentType>wx.config.impl.autoSetup.proxy:proxy</documentType>
+            <logging>
+                <facility>400</facility>
+                <code>
+                    <success>8</success>
+                    <failure>9</failure>
+                </code>
+            </logging>
+        </documentValidation>	
+    </documentValidationList>
+	-->
+	
+</config>

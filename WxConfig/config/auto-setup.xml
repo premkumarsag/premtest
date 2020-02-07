@@ -1,0 +1,321 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+  <autoConfig>
+      
+        <extendedSettings>
+		    <setting operation="addUpdate" name="watt.server.storage.addKeyToStoreIfNotPresent" value="true" />
+		    <setting operation="show" name="watt.server.storage.addKeyToStoreIfNotPresent" />
+	    </extendedSettings>
+
+	<scheduler description="WxConfig: Rescan for new wildcard-included files (${sys:wxConfig.hostname}:${sys:watt.server.port})">
+		<suspendOnUnload>true</suspendOnUnload>
+		<autoResume>true</autoResume>
+		<deleteOnUnload>true</deleteOnUnload>
+        <suspendAfterCreation>false</suspendAfterCreation>
+        <updateIfExists>false</updateIfExists>
+		
+		<type>repeating</type>
+        <intervalSeconds>60</intervalSeconds>
+        <doNotOverlap>true</doNotOverlap>
+        
+		<service>wx.config.impl.reload:rescanForAdd</service>
+		<runAsUser>Administrator</runAsUser>
+		<target>${sys:wxConfig.hostname}</target>
+        
+	</scheduler>
+	
+	<scheduler description="WxConfig: Check for updates (${sys:wxConfig.hostname}:${sys:watt.server.port})">
+		<suspendOnUnload>true</suspendOnUnload>
+		<autoResume>false</autoResume>
+		<deleteOnUnload>true</deleteOnUnload>
+        <suspendAfterCreation>false</suspendAfterCreation>
+		<type>complex</type>
+                <hours>8</hours>
+                <minutes>0</minutes>
+		<service>wx.config.impl.update:getLatestVersion</service>
+		<runAsUser>Administrator</runAsUser>
+		<doNotOverlap>true</doNotOverlap>
+        <inputs>
+            <isScheduledRun>true</isScheduledRun>
+        </inputs>
+	</scheduler>
+    
+    <scheduler description="WxConfig: log license details every day (${sys:wxConfig.hostname}:${sys:watt.server.port})">
+    	<suspendOnUnload>true</suspendOnUnload>
+		<autoResume>false</autoResume>
+		<deleteOnUnload>true</deleteOnUnload>
+        <suspendAfterCreation>false</suspendAfterCreation>
+		<type>complex</type>
+                <hours>8</hours>
+                <minutes>0</minutes>
+		<service>wx.config.impl.license:logCustomerAndExpiryDate</service>
+		<runAsUser>Administrator</runAsUser>
+		<doNotOverlap>true</doNotOverlap>
+	</scheduler>
+	
+	<scheduler description="WxConfig: re-read license file every day (${sys:wxConfig.hostname}:${sys:watt.server.port})">
+    	<suspendOnUnload>true</suspendOnUnload>
+		<autoResume>false</autoResume>
+		<deleteOnUnload>true</deleteOnUnload>
+        <suspendAfterCreation>false</suspendAfterCreation>
+		<type>complex</type>
+                <hours>0</hours>
+                <minutes>0</minutes>
+		<service>wx.config.impl.license:readLicenseFile</service>
+		<runAsUser>Administrator</runAsUser>
+		<doNotOverlap>true</doNotOverlap>
+	</scheduler>
+	
+	<scheduler description="WxConfig: archive audit files (${sys:wxConfig.hostname}:${sys:watt.server.port})">
+    	<suspendOnUnload>true</suspendOnUnload>
+		<autoResume>false</autoResume>
+		<deleteOnUnload>true</deleteOnUnload>
+        <suspendAfterCreation>false</suspendAfterCreation>
+		<type>complex</type>
+                <hours>0</hours>
+                <minutes>1</minutes>
+		<service>wx.config.impl.auditing:runArchiver</service>
+		<runAsUser>Administrator</runAsUser>
+		<doNotOverlap>true</doNotOverlap>
+	</scheduler>
+	
+	<scheduler description="WxConfig: deleted processed encrypted values files (${sys:wxConfig.hostname}:${sys:watt.server.port})">
+    	<suspendOnUnload>true</suspendOnUnload>
+		<autoResume>false</autoResume>
+		<deleteOnUnload>true</deleteOnUnload>
+        <suspendAfterCreation>false</suspendAfterCreation>
+		<type>complex</type>
+                <hours>0</hours>
+                <minutes>5</minutes>
+		<service>wx.config.impl.util.passman:deleteOldEncValsImportFiles</service>
+		<runAsUser>Administrator</runAsUser>
+		<doNotOverlap>true</doNotOverlap>
+	</scheduler>
+	
+	<scheduler description="WxConfig: Check for updates">
+		<deleteOnly>true</deleteOnly>
+	</scheduler>
+	<scheduler description="WxConfig: log license details every day">
+		<deleteOnly>true</deleteOnly>
+	</scheduler>
+	<scheduler description="WxConfig: re-read license file every day">
+		<deleteOnly>true</deleteOnly>
+	</scheduler>
+	<scheduler description="WxConfig: archive audit files">
+		<deleteOnly>true</deleteOnly>
+	</scheduler>
+
+
+    <accessControl>
+
+    <!-- Integration Server groups-->
+
+    <group name="WxConfigStandard" updateIfExists="false" deleteOnUnload="false">
+      <member user="Administrator" />
+    </group>
+
+    <group name="WxConfigChangeEnvironment"  updateIfExists="false" deleteOnUnload="false">
+      <member user="Administrator" />
+    </group>
+
+    <group name="WxConfigEncryptedValues" updateIfExists="false" deleteOnUnload="false">
+      <member user="Administrator" />
+    </group>
+
+    <group name="WxConfigCreateFiles" updateIfExists="false" deleteOnUnload="false">
+      <member user="Administrator" />
+    </group>
+
+    <group name="WxConfigDeleteFiles" updateIfExists="false" deleteOnUnload="false">
+      <member user="Administrator" />
+    </group>
+
+    <group name="WxConfigEditFiles" updateIfExists="false" deleteOnUnload="false">
+      <member user="Administrator" />
+    </group>
+
+    <group name="WxConfigShowValues" updateIfExists="false" deleteOnUnload="false">
+      <member user="Administrator" />
+    </group>
+	
+	<group name="WxConfigUpdate" updateIfExists="false" deleteOnUnload="false">
+      <member user="Administrator" />
+    </group>
+	
+	<group name="WxConfigFileLocations" updateIfExists="false" deleteOnUnload="false">
+      <member user="Administrator" />
+    </group>
+	
+	<group name="WxConfigLicense" updateIfExists="false" deleteOnUnload="false">
+      <member user="Administrator" />
+    </group>
+	
+	<group name="WxConfigTemplates" updateIfExists="false" deleteOnUnload="false">
+      <member user="Administrator" />
+    </group>
+	
+	<group name="WxConfigRenameFiles" updateIfExists="false" deleteOnUnload="false">
+      <member user="Administrator" />
+    </group>
+    
+    <group name="WxConfigDisplayLogFile" updateIfExists="false" deleteOnUnload="false">
+      <member user="Administrator" />
+    </group>
+    
+    <group name="WxConfigCheckInterpolators" updateIfExists="false" deleteOnUnload="false">
+      <member user="Administrator" />
+    </group>
+
+    <acl name="WxConfigStandard" updateIfExists="false" deleteOnUnload="false">
+      <member group="local/Developers" />
+      <member group="WxConfigStandard" />
+      <member group="Administrators" />
+      <member group="system/My webMethods Administrators" />
+    </acl>
+
+    <acl name="WxConfigChangeEnvironment" updateIfExists="false" deleteOnUnload="false">
+      <member group="WxConfigChangeEnvironment" />
+      <member group="Administrators" />
+      <member group="system/My webMethods Administrators" />
+    </acl>
+
+
+    <acl name="WxConfigEncryptedValues" updateIfExists="false" deleteOnUnload="false">
+      <member group="WxConfigEncryptedValues" />
+      <member group="Administrators" />
+      <member group="system/My webMethods Administrators" />
+    </acl>
+
+
+    <acl name="WxConfigCreateFiles" updateIfExists="false" deleteOnUnload="false">
+      <member group="WxConfigCreateFiles" />
+      <member group="Administrators" />
+      <member group="system/My webMethods Administrators" />
+    </acl>
+
+    <acl name="WxConfigDeleteFiles" updateIfExists="false" deleteOnUnload="false">
+      <member group="WxConfigDeleteFiles" />
+      <member group="Administrators" />
+      <member group="system/My webMethods Administrators" />
+    </acl>
+
+    <acl name="WxConfigEditFiles" updateIfExists="false" deleteOnUnload="false">
+      <member group="WxConfigEditFiles" />
+      <member group="Administrators" />
+      <member group="system/My webMethods Administrators" />
+    </acl>
+
+    <acl name="WxConfigShowValues" updateIfExists="false" deleteOnUnload="false">
+      <member group="WxConfigShowValues" />
+      <member group="Administrators" />
+      <member group="system/My webMethods Administrators" />
+    </acl>
+	
+	<acl name="WxConfigUpdate" updateIfExists="false" deleteOnUnload="false">
+      <member group="WxConfigUpdate" />
+      <member group="Administrators" />
+      <member group="system/My webMethods Administrators" />
+    </acl>
+	
+	<acl name="WxConfigFileLocations" updateIfExists="false" deleteOnUnload="false">
+      <member group="WxConfigFileLocations" />
+      <member group="Administrators" />
+      <member group="system/My webMethods Administrators" />
+    </acl>
+	
+	<acl name="WxConfigLicense" updateIfExists="false" deleteOnUnload="false">
+      <member group="WxConfigLicense" />
+      <member group="Administrators" />
+      <member group="system/My webMethods Administrators" />
+    </acl>
+	
+	<acl name="WxConfigTemplates" updateIfExists="false" deleteOnUnload="false">
+      <member group="WxConfigTemplates" />
+      <member group="Administrators" />
+      <member group="system/My webMethods Administrators" />
+    </acl>
+	
+	<acl name="WxConfigRenameFiles" updateIfExists="false" deleteOnUnload="false">
+      <member group="WxConfigRenameFiles" />
+      <member group="Administrators" />
+      <member group="system/My webMethods Administrators" />
+    </acl>
+    
+    <acl name="WxConfigDisplayLogFile" updateIfExists="false" deleteOnUnload="false">
+      <member group="WxConfigDisplayLogFile" />
+      <member group="Administrators" />
+      <member group="system/My webMethods Administrators" />
+    </acl>
+    
+    <acl name="WxConfigCheckInterpolators" updateIfExists="false" deleteOnUnload="false">
+      <member group="WxConfigCheckInterpolators" />
+      <member group="Administrators" />
+      <member group="system/My webMethods Administrators" />
+    </acl>
+    
+
+   <service folder="wx.config.api.security.encryptedValues" includeSubfolders="true" logLevelSuccess="DEBUG">
+        <executeACL enforce="always">WxConfigEncryptedValues</executeACL>  
+    </service>
+    
+    <service folder="wx.config.api.monitoring.interpolators.checkUnresolved" includeSubfolders="true" logLevelSuccess="DEBUG">
+        <executeACL enforce="always">WxConfigCheckInterpolators</executeACL>  
+    </service>
+    
+    <service folder="wx.config.impl" includeSubfolders="true" logLevelSuccess="DEBUG">
+        <executeACL enforce="always">WxConfigStandard</executeACL>  
+    </service>
+    
+    <service folder="wx.config.plugins" includeSubfolders="true" logLevelSuccess="DEBUG">
+        <executeACL enforce="always">WxConfigStandard</executeACL>  
+    </service>
+    
+    <service folder="wx.config.pub" includeSubfolders="true" logLevelSuccess="DEBUG">
+        <executeACL enforce="topLevelOnly">Internal</executeACL>  
+    </service>
+    
+     <service folder="wx.config.impl.util.passman" includeSubfolders="true" logLevelSuccess="DEBUG">
+        <executeACL enforce="always">WxConfigEncryptedValues</executeACL>  
+    </service>
+    
+    <service folder="wx.config.impl.autoSetup" includeSubfolders="true" logLevelSuccess="DEBUG">
+        <executeACL enforce="always">Internal</executeACL>  
+    </service>
+    
+    <service folder="wx.config.impl.startup" includeSubfolders="true" logLevelSuccess="DEBUG">
+        <executeACL enforce="always">Internal</executeACL>  
+    </service>
+    
+    <service name="wx.config.impl.location:addAlias" logLevelSuccess="DEBUG">
+        <executeACL enforce="always">WxConfigFileLocations</executeACL>  
+    </service>
+   
+   <service name="wx.config.impl.location:addLocationToFileName" logLevelSuccess="DEBUG">
+        <executeACL enforce="always">WxConfigFileLocations</executeACL>  
+    </service>
+    
+    <service name="wx.config.impl.location:deleteAlias" logLevelSuccess="DEBUG">
+        <executeACL enforce="always">WxConfigFileLocations</executeACL>  
+    </service>
+    
+    <service name="wx.config.impl.location:editAlias" logLevelSuccess="DEBUG">
+        <executeACL enforce="always">WxConfigFileLocations</executeACL>  
+    </service>
+    
+    <service name="wx.config.impl.logging:readLogFileFromEnd" logLevelSuccess="DEBUG">
+        <executeACL enforce="always">WxConfigDisplayLogFile</executeACL>  
+    </service>
+    
+    <service name="wx.config.impl.logging:setDefaultsDisplayLogFile" logLevelSuccess="DEBUG">
+        <executeACL enforce="always">WxConfigDisplayLogFile</executeACL>  
+    </service>
+    
+    <service name="wx.config.impl.admin:checkUnresolvedInterpolators" logLevelSuccess="DEBUG">
+        <executeACL enforce="always">WxConfigCheckInterpolators</executeACL>  
+    </service>
+   
+  </accessControl>
+
+ 
+  </autoConfig>
+</config>

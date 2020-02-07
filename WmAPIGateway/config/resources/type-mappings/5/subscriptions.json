@@ -1,0 +1,18 @@
+{
+  "subscriptions": {
+    "properties": {
+      "appIds": {
+        "type": "keyword"
+      },
+      "id": {
+        "type": "keyword"
+      },
+      "packageId": {
+        "type": "keyword"
+      },
+      "planId": {
+        "type": "keyword"
+      }
+    }
+  }
+}

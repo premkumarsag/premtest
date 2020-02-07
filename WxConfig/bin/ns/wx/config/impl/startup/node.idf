@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Values version="2.0">
+  <value name="shared">CQ0KcHVibGljIHN0YXRpYyBXeENvbmZpZ1BhY2thZ2VMaXN0ZW5lciBhc2wgPSBXeENvbmZpZ1Bh
+Y2thZ2VMaXN0ZW5lci5nZXRJbnN0YW5jZSgpOw0Kc3RhdGljIGJvb2xlYW4gbGlzdGVuZXJJbml0
+ID0gZmFsc2U7DQoNCg==</value>
+  <value name="encodeutf8">true</value>
+  <array name="imports" type="value" depth="1">
+    <value>java.util.List</value>
+    <value>com.wm.app.b2b.server.Server</value>
+    <value>com.wm.app.b2b.server.ServerStartupNotifier</value>
+    <value>com.wm.app.b2b.server.PackageManager</value>
+    <value>com.wm.lang.ns.NSName</value>
+    <value>com.softwareag.wx.is.config.WxConfig</value>
+    <value>com.softwareag.wx.is.config.autoSetup.AutoSetupResources</value>
+    <value>com.softwareag.wx.is.config.log.CfgLog</value>
+    <value>com.softwareag.wx.is.config.pkg.WxConfigPackageListener</value>
+  </array>
+</Values>

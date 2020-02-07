@@ -1,0 +1,34 @@
+{
+  "indexName": "gateway_{0}_log",
+  "types": [
+    {
+      "name": "doc",
+      "fields": [
+        {
+          "name": "timestamp",
+          "type": "date"
+        },
+        {
+          "name": "node",
+          "type": "keyword"
+        },
+        {
+          "name": "correlationId",
+          "type": "keyword"
+        },
+        {
+          "name": "message",
+          "type": "keyword"
+        },
+        {
+          "name": "fileType",
+          "type": "keyword"
+        },
+        {
+          "name": "logLevel",
+          "type": "keyword"
+        }
+      ]
+    }
+  ]
+}

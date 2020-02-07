@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?><config>
+<autoConfig>
+  <ws>
+      <providerEndpointList>
+          <providerEndpoint alias="alias1" updateIfExists="true" deleteOnUnload="true">
+              <description>Test alias 1</description>
+              <transportInfo>
+                  <transportType>HTTP</transportType>  <!-- HTTP | HTTPS -->
+                  <host>localhost</host>
+                  <port>5555</port>
+              </transportInfo>
+              <messageInfo>  <!-- optional -->
+                  <keyStoreAlias></keyStoreAlias>
+                  <keyAlias></keyAlias>
+                  <trustStoreAlias></trustStoreAlias>
+                  <timestampPrecisionInMillis></timestampPrecisionInMillis>
+                  <timestampTimeToLive></timestampTimeToLive>
+                  <timestampMaximumSkew></timestampMaximumSkew>
+              </messageInfo>
+              <messageAddressingProperties>   <!-- optional -->
+                  <!-- Structure currently not pre-defined in template. 
+                    Please check wx.config.impl.autoSetup.ws:messageAddressingEndpoint
+                    for details
+                    -->
+              </messageAddressingProperties>
+          </providerEndpoint>
+      </providerEndpointList>
+      <reliableMessaging>  <!-- Changes require a restart of Integration Server -->
+        <retransmissionInterval>6000</retransmissionInterval>  <!-- in milliseconds -->
+        <acknowledgementInterval>3000</acknowledgementInterval>   <!-- in milliseconds -->
+        <exponentialBackoff>true</exponentialBackoff>
+        <inactivityTimeout>60</inactivityTimeout>
+        <inactivityTimeoutMeasure>seconds</inactivityTimeoutMeasure>  <!-- seconds, minuts, hours, days-->
+        <sequenceRemovalTimeout>600</sequenceRemovalTimeout>
+        <sequenceRemovalTimeoutMeasure>seconds</sequenceRemovalTimeoutMeasure>  <!-- seconds, minuts, hours, days-->
+        <invokeInOrder>true</invokeInOrder>   <!-- in UI called "In-Order Delivery Assurance" -->
+        <maximumRetransmissionCount>10</maximumRetransmissionCount>
+        <storageType>NONPERSISTENT</storageType>   <!-- NONPERSISTENT, DATABASE-->
+        <enable>false</enable>
+        <houseKeepingInterval>20</houseKeepingInterval>
+      </reliableMessaging>
+  </ws>
+
+</autoConfig>
+</config>

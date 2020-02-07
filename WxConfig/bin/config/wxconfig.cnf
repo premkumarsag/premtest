@@ -1,0 +1,234 @@
+#
+#
+# This is the central config file for the WxConfig package
+#
+
+package.version.majorMinor=${const:com.softwareag.wx.is.config.pkg.PkgUtils.WXCONFIG_VERSION_MAJOR_MINOR}
+package.cfg.dir=${const:com.softwareag.wx.is.config.environment.ServerInfo.DIR_CFG_WXCONFIG}
+server.homeDir=${sys:watt.server.homeDir}
+server.cfg.dir=${server.homeDir}/${const:com.softwareag.wx.is.config.environment.ServerConfigDir.PATH}
+jvm.file.separator=${sys:file.separator}
+
+wx.config.incl=auto-setup.xml
+wx.config.incl=asConfig.xml
+wx.config.incl=menu.xml
+wx.config.incl=channels.xml
+wx.config.incl=update.cnf
+wx.config.incl=../../WmPublic/config/fileAccessControl.cnf
+wx.config.incl=log4j2.xml
+wx.config.incl={ALIAS=SERVER_CFGS}updateUser.cnf
+wx.config.incl={ALIAS=SERVER_CFGS}environment.cnf
+wx.config.incl={ALIAS=SERVER_CFGS}myVersionsInstance.cnf
+wx.config.incl={ALIAS=SERVER_CFGS}locationAliases.xml
+wx.config.incl={ALIAS=SERVER_CFGS}email.xml
+wx.config.incl={ALIAS=SERVER_CFGS}lockdown.xml
+wx.config.incl={ALIAS=SERVER_CFGS}central.cnf
+wx.config.incl={ALIAS=SERVER_CFGS}showHide.cnf
+wx.config.incl=resultMessages.xml
+wx.config.incl=validations.xml
+wx.config.incl=myversions.cnf
+wx.config.incl=template-list-newFiles.xml
+wx.config.incl=cce.xml
+wx.config.incl.inactive={ALIAS=SERVER_CFGS}audit.xml
+wx.config.incl.inactive={ALIAS=SERVER_CFGS}publish.xml
+
+wx.config.excl=build-info.xml
+
+# Exclude files from check for unresolved interpolators (not UI relevant, see details in "Special Properties")
+wx.config.interpolator.checkUnresolved.excludeFile=template-environment.cnf
+wx.config.interpolator.checkUnresolved.excludeFile=template-as-messaging.xml
+wx.config.interpolator.checkUnresolved.excludeFile=template-registerTemplates.xml
+
+# Although the following value would ususally go into update.cnf, it must be placed here for the inclusion to work
+wx.config.update.user.fileNameWithPath=${const:com.softwareag.wx.is.config.Update.PATH_UPDATE_USER}
+
+# License files (paths relative to $SAG_HOME/IntegrationServer/)
+wx.config.license.basefileName=${const:com.softwareag.wx.is.config.license.LicenseFile.LIC_FILENAME}
+wx.config.license.starter.fileName=${const:com.softwareag.wx.is.config.license.LicenseFile.LIC_FILE_STARTER}
+wx.config.license.regular.fileName=${sys:wxConfig.licenseFileDir}/${wx.config.license.basefileName}
+wx.config.license.obtain.text=Please check the project's wiki pages for instructions how to obtain a license.
+wx.config.license.obtain.link=https://labcase.softwareag.com/projects/wmxconfig/wiki#Usage-and-License
+wx.config.license.obtain.showLink=true
+wx.config.license.feature.name.auditing=${const:com.softwareag.wx.is.config.audit.AuditManager.LIC_FEATURE_NAME}
+wx.config.license.feature.name.autoSetup=${const:com.softwareag.wx.is.config.autoSetup.AutoSetupResources.LIC_FEATURE_NAME}
+wx.config.license.feature.name.locationAliases=${const:com.softwareag.wx.is.config.location.LocationAlias.LIC_FEATURE_NAME}
+wx.config.license.feature.name.deploymentController=${const:com.softwareag.wx.is.config.file.reload.DeploymentController.LIC_FEATURE_NAME}
+wx.config.license.feature.name.publishing=${const:com.softwareag.wx.is.config.connect.PublishManager.LIC_FEATURE_NAME}
+
+# Should the date/time of the last change be shown in the file list?
+showFileLastChangeDateTime=false
+
+# Is there a favorite package defined (thus by default only showing files from this)?
+wx.config.show.defaultPackage=
+
+# Is there a favorite stage defined (thus by default only showing files from this)?
+wx.config.show.defaultStage=
+
+# Should the path (true) or alias (false) be shown for files included via location alias?
+wx.config.showPathForAliasFiles=true
+
+# Name for document (IData) that gets created to hold config values
+# when using the "Config to Flow Service" functionality in the DSP
+wx.config.development.addToFlowSvc.resultDocName=config
+
+# Ignore WxConfig for orphaned keys by default
+wx.config.dev.keyCheck.ignorePackage=${package.name}
+
+# Starting content of new config files
+wx.config.newFile.name.properties=${package.cfg.dir}/template.cnf
+wx.config.newFile.name.xml=${package.cfg.dir}/template.xml
+
+# Show list of recent changes
+wx.config.changes.docType=wx.config.impl.doc:changeList
+wx.config.changes.fileName=./packages/${package.name}/resources/manifest/changeList.xml
+wx.config.changes.showIssueLinks=true
+wx.config.changes.url.issues=https://labcase.softwareag.com/issues
+
+# File Inclusion Conditions
+wx.config.incl.condition.directive.start=${const:com.softwareag.wx.is.config.directive.FileInclusionDirectiveProcessor.FILE_INCLUSION_DIRECTIVE_START}
+wx.config.incl.condition.directive.end=${const:com.softwareag.wx.is.config.directive.FileInclusionDirectiveProcessor.FILE_INCLUSION_DIRECTIVE_END}
+wx.config.incl.condition.separatorTypeFromParams=${const:com.softwareag.wx.is.config.directive.FileInclusionDirectiveProcessor.FILE_INCLUSION_SEP_TYPE_FROM_PARAMS_REGEX}
+wx.config.incl.condition.type.os=OS
+wx.config.incl.condition.type.dateTime=dateTime
+wx.config.incl.condition.type.wmVersion=wmVersion
+wx.config.incl.condition.type.globalValues=globalValues
+wx.config.incl.condition.type.overrideDefaults=overrideDefaults
+wx.config.incl.condition.dateTime.format=${const:com.softwareag.wx.is.config.directive.FileInclusionDirectiveConditionDateTime.DATE_TIME_FORMAT}
+wx.config.incl.condition.dateTime.startStopSeparator=${const:com.softwareag.wx.is.config.directive.FileInclusionDirectiveConditionDateTime.START_STOP_DATE_TIME_SEPARATOR}
+wx.config.incl.condition.wmVersion.current=${const:com.softwareag.wx.is.config.directive.FileInclusionDirectiveConditionWmVersion.WM_VERSION_CURRENT}
+
+# File Locations
+wx.config.incl.location.directive.start=${const:com.softwareag.wx.is.config.location.LocationProcessor.LOCATION_START}
+wx.config.incl.location.directive.end=${const:com.softwareag.wx.is.config.location.LocationProcessor.LOCATION_END}
+wx.config.incl.location.separatorTypeFromParams=${const:com.softwareag.wx.is.config.location.LocationProcessor.LOCATION_SEP_TYPE_FROM_PARAMS_REGEX}
+wx.config.incl.location.typeString.path=${const:com.softwareag.wx.is.config.location.LocationPath.LOC_TYPE_STRING}
+wx.config.incl.location.typeString.alias=${const:com.softwareag.wx.is.config.location.LocationAlias.LOC_TYPE_STRING}
+
+# File that holds the name/type of the environment (e.g. DEV, TEST, PROD)
+wx.config.environment.newTypes.spearator=,
+
+# Default format for date interpolation
+#wx.config.dateInterpolator.defaultFormat=yyyy-MM-dd HH:mm:ss.SSS
+wx.config.dateInterpolator.defaultFormat=yyyy-MM-dd_HH-mm-ss-SSS
+
+# Auto-setup
+wx.config.autoSetup.execute.property=${const:com.softwareag.wx.is.config.autoSetup.AutoSetupResources.KEY_EXECUTE_AUTO_SETUP}
+wx.config.autoSetup.fileAccessControl.fileNameWithPath=${sys:watt.server.homeDir}/packages/WmPublic/config/fileAccessControl.cnf
+
+wx.config.autoSetup.ports.filePolling.factoryKey=webMethods/FilePolling
+wx.config.autoSetup.ports.filePolling.listenerKey.base=FilePollingListener:
+wx.config.autoSetup.ports.filePolling.add.oldPkg=
+
+# Number of milliseconds to wait in the background before starting the processing
+# of adapter configurations on package startup. This is the global default value.
+# It is possible to have a different value per package using the same key in the
+# repsective package's configuration
+wx.config.autoSetup.adapter.sleepMillis.startup=2000
+wx.config.autoSetup.adapter.connection.default.updateIfExists=false
+wx.config.autoSetup.adapter.connection.default.disableBeforePackageLoad=false
+wx.config.autoSetup.adapter.connection.default.autoStart=true
+wx.config.autoSetup.adapter.connection.default.autoShutdown=true
+wx.config.autoSetup.adapter.connection.default.destroyOnShutdown=false
+
+# Number of milliseconds to wait in the background before starting the processing
+# of port configurations on package startup. This is the global default value.
+# It is possible to have a different value per package using the same key in the
+# respective package's configuration
+wx.config.autoSetup.ports.sleepMillis.startup=2000
+
+wx.config.autoSetup.jms.trigger.disableConnectionReload=false
+
+wx.config.autoSetup.scheduler.cluster.lock.area=AutoSetupScheduler
+
+
+# Logging
+wx.config.log.level.available=off
+wx.config.log.level.available=fatal
+wx.config.log.level.available=error
+wx.config.log.level.available=warn
+wx.config.log.level.available=info
+wx.config.log.level.available=debug
+wx.config.log.level.available=trace
+
+# Export of log message catalog
+wx.config.log.msgCatalog.fileName=WxConfig_LogMessagesCatalog.xml
+
+# Display of log file
+wx.config.log.display.default.numberOfLines=35
+wx.config.log.display.default.showLevel.fatal=true
+wx.config.log.display.default.showLevel.error=true
+wx.config.log.display.default.showLevel.warn=true
+wx.config.log.display.default.showLevel.info=true
+wx.config.log.display.default.showLevel.debug=true
+wx.config.log.display.default.showLevel.trace=false
+
+# Samples
+wx.config.samples.packageName=${package.name}Samples
+wx.config.samples.packageFile=${wx.config.samples.packageName}.zip
+wx.config.samples.packageFile.location=./packages/${package.name}/resources/${wx.config.samples.packageFile}
+wx.config.samples.menuSection=Info
+wx.config.samples.menuName=Samples
+wx.config.samples.menuLink=infoSamples.dsp
+wx.config.samples.install.activate=true
+wx.config.samples.install.archive=true
+
+# Name of virtual package to hold global values
+wx.config.globalValues.pkgName=${const:com.softwareag.wx.is.config.WxConfig.GLOBAL_VALUES_CFG_ID}
+
+# Encrypted values
+wx.config.encValues.bulkExport.fileName=${const:com.softwareag.wx.is.config.security.BulkExportImport.BULK_EXPORT_IMPORT_FILENAME_EXPORT_PREFIX}${sys:wxConfig.hostname}_${date:yyyy-MM-dd_HH-mm-ss}${const:com.softwareag.wx.is.config.security.BulkExportImport.BULK_EXPORT_IMPORT_FILENAME_EXPORT_SUFFIX}
+wx.config.encValues.bulkExport.header.content=${file:./packages/WxConfig/config/headerEncryptedValuesBulkExport.txt}
+wx.config.encValues.bulkImport.location.default=${const:com.softwareag.wx.is.config.security.BulkExportImport.BULK_EXPORT_IMPORT_ALIAS_DEFAULT_DIR}
+
+
+# =========================================================================
+#
+# Cluster Settings
+#
+# =========================================================================
+
+# Name of "store" for pub.storage:{lock|unlock}
+wx.config.cluster.lock.storeName=WxConfig_ClusterLock_${package.name}
+wx.config.cluster.lock.waitLengthMillis=20000
+wx.config.cluster.lock.mode=Exclusive
+
+
+# =========================================================================
+#
+# Environment Default Settings
+#
+# =========================================================================
+
+wx.config.environment.default.type=CHANGE
+wx.config.environment.default.nameForUI=Environment Type Not Set
+wx.config.environment.default.comment.text=Please click here to configure
+wx.config.environment.default.comment.url=${buttonUrls/sections[name='Settings']/submenu[name='Environment']/url}
+wx.config.environment.default.css.fontSize=14pt
+wx.config.environment.default.css.color.font=white
+wx.config.environment.default.css.color.background=gray
+
+# =========================================================================
+#
+# Solution
+#
+# =========================================================================
+
+wx.config.solution.name=Configuration Management
+
+# =========================================================================
+#
+# UI
+#
+# =========================================================================
+
+wx.config.ui.isNewFormat=${sys:wxConfig.newUi}
+
+# =========================================================================
+#
+# Encrypted Values
+#
+# =========================================================================
+
+# Processed bulk-import files older than x days will be deleted automatically.
+# If the value is 0, not a number or missing, nothing will be deleted.
+wx.config.encryptedValues.bulkImport.deleteFilesOlderThanDays=2

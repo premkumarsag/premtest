@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>  <!-- The root element is ignored for XPath queries -->
+    <wx>
+        <config>
+			<publish version="1">
+				<enabled>false</enabled>
+				<cacheManager></cacheManager>
+				<cache></cache>
+				<timeOutWriteLockMillis>5000</timeOutWriteLockMillis>
+				<keyInCache>
+					
+					<!-- Name under which the object is put into the cache as java.util.Properties 
+							Default: %packageName%_properties -->
+					<properties></properties>
+					
+					<!-- Name under which the object is put into the cache as org.apache.commons.configuration.CompositeConfiguration
+							Default: %packageName%_commonsConfiguration -->
+					<commonsConfiguration></commonsConfiguration>
+
+					<!-- Name under which the object is put into the cache as com.softwareag.wx.is.config.CompositeCfg
+							Default: %packageName%_wxConfig -->
+					<wxConfig></wxConfig>
+					
+				</keyInCache> 
+			</publish>
+        </config>
+    </wx>
+</config>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>  <!-- The root element is ignored for XPath queries -->
+    <wx>
+        <config>
+            <audit version="1">
+                <enabled>false</enabled>
+                <logDir>./logs/WxConfig/audit</logDir>  <!-- Relative path will be resolved against the normal IS runtime path -->
+                <archiving>
+                    <enabled>true</enabled>
+					<targetDir>${/wx/config/audit/logDir}/_archive</targetDir>
+                    <retentionPeriod>
+                        <aggregate>2</aggregate>
+                        <delete>4000</delete>
+                    </retentionPeriod>
+                </archiving>
+            </audit>    
+        </config>
+    </wx>
+</config>

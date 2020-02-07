@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>  <!-- The root element is ignored for XPath queries -->
+  <centralManagement>
+      <lockDown version="1">
+        <function id="availableEnvironmentTypes">
+            <lockedForLocalChanges>false</lockedForLocalChanges>
+            <!-- 
+            <acceptChangesFromList>
+                <host>localhost</host>
+            </acceptChangesFromList>
+            -->
+        </function>
+            
+          
+      </lockDown>
+  </centralManagement>
+</config>

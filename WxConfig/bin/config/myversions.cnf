@@ -1,0 +1,21 @@
+# ===== MyVersions WxConfig Plugin configuration file =========
+# Identify the Version control used
+# Supported values = svn
+myversions.vcs=svn
+
+
+# Property governing the name of the Dependent VCS wrapper package.
+myversions.vcs.packagename=WxSvn
+myversions.vcs.packageFile=${myversions.vcs.packagename}.zip
+myversions.vcs.packageFile.location=./packages/${package.name}/resources/${myversions.vcs.packageFile}
+myversions.vcs.packageFile.install.activate=true
+myversions.vcs.packageFile.install.archive=true
+
+
+# This property controls if this plugin is activated or not
+# This can also be controlled from the "Activate plugin" radio control under the myversions plugin home page
+myversions.activated=false
+
+# There are situations, when a commit to the VCS does not return any output. The following
+# message shall be displayed in such cases
+myversions.message.noOutputFromCommit=The commit operation did not return any message. Probably the file contents have not been changed.

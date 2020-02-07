@@ -1,0 +1,171 @@
+<!--
+#######################################################################################
+Packages, folders and services are converted to a dot-separated heirarchy as follows:
+
+For example, the service: 
+
+  WxLog/wx.log.services:log
+
+Becomes: 
+
+  WxLog.wx.log.services.log
+
+
+Examples:
+=========
+
+  Log Levels:
+  ===========
+  OFF
+  FATAL
+  ERROR
+  WARN
+  INFO
+  DEBUG
+  TRACE
+  ALL
+
+
+  Example Patterns:
+  =================
+  <pattern>HI %d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+  <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %3([%.-1level]) %3(123) %-30(%X{pkg}/%X{svc_short}:) trackingID: %X{trackingID} %msg%n</pattern>
+
+
+  MDC Values:
+  ===========
+  %X{mdc-value}
+
+
+  Console Appender:
+  =================
+
+  An appender which outputs message to the console (STDOUT)
+
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+      <encoder>
+        <pattern>HI %d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+      </encoder>
+    </appender>
+
+
+  FILE Appender:
+  ==============
+
+  A normal appender which outputs to a file:
+
+    <appender name="FILE" class="ch.qos.logback.core.FileAppender">
+      <file>logs/WxLogger.log</file>
+      <append>true</append>
+      <encoder>
+        <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %3([%.-1level]) %3(123) %-30(%X{pkg}/%X{svc_short}:) trackingID: %X{trackingID} %msg%n</pattern>
+      </encoder>
+    </appender>
+
+
+  Service Appender:
+  =================
+
+  This is an appender that comes with WxLog which will invoke an IS service for each log event
+
+  <appender name="LOGSERVICE" class="com.softwareag.wx.log.ServiceAppender">
+    <service>common.logging:handleLogEvents</service>
+    <user>Administrator</user>
+  </appender>
+
+  The service will receive a pipeline variable named "event" which corresponds to the
+  document type wx.log.docs:event. Use the specification wx.log.docs:ServiceAppender,
+  for services that will receive log events.
+
+
+  Asynchronous Appender:
+  ======================
+
+  This is taken directly from the example at http://logback.qos.ch/manual/appenders.html
+
+  Create any normal (synchronous) appender, for example:
+
+    <appender name="FILE">
+      ...
+    </appender>
+
+  Create an asynchronous appender, and point it at the synchronous appender:
+
+    <appender name="ASYNC" class="ch.qos.logback.classic.AsyncAppender">
+      <appender-ref ref="FILE" />
+    </appender>
+
+  Configure the logger to use the asynchronous appender:
+
+    <root level="DEBUG">
+      <appender-ref ref="ASYNC" />
+    </root>
+
+
+  Filtering Appender:
+  ===================
+
+  This example adds a filter to an appender to filter out certain log messages based on MDC values:
+
+  The default evaluator uses the Janino Evaluator (ch.qos.logback.classic.boolex.JaninoEventEvaluator)
+  Which allows you to express evaluation as java code:
+
+    <appender ... >
+      ...
+      <filter class="ch.qos.logback.core.filter.EvaluatorFilter">
+        <evaluator>
+          <expression>return ((String) mdc.get("processName")).contains("batch");</expression>
+        </evaluator>
+        <OnMismatch>ACCEPT</OnMismatch>
+        <OnMatch>DENY</OnMatch>
+      </filter>
+      ...
+    </appender>
+
+
+  Setting log levels:
+  ===================
+  Package-level:
+  <logger name="WxLog_Test" level="TRACE" />
+
+  Folder-level:
+  <logger name="WxLog_Test.wx.log.test" level="TRACE" />
+
+  Service-level:
+  <logger name="WxLog_Test.wx.log.test.services.log" level="TRACE" />
+
+  Root Logger:
+  ============
+  <root level="ERROR">
+    <appender-ref ref="STDOUT"/>
+    <appender-ref ref="FILE"/>
+  </root>
+
+  Send a logger to a different appender:
+  ======================================
+  <logger name="WxLog_Test.wx.log.test.topLevelService" level="TRACE" >
+    <appender-ref ref="FILE2"/>
+  </logger>
+
+#######################################################################################
+-->
+
+<configuration scan="true" scanPeriod="30 seconds">
+
+  <!-- Define Appenders -->
+
+  <appender name="ESB" class="ch.qos.logback.core.FileAppender">
+    <file>logs/wxlog/esb.log</file>
+    <append>true</append>
+    <encoder>
+      <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %-36(%X{message.id}) %3([%.-1level]) %-46(%logger): %X{type} %msg%n</pattern>
+    </encoder>
+  </appender>
+
+  <!-- Set root log level and appender(s) -->
+  <root level="DEBUG">
+        <appender-ref ref="ESB"/>
+  </root>
+
+</configuration>
+

@@ -1,0 +1,420 @@
+<!--
+#######################################################################################
+Packages, folders and services are converted to a dot-separated heirarchy as follows:
+
+For example, the service: 
+  WxLog/wx.logger.pub:log
+Becomes: 
+  WxLog.wx.logger.pub.log
+
+
+Examples:
+=========
+
+  Log Levels:
+  ===========
+  OFF
+  FATAL
+  ERROR
+  WARN
+  INFO
+  DEBUG
+  TRACE
+  ALL
+
+  Patterns:
+  =========
+  <pattern>HI %d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+  <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %3([%.-1level]) %3(123) %-30(%X{pkg}/%X{svc_short}:) trackingID: %X{trackingID} %msg%n</pattern>
+
+  MDC Values:
+  ===========
+  %X{mdc-name}
+
+  STDOUT Appender:
+  ================
+  <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+    <encoder>
+      <pattern>HI %d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+    </encoder>
+  </appender>
+
+  FILE Appender:
+  ==============
+  <appender name="FILE" class="ch.qos.logback.core.FileAppender">
+    <file>logs/WxLogger.log</file>
+    <append>true</append>
+    <encoder>
+      <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %3([%.-1level]) %3(123) %-30(%X{pkg}/%X{svc_short}:) trackingID: %X{trackingID} %msg%n</pattern>
+    </encoder>
+  </appender>
+
+  Setting log levels:
+  ===================
+  Package-level:
+  <logger name="WxLoggerTest" level="TRACE" />
+
+  Folder-level:
+  <logger name="WxLoggerTest.WxLoggertest" level="TRACE" />
+
+  Service-level:
+  <logger name="WxLoggerTest.WxLoggertest.log" level="TRACE" />
+
+  Root Logger:
+  ============
+  <root level="ERROR">
+	<appender-ref ref="STDOUT"/> 
+	<appender-ref ref="FILE"/>
+  </root>
+  
+  Send a logger to a different appender:
+  ======================================
+  <logger name="WxLoggerTest.WxLoggertest.topLevelService" level="TRACE" >
+	<appender-ref ref="FILE2"/>
+  </logger>
+  
+#######################################################################################
+-->
+
+
+
+<configuration scan="true" scanPeriod="30 seconds">
+
+
+  <!-- Define Appenders -->
+
+  <!-- Default WxLogger Appender -->
+  <!-- Add your own custom appenders if you wish -->
+
+ 
+<!--   FOR RETRIEVE PERSON-->  	
+<appender name="PersonServicesAppender" class="ch.qos.logback.core.rolling.RollingFileAppender" additivity="false">
+    <file>logs/RETRIEVE_PERSON_DETAILS_V01_TRANSACTION.log</file>
+    <append>true</append>
+	
+  	<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+    	<fileNamePattern>logs/RETRIEVE_PERSON_DETAILS_V01_TRANSACTION.%d{yyyy-MM-dd}.log</fileNamePattern>
+		<maxHistory>30</maxHistory>
+  	</rollingPolicy>
+	
+    <encoder>
+      <pattern>%d{yyyy-MM-dd HH:mm:ss} %logger{50} %3([%.-1level]): %msg%n</pattern>
+    </encoder>
+  </appender>
+    <logger name="RETRIEVE_PERSON_DETAILS_V01_LOGGER" level="ERROR" >
+            <appender-ref ref="PersonServicesAppender"/>
+  </logger>
+  <appender name="ASYNC_PersonServices" class="ch.qos.logback.classic.AsyncAppender">
+            <appender-ref ref="PersonServicesAppender" />   
+</appender>		
+
+ 
+<!--   FOR RETRIEVE CONTACT-->	
+<appender name="getContactInfoAppender" class="ch.qos.logback.core.rolling.RollingFileAppender" additivity="false">
+    <file>logs/RETRIEVE_CONTACT_DETAILS_V01_TRANSACTION.log</file>
+    <append>true</append>
+  	<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+    		<fileNamePattern>logs/RETRIEVE_CONTACT_DETAILS_V01_TRANSACTION.%d{yyyy-MM-dd}.log</fileNamePattern>
+			<maxHistory>30</maxHistory>
+  	</rollingPolicy>
+    <encoder>
+      <pattern>%d{yyyy-MM-dd HH:mm:ss} %logger{50} %3([%.-1level]): %msg%n</pattern>
+    </encoder>
+  </appender>
+    <logger name="RETRIEVE_CONTACT_DETAILS_V01_LOGGER" level="INFO" >
+	<appender-ref ref="getContactInfoAppender"/>
+  </logger>
+  <appender name="ASYNC_getContactInfo" class="ch.qos.logback.classic.AsyncAppender">
+	<appender-ref ref="getContactInfoAppender" />	
+  </appender>
+	
+
+<!--   FOR RETRIEVE REGISTRATIONS-->
+  <appender name="REGISTRATIONS_SVC_V01_LOGGERAppender" class="ch.qos.logback.core.rolling.RollingFileAppender" additivity="false">
+    <file>logs/RETRIEVE_REGISTRATIONS_DETAILS_V01_TRANSACTION.log</file>
+    <append>true</append>
+	<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+    	<fileNamePattern>logs/RETRIEVE_REGISTRATIONS_DETAILS_V01_TRANSACTION.%d{yyyy-MM-dd}.log</fileNamePattern>
+  	</rollingPolicy>
+    <encoder>
+      <pattern>%d{yyyy-MM-dd HH:mm:ss} %logger{50} %3([%.-1level]): %msg%n</pattern>
+    </encoder>
+  </appender>
+    <logger name="RETRIEVE_REGISTRATIONS_DETAILS_V01_LOGGER" level="INFO" >
+	<appender-ref ref="REGISTRATIONS_SVC_V01_LOGGERAppender"/>
+  </logger>
+  <appender name="ASYNC_REGISTRATIONS_SVC_V01_LOGGER" class="ch.qos.logback.classic.AsyncAppender">
+	<appender-ref ref="REGISTRATIONS_SVC_V01_LOGGERAppender" />	
+  </appender>
+  
+  
+<!--   FOR UPDATE CONTACT-->	
+<appender name="UpdateContactInfoAppender" class="ch.qos.logback.core.rolling.RollingFileAppender" additivity="false">
+    <file>logs/UPDATE_CONTACT_DETAILS_V01_TRANSACTION.log</file>
+    <append>true</append>
+	<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+    	<fileNamePattern>logs/UPDATE_CONTACT_DETAILS_V01_TRANSACTION.%d{yyyy-MM-dd}.log</fileNamePattern>
+  	</rollingPolicy>
+    <encoder>
+      <pattern>%d{yyyy-MM-dd HH:mm:ss} %logger{50} %3([%.-1level]): %msg%n</pattern>
+    </encoder>
+  </appender>
+    <logger name="UPDATE_CONTACT_DETAILS_V01_LOGGER" level="INFO" >
+	<appender-ref ref="UpdateContactInfoAppender"/>
+  </logger>
+  <appender name="ASYNC_UpdateContactInfo" class="ch.qos.logback.classic.AsyncAppender">
+	<appender-ref ref="UpdateContactInfoAppender" />	
+  </appender>
+  
+  
+  <!--   FOR RETRIEVE EMAIL-->
+  <appender name="RetrieveEmailServicesAppender" class="ch.qos.logback.core.rolling.RollingFileAppender" additivity="false">
+    <file>logs/RETRIEVE_EMAIL_DETAILS_V01_TRANSACTION.log</file>
+    <append>true</append>
+	<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+    	<fileNamePattern>logs/RETRIEVE_EMAIL_DETAILS_V01_TRANSACTION.%d{yyyy-MM-dd}.log</fileNamePattern>
+  	</rollingPolicy>
+    <encoder>
+      <pattern>%d{yyyy-MM-dd HH:mm:ss} %logger{50} %3([%.-1level]): %msg%n</pattern>
+    </encoder>
+  </appender>
+    <logger name="RETRIEVE_EMAIL_DETAILS_V01_LOGGER" level="INFO" >
+            <appender-ref ref="RetrieveEmailServicesAppender"/>
+  </logger>
+  <appender name="ASYNC_RetrieveEmailServices" class="ch.qos.logback.classic.AsyncAppender">
+            <appender-ref ref="RetrieveEmailServicesAppender" />   
+</appender>
+
+	
+<!--   FOR UPDATE EMAIL-->
+  <appender name="UpdateEmailServicesAppender" class="ch.qos.logback.core.rolling.RollingFileAppender" additivity="false">
+    <file>logs/UPDATE_EMAIL_DETAILS_V01_TRANSACTION.log</file>
+    <append>true</append>
+	<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+    	<fileNamePattern>logs/UPDATE_EMAIL_DETAILS_V01_TRANSACTION.%d{yyyy-MM-dd}.log</fileNamePattern>
+  	</rollingPolicy>
+    <encoder>
+      <pattern>%d{yyyy-MM-dd HH:mm:ss} %logger{50} %3([%.-1level]): %msg%n</pattern>
+    </encoder>
+  </appender>
+    <logger name="UPDATE_EMAIL_DETAILS_V01_LOGGER" level="DEBUG" >
+            <appender-ref ref="UpdateEmailServicesAppender"/>
+  </logger>
+  <appender name="ASYNC_UpdateEmailServices" class="ch.qos.logback.classic.AsyncAppender">
+            <appender-ref ref="UpdateEmailServicesAppender" />   
+</appender>	
+	
+
+  
+  
+  <!--   FOR UPDATE REGISTRATIONS-->
+  <appender name="UPDATE_REGISTRATIONS_SVC_V01_LOGGERAppender" class="ch.qos.logback.core.rolling.RollingFileAppender" additivity="false">
+    <file>logs/UPDATE_REGISTRATIONS_DETAILS_V01_TRANSACTION.log</file>
+    <append>true</append>
+	<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+    	<fileNamePattern>logs/UPDATE_REGISTRATIONS_DETAILS_V01_TRANSACTION.%d{yyyy-MM-dd}.log</fileNamePattern>
+  	</rollingPolicy>
+    <encoder>
+      <pattern>%d{yyyy-MM-dd HH:mm:ss} %logger{50} %3([%.-1level]): %msg%n</pattern>
+    </encoder>
+  </appender>
+    <logger name="UPDATE_REGISTRATIONS_DETAILS_V01_LOGGER" level="INFO" >
+	<appender-ref ref="UPDATE_REGISTRATIONS_SVC_V01_LOGGERAppender"/>
+  </logger>
+  <appender name="ASYNC_UPDATE_REGISTRATIONS_SVC_V01_LOGGER" class="ch.qos.logback.classic.AsyncAppender">
+	<appender-ref ref="UPDATE_REGISTRATIONS_SVC_V01_LOGGERAppender" />	
+  </appender>
+  
+    <!--   FOR REGISTRATION PERSON-->  	
+<appender name="NewPersonServicesAppender" class="ch.qos.logback.core.rolling.RollingFileAppender" additivity="false">
+    <file>logs/NEW_PERSON_REGISTRATION_V01_TRANSACTION.log</file>
+    <append>true</append>
+	<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+    	<fileNamePattern>logs/NEW_PERSON_REGISTRATION_V01_TRANSACTION.%d{yyyy-MM-dd}.log</fileNamePattern>
+  	</rollingPolicy>
+    <encoder>
+      <pattern>%d{yyyy-MM-dd HH:mm:ss} %logger{50} %3([%.-1level]): %msg%n</pattern>
+    </encoder>
+  </appender>
+    <logger name="NEW_PERSON_REGISTRATION_V01_LOGGER" level="INFO" >
+            <appender-ref ref="NewPersonServicesAppender"/>
+  </logger>
+  <appender name="ASYNC_NewPersonServices" class="ch.qos.logback.classic.AsyncAppender">
+            <appender-ref ref="NewPersonServicesAppender" />   
+</appender>	
+
+
+<!--   FOR VALIDATE IDENTITY CARD-->  	
+<appender name="ValidateIdCardServicesAppender" class="ch.qos.logback.core.rolling.RollingFileAppender" additivity="false">
+    <file>logs/VALIDATE_ID_CARD_DETAILS_V01_TRANSACTION.log</file>
+    <append>true</append>
+	<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+    	<fileNamePattern>logs/VALIDATE_ID_CARD_DETAILS_V01_TRANSACTION.%d{yyyy-MM-dd}.log</fileNamePattern>
+  	</rollingPolicy>
+    <encoder>
+      <pattern>%d{yyyy-MM-dd HH:mm:ss} %logger{50} %3([%.-1level]): %msg%n</pattern>
+    </encoder>
+  </appender>
+    <logger name="VALIDATE_ID_CARD_DETAILS_V01" level="INFO" >
+            <appender-ref ref="ValidateIdCardServicesAppender"/>
+  </logger>
+  <appender name="ASYNC_NewPersonServices" class="ch.qos.logback.classic.AsyncAppender">
+            <appender-ref ref="ValidateIdCardServicesAppender" />   
+</appender>	
+
+<!--   FOR UPDATE IDENTITY CARD STATUS -->  	
+<appender name="UpdateCardServicesAppender" class="ch.qos.logback.core.rolling.RollingFileAppender" additivity="false">
+    <file>logs/UPDATE_ID_CARD_STATUS_V01_TRANSACTION.log</file>
+    <append>true</append>
+	<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+    	<fileNamePattern>logs/UPDATE_ID_CARD_STATUS_V01_TRANSACTION.%d{yyyy-MM-dd}.log</fileNamePattern>
+  	</rollingPolicy>
+    <encoder>
+      <pattern>%d{yyyy-MM-dd HH:mm:ss} %logger{50} %3([%.-1level]): %msg%n</pattern>
+    </encoder>
+  </appender>
+    <logger name="UPDATE_IDCARD_STATUS_V01_LOGGER" level="INFO" >
+            <appender-ref ref="UpdateCardServicesAppender"/>
+  </logger>
+  <appender name="ASYNC_NewPersonServices" class="ch.qos.logback.classic.AsyncAppender">
+            <appender-ref ref="UpdateCardServicesAppender" />   
+</appender>	
+
+<!---SEND_EMAIL_NOTIFICATION_V01_LOGGER -->
+<appender name="SendEmailServiceAppender" class="ch.qos.logback.core.rolling.RollingFileAppender" additivity="false">
+    <file>logs/SEND_EMAIL_NOTIFICATION_V01_TRANSACTION.log</file>
+    <append>true</append>
+               <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+               <fileNamePattern>logs/SEND_EMAIL_NOTIFICATION_V01_TRANSACTION.%d{yyyy-MM-dd}.log</fileNamePattern>
+               </rollingPolicy>
+    <encoder>
+      <pattern>%d{yyyy-MM-dd HH:mm:ss} %logger{50} %3([%.-1level]): %msg%n</pattern>
+    </encoder>
+  </appender>
+    <logger name="SEND_EMAIL_NOTIFICATION_V01_LOGGER" level="INFO" >
+            <appender-ref ref="SendEmailServiceAppender"/>
+  </logger>
+  <appender name="ASYNC_NewPersonServices" class="ch.qos.logback.classic.AsyncAppender">
+            <appender-ref ref="SendEmailServiceAppender" />   
+</appender>
+  
+
+<!---BPMN_SERVICES_V01_LOGGER -->
+<appender name="BPMNServicesAppender" class="ch.qos.logback.core.rolling.RollingFileAppender" additivity="false">
+    <file>logs/BPMN_SERVICES_V01_TRANSACTION.log</file>
+    <append>true</append>
+               <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+               <fileNamePattern>logs/BPMN_SERVICES_V01_TRANSACTION.%d{yyyy-MM-dd}.log</fileNamePattern>
+               </rollingPolicy>
+    <encoder>
+      <pattern>%d{yyyy-MM-dd HH:mm:ss} %logger{50} %3([%.-1level]): %msg%n</pattern>
+    </encoder>
+  </appender>
+    <logger name="BPMN_SERVICES_V01_LOGGER" level="INFO" >
+            <appender-ref ref="BPMNServicesAppender"/>
+  </logger>
+  <appender name="ASYNC_NewPersonServices" class="ch.qos.logback.classic.AsyncAppender">
+            <appender-ref ref="BPMNServicesAppender" />   
+</appender>    
+  
+<!---SEND_SMS_NOTIFICATION_V01_LOGGER -->
+<appender name="SendSMSServiceAppender" class="ch.qos.logback.core.rolling.RollingFileAppender" additivity="false">
+    <file>logs/SEND_SMS_NOTIFICATION_V01_TRANSACTION.log</file>
+    <append>true</append>
+               <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+               <fileNamePattern>logs/SEND_SMS_NOTIFICATION_V01_TRANSACTION.%d{yyyy-MM-dd}.log</fileNamePattern>
+               </rollingPolicy>
+    <encoder>
+      <pattern>%d{yyyy-MM-dd HH:mm:ss} %logger{50} %3([%.-1level]): %msg%n</pattern>
+    </encoder>
+  </appender>
+    <logger name="SEND_SMS_NOTIFICATION_V01_LOGGER" level="INFO" >
+            <appender-ref ref="SendSMSServiceAppender"/>
+  </logger>
+  <appender name="ASYNC_NewPersonServices" class="ch.qos.logback.classic.AsyncAppender">
+            <appender-ref ref="SendSMSServiceAppender" />   
+</appender>
+
+<!---RETRIEVE_SMS_STATUS_V01_LOGGER -->
+<appender name="RetrieveSMSServiceAppender" class="ch.qos.logback.core.rolling.RollingFileAppender" additivity="false">
+    <file>logs/RETRIEVE_SMS_STATUS_V01_TRANSACTION.log</file>
+    <append>true</append>
+               <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+               <fileNamePattern>logs/RETRIEVE_SMS_STATUS_V01_TRANSACTION.%d{yyyy-MM-dd}.log</fileNamePattern>
+               </rollingPolicy>
+    <encoder>
+      <pattern>%d{yyyy-MM-dd HH:mm:ss} %logger{50} %3([%.-1level]): %msg%n</pattern>
+    </encoder>
+  </appender>
+    <logger name="RETRIEVE_SMS_STATUS_V01_LOGGER" level="INFO" >
+            <appender-ref ref="RetrieveSMSServiceAppender"/>
+  </logger>
+  <appender name="ASYNC_NewPersonServices" class="ch.qos.logback.classic.AsyncAppender">
+            <appender-ref ref="RetrieveSMSServiceAppender" />   
+</appender>
+
+<!--   FOR RETRIEVE_PERSON_BIOMETRICS_V01_LOGGER -->      
+<appender name="RetrievePersonBiometricsServiceAppender" class="ch.qos.logback.core.rolling.RollingFileAppender" additivity="false">
+    <file>logs/RETRIEVE_PERSON_BIOMETRICS_V01_TRANSACTION.log</file>
+    <append>true</append>
+               <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+               <fileNamePattern>logs/RETRIEVE_PERSON_BIOMETRICS_V01_TRANSACTION.%d{yyyy-MM-dd}.log</fileNamePattern>
+               </rollingPolicy>
+    <encoder>
+      <pattern>%d{yyyy-MM-dd HH:mm:ss} %logger{50} %3([%.-1level]): %msg%n</pattern>
+    </encoder>
+  </appender>
+    <logger name="RETRIEVE_PERSON_BIOMETRICS_V01_LOGGER" level="INFO" >
+            <appender-ref ref="RetrievePersonBiometricsServiceAppender"/>
+  </logger>
+  <appender name="ASYNC_NewPersonServices" class="ch.qos.logback.classic.AsyncAppender">
+            <appender-ref ref="RetrievePersonBiometricsServiceAppender" />   
+</appender>
+               
+
+<!--   FOR VALIDATE_PERSON_BIOMETRICS_V01_LOGGER -->      
+<appender name="ValidatePersonBiometricsServiceAppender" class="ch.qos.logback.core.rolling.RollingFileAppender" additivity="false">
+    <file>logs/VALIDATE_PERSON_BIOMETRICS_V01_TRANSACTION.log</file>
+    <append>true</append>
+               <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+               <fileNamePattern>logs/VALIDATE_PERSON_BIOMETRICS_V01_TRANSACTION.%d{yyyy-MM-dd}.log</fileNamePattern>
+               </rollingPolicy>
+    <encoder>
+      <pattern>%d{yyyy-MM-dd HH:mm:ss} %logger{50} %3([%.-1level]): %msg%n</pattern>
+    </encoder>
+  </appender>
+    <logger name="VALIDATE_PERSON_BIOMETRICS_V01_LOGGER" level="INFO" >
+            <appender-ref ref="ValidatePersonBiometricsServiceAppender"/>
+  </logger>
+  <appender name="ASYNC_NewPersonServices" class="ch.qos.logback.classic.AsyncAppender">
+            <appender-ref ref="ValidatePersonBiometricsServiceAppender" />   
+</appender>     
+ 
+ 
+  <appender name="WxAppender" class="ch.qos.logback.core.FileAppender" additivity="false">
+    <file>logs/WxLog.log</file>
+    <append>true</append>
+    <encoder>
+      <pattern>%d{yyyy-MM-dd HH:mm:ss} %logger{50} %3([%.-1level]): %msg%n</pattern>
+    </encoder>
+  </appender>
+  
+  <appender name="ASYNC" class="ch.qos.logback.classic.AsyncAppender">
+	<appender-ref ref="WxAppender" />
+  </appender>
+  
+  <logger name="Wx" level="INFO" >
+	<appender-ref ref="WxAppender"/>
+  </logger>	
+  
+
+
+
+  
+  <!-- Set root log level and appender(s) -->
+  <root level="DEBUG">
+	
+  </root>
+
+</configuration>
+

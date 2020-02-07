@@ -1,0 +1,472 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>  <!-- The root element is ignored for XPath queries -->
+
+    <!-- Category to identify auto-setup template files -->
+    <wx.config.template.category.autoSetup>autoSetup</wx.config.template.category.autoSetup>
+    
+    
+	<autoSetup>
+	    <art>
+	        <connection>
+	            <password>
+	                <pipelinePath adapterTypeName="JDBCAdapter">%adapterConnection/connectionSettings/password%</pipelinePath>
+					<pipelinePath adapterTypeName="WmSalesforceAdapter">%adapterConnection/connectionSettings/password%</pipelinePath>
+	            </password>
+	        </connection>
+	    </art>
+	    
+	    
+		<area id="asAccessControl">
+			<arrayNames>
+				<array name="package" />
+				<array name="acl" />
+				<array name="group" />
+				<array name="member" />
+				<array name="user" />
+				<array name="service" />
+				<array name="exclude" />
+			</arrayNames>
+		</area>
+		<area id="asAdapter">
+			<arrayNames>
+				<array name="connection" />
+				<array name="pollingNotification" />
+			</arrayNames>
+			<!--<addElement>connection</addElement>-->
+		</area>
+		<area id="asCentralUsers">
+			<arrayNames>
+				<array name="role" />
+				<array name="group" />
+				<array name="member" />
+				<array name="user" />
+			</arrayNames>
+		</area>
+		<area id="asEhcache">
+			<arrayNames>
+				<array name="cache" />
+				<array name="cacheManager" />
+				<array name="tsaURL" />
+				<array name="searchAttribute" />
+			</arrayNames>
+			<addElement>cacheManager</addElement>
+		</area>
+		<area id="asExtendedSettings">
+			<arrayNames>
+				<array name="setting" />
+			</arrayNames>
+		</area>
+		<area id="asFileAcl">
+			<arrayNames>
+				<array name="path" />
+			</arrayNames>
+		</area>
+		<area id="asJdbc">
+			<arrayNames>
+				<array name="functionalAlias" />
+				<array name="poolAlias" />
+				<array name="executeSql" />
+				<array name="file" />
+				<array name="content" />
+			</arrayNames>
+		</area>
+		<area id="asJms">
+			<arrayNames>
+				<array name="clientGroup" />
+				<array name="user" />
+				<array name="authenticator" />
+				<array name="jndiConnectionFactory" />
+				<array name="jndiAlias" />
+				<array name="jndiDestination" />
+				<array name="topic" />
+				<array name="clientGroups" />
+				<array name="queue" />
+				<array name="aclDest" />
+			</arrayNames>
+		</area>
+		<area id="asMessaging">
+			<arrayNames>
+				<array name="messaging" />
+				<array name="um" />
+				<array name="integrationServer" />
+				<array name="hosts" />
+				<array name="jndiACL" />
+				<array name="securityGroup" />
+				<array name="realmACL" />
+				<array name="jmsConnectionFactory" />
+				<array name="queue" />
+				<array name="topic" />
+				<array name="queueACL" />
+				<array name="topicACL" />
+				<array name="webMethodsMessagingSettings" />
+				<array name="jndiSettings" />
+				<array name="jmsAlias" />
+				<array name="member" />
+				<array name="jmsTrigger" />
+				<array name="destinations" />
+				<array name="routingRules" />
+			</arrayNames>
+			<addElement>messaging</addElement>
+		</area>
+		<area id="asMft">
+			<arrayNames>
+				<array name="vfs" />
+				<array name="users" />
+			</arrayNames>
+		</area>
+		<area id="asPortEmail">
+			<arrayNames>
+				<array name="email" />
+				<array name="exception" />
+			</arrayNames>
+			<addElement>emailPort</addElement>
+		</area>
+		<area id="asPortFile">
+			<arrayNames>
+				<array name="exception" />
+			</arrayNames>
+			<addElement>filePort</addElement>
+		</area>
+		<area id="asPortHttp">
+			<arrayNames>
+				<array name="http" />
+				<array name="exception" />
+			</arrayNames>
+			<addElement>httpPort</addElement>
+		</area>
+		<area id="asProxy">
+			<arrayNames>
+				<array name="proxy" />
+			</arrayNames>
+			<addElement>proxy</addElement>
+		</area>
+		<area id="asRemoteServer">
+			<arrayNames>
+				<array name="remoteServer" />
+			</arrayNames>
+			<addElement>remoteServer</addElement>
+		</area>
+		<area id="asScheduler">
+			<arrayNames>
+				<array name="months" />
+				<array name="hours" />
+				<array name="minutes" />
+				<array name="daysOfWeek" />
+				<array name="daysOfMonth" />
+			</arrayNames>
+			<addElement>scheduler</addElement>
+		</area>
+		<area id="asSftp">
+			<arrayNames>
+				<array name="server" />
+				<array name="user" />
+			</arrayNames>
+		</area>
+		<area id="asTn">
+			<arrayNames>
+				<array name="externalId" />
+				<array name="profile" />
+				<array name="address" />
+				<array name="extendedField" />
+				<array name="validValue" />
+				<array name="documentAttribute" />
+				<array name="documentType" />
+				<array name="match" />
+				<array name="attribute" />
+				<array name="input" />
+				<array name="oldName" />
+				<array name="user" />
+				<array name="property" />
+			</arrayNames>
+		</area>
+		<area id="asWsEndpoints">
+			<arrayNames>
+				<array name="providerEndpoint" />
+				<array name="attributes" />
+				<array name="referenceParameters" />
+				<array name="elements" />
+				<array name="extensibleElements" />
+				<array name="responseToMap" />
+				<array name="consumerEndpoint" />
+				<array name="messageAddressingEndpoint" />
+			</arrayNames>
+		</area>
+	</autoSetup>
+  <templateFileList>
+	  <templateFile id="asAccessControl" category="autoSetup">
+          <name>Auto-Setup: Access Control</name>
+		  <fileBaseName>as-accessControl.xml</fileBaseName>
+		  <license>Auto Setup</license>
+      </templateFile>
+	  <templateFile id="asAdapter" category="autoSetup">
+          <name>Auto-Setup: Adapter (ART-based)</name>
+          <fileBaseName>as-adapter.xml</fileBaseName>
+		  <license>Auto Setup</license>
+      </templateFile>
+	  <templateFile id="asCentralUsers" category="autoSetup">
+          <name>Auto-Setup: Central Users (MWS)</name>
+          <fileBaseName>as-centralUsers.xml</fileBaseName>
+		  <license>Auto Setup</license>
+      </templateFile>
+	  <templateFile id="asEhcache" category="autoSetup">
+          <name>Auto-Setup: Ehcache + Terracotta</name>
+          <fileBaseName>as-ehcache.xml</fileBaseName>
+		  <license>Auto Setup</license>
+      </templateFile>
+	  <templateFile id="asExtendedSettings" category="autoSetup">
+          <name>Auto-Setup: Extended Settings</name>
+          <fileBaseName>as-extendedSettings.xml</fileBaseName>
+		  <license>Auto Setup</license>
+      </templateFile>
+	  <templateFile id="asFileAcl" category="autoSetup">
+          <name>Auto-Setup: File ACL (pub.file:* services)</name>
+          <fileBaseName>as-fileAcl.xml</fileBaseName>
+		  <license>Auto Setup</license>
+      </templateFile>
+	  <templateFile id="asJdbc" category="autoSetup">
+          <name>Auto-Setup: JDBC aliases</name>
+          <fileBaseName>as-jdbc.xml</fileBaseName>
+		  <license>Auto Setup</license>
+      </templateFile>
+	  <templateFile id="asJms" category="autoSetup">
+          <name>Auto-Setup: JMS (Broker\, IS) - Legacy</name>
+          <fileBaseName>as-jms.xml</fileBaseName>
+		  <license>Auto Setup</license>
+      </templateFile>
+	  <templateFile id="asMessaging" category="autoSetup">
+          <name>Auto-Setup: Messaging (IS\, UM)</name>
+          <fileBaseName>as-messaging.xml</fileBaseName>
+		  <license>Auto Setup</license>
+      </templateFile>
+	  <templateFile id="asPortEmail" category="autoSetup">
+          <name>Auto-Setup: Email Port</name>
+          <fileBaseName>as-portEmail.xml</fileBaseName>
+		  <license>Auto Setup</license>
+      </templateFile>
+	  <templateFile id="asPortFile" category="autoSetup">
+          <name>Auto-Setup: File Port</name>
+          <fileBaseName>as-portFile.xml</fileBaseName>
+		  <license>Auto Setup</license>
+      </templateFile>
+	  <templateFile id="asPortHttp" category="autoSetup">
+          <name>Auto-Setup: HTTP Port</name>
+          <fileBaseName>as-portHttp.xml</fileBaseName>
+		  <license>Auto Setup</license>
+      </templateFile>
+	  <templateFile id="asProxy" category="autoSetup">
+          <name>Auto-Setup: Proxy</name>
+          <fileBaseName>as-proxy.xml</fileBaseName>
+		  <license>Auto Setup</license>
+      </templateFile>
+	  <templateFile id="asRemoteServer" category="autoSetup">
+          <name>Auto-Setup: Remote Server</name>
+          <fileBaseName>as-remoteServer.xml</fileBaseName>
+		  <license>Auto Setup</license>
+      </templateFile>
+	   <templateFile id="asScheduler" category="autoSetup">
+          <name>Auto-Setup: Scheduler</name>
+          <fileBaseName>as-scheduler.xml</fileBaseName>
+		  <license>Auto Setup</license>
+      </templateFile>
+      <templateFile id="asSftp" category="autoSetup">
+          <name>Auto-Setup: SFTP</name>
+          <fileBaseName>as-sftp.xml</fileBaseName>
+		  <license>Auto Setup</license>
+      </templateFile>
+	  <templateFile id="asTn" category="autoSetup">
+          <name>Auto-Setup: TN</name>
+          <fileBaseName>as-tn.xml</fileBaseName>
+		  <license>Auto Setup</license>
+      </templateFile>
+	  <templateFile id="asWsEndpoints" category="autoSetup">
+          <name>Auto-Setup: Web Service Endpoints</name>
+          <fileBaseName>as-wsEndpoints.xml</fileBaseName>
+		  <license>Auto Setup</license>
+      </templateFile>
+  </templateFileList>
+  
+  <documentValidationList>
+        <documentValidation id="asAccessControl">
+            <documentType>wx.config.impl.autoSetup.accessControl:accessControl</documentType>
+            <logging>
+                <facility>310</facility>
+                <code>
+                    <success>8</success>
+                    <failure>9</failure>
+                </code>
+            </logging>
+        </documentValidation>
+		<documentValidation id="asAdapter">
+            <documentType>wx.config.impl.autoSetup.adapter:adapter</documentType>
+            <logging>
+                <facility>360</facility>
+                <code>
+                    <success>8</success>
+                    <failure>9</failure>
+                </code>
+            </logging>
+        </documentValidation>
+		<documentValidation id="asCentralUsers">
+            <documentType>wx.config.impl.autoSetup.centralUsers:centralUsers</documentType>
+            <logging>
+                <facility>320</facility>
+                <code>
+                    <success>8</success>
+                    <failure>9</failure>
+                </code>
+            </logging>
+        </documentValidation>
+		<documentValidation id="asEhcache">
+            <documentType>wx.config.impl.autoSetup.ehcache:ehcache</documentType>
+            <logging>
+                <facility>350</facility>
+                <code>
+                    <success>8</success>
+                    <failure>9</failure>
+                </code>
+            </logging>
+        </documentValidation>
+		<documentValidation id="asExtendedSettings">
+            <documentType>wx.config.impl.autoSetup.extendedSettings:extendedSettings</documentType>
+            <logging>
+                <facility>300</facility>
+                <code>
+                    <success>1</success>
+                    <failure>2</failure>
+                </code>
+            </logging>
+        </documentValidation>
+		<documentValidation id="asFileAcl">
+            <documentType>wx.config.impl.autoSetup.fileAccessControl:fileAccessControl</documentType>
+            <logging>
+                <facility>380</facility>
+                <code>
+                    <success>8</success>
+                    <failure>9</failure>
+                </code>
+            </logging>
+        </documentValidation>
+		<documentValidation id="asJdbc">
+            <documentType>wx.config.impl.autoSetup.jdbc:jdbc</documentType>
+            <logging>
+                <facility>410</facility>
+                <code>
+                    <success>59</success>
+                    <failure>60</failure>
+                </code>
+            </logging>
+        </documentValidation>
+		<documentValidation id="asJms">
+            <documentType>wx.config.impl.autoSetup.jms:jmsAutosetup</documentType>
+            <logging>
+                <facility>330</facility>
+                <code>
+                    <success>8</success>
+                    <failure>9</failure>
+                </code>
+            </logging>
+        </documentValidation>
+		<documentValidation id="asMessaging">
+            <documentType>wx.config.impl.autoSetup.messaging:messaging</documentType>
+            <logging>
+                <facility>335</facility>
+                <code>
+                    <success>8</success>
+                    <failure>9</failure>
+                </code>
+            </logging>
+        </documentValidation>
+		<documentValidation id="asPortEmail">
+            <documentType>wx.config.impl.autoSetup.ports.email:emailPortList</documentType>
+            <logging>
+                <facility>440</facility>
+                <code>
+                    <success>1</success>
+                    <failure>2</failure>
+                </code>
+            </logging>
+        </documentValidation>
+		<documentValidation id="asPortFile">
+            <documentType>wx.config.impl.autoSetup.ports.file:filePortList</documentType>
+            <logging>
+                <facility>445</facility>
+                <code>
+                    <success>1</success>
+                    <failure>2</failure>
+                </code>
+            </logging>
+        </documentValidation>
+		<documentValidation id="asPortHttp">
+            <documentType>wx.config.impl.autoSetup.ports.http:httpPortList</documentType>
+            <logging>
+                <facility>450</facility>
+                <code>
+                    <success>1</success>
+                    <failure>2</failure>
+                </code>
+            </logging>
+        </documentValidation>
+		<documentValidation id="asProxy">
+            <documentType>wx.config.impl.autoSetup.proxy:proxyList</documentType>
+            <logging>
+                <facility>400</facility>
+                <code>
+                    <success>8</success>
+                    <failure>9</failure>
+                </code>
+            </logging>
+        </documentValidation>
+		<documentValidation id="asRemoteServer">
+            <documentType>wx.config.impl.autoSetup.remoteServer:remoteServerList</documentType>
+            <logging>
+                <facility>430</facility>
+                <code>
+                    <success>1</success>
+                    <failure>2</failure>
+                </code>
+            </logging>
+        </documentValidation>
+		<documentValidation id="asScheduler">
+            <documentType>wx.config.impl.autoSetup.scheduler:schedulerList</documentType>
+            <logging>
+                <facility>340</facility>
+                <code>
+                    <success>7</success>
+                    <failure>8</failure>
+                </code>
+            </logging>
+        </documentValidation>
+		<documentValidation id="asSftp">
+            <documentType>wx.config.impl.autoSetup.sftp:sftp</documentType>
+            <logging>
+                <facility>470</facility>
+                <code>
+                    <success>1</success>
+                    <failure>2</failure>
+                </code>
+            </logging>
+        </documentValidation>
+        	<documentValidation id="asTn">
+            <documentType>wx.config.impl.autoSetup.tn:tn</documentType>
+            <logging>
+                <facility>371</facility>
+                <code>
+                    <success>8</success>
+                    <failure>9</failure>
+                </code>
+            </logging>
+        </documentValidation>
+		<documentValidation id="asWsEndpoints">
+            <documentType>wx.config.impl.autoSetup.ws:ws</documentType>
+            <logging>
+                <facility>420</facility>
+                <code>
+                    <success>8</success>
+                    <failure>9</failure>
+                </code>
+            </logging>
+        </documentValidation>
+        
+    </documentValidationList>
+  
+</config>

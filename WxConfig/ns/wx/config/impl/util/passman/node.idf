@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Values version="2.0">
+  <value name="shared">CQ0KCQkNCgkJDQoJDQoJDQoJDQoJDQoJDQoJDQoJDQo=</value>
+  <value name="encodeutf8">true</value>
+  <array name="imports" type="value" depth="1">
+    <value>java.util.List</value>
+    <value>org.apache.commons.configuration.ConfigurationException</value>
+    <value>org.apache.commons.lang.StringUtils</value>
+    <value>org.apache.commons.lang.exception.ExceptionUtils</value>
+    <value>com.softwareag.wx.is.config.file.ConfigFileList</value>
+    <value>com.softwareag.wx.is.config.security.BulkExportImport</value>
+    <value>com.softwareag.wx.is.config.security.EncryptedValue</value>
+    <value>com.softwareag.wx.is.config.security.EncryptedValueList.PassmanStatus</value>
+    <value>com.softwareag.wx.is.config.security.PassmanUtils</value>
+    <value>com.softwareag.wx.is.config.PkgConfig</value>
+    <value>com.softwareag.wx.is.config.PropertiesCfg</value>
+    <value>com.softwareag.wx.is.config.Result</value>
+    <value>com.softwareag.wx.is.config.ResultList</value>
+    <value>com.softwareag.wx.is.config.Ui</value>
+    <value>com.softwareag.wx.is.config.WxConfig</value>
+    <value>com.wm.app.b2b.server.PackageManager</value>
+  </array>
+</Values>

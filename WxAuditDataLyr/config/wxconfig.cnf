@@ -1,0 +1,4 @@
+wx.config.env.LDEV=LDEV.cnf
+wx.config.env.DEV=DEV.cnf
+wx.config.env.QA=QA.cnf
+wx.config.env.PROD=PROD.cnf

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>  <!-- The root element is ignored for XPath queries -->
+  <templateFileList>
+	  <pathBase>./packages/${package.name}/config/template-</pathBase>
+	  <templateFile id="templateId" category="myCategory">
+          <name>${package.name}: Template description for dropdown list</name>
+		  <fileBaseName>fileNameWithoutTemplatePrefix.xml</fileBaseName>
+		  <license>Optional</license>
+      </templateFile>
+  </templateFileList>
+</config>

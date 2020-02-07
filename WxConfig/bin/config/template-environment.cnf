@@ -1,0 +1,15 @@
+wx.config.environment.type=${wx.config.environment.default.type}
+wx.config.environment.nameForUI=${wx.config.environment.default.nameForUI}
+wx.config.environment.comment.text=${wx.config.environment.default.comment.text}
+wx.config.environment.comment.url=${wx.config.environment.default.comment.url}
+wx.config.environment.css.fontSize=${wx.config.environment.default.css.fontSize}
+wx.config.environment.css.color.font=${wx.config.environment.default.css.color.font}
+wx.config.environment.css.color.background=${wx.config.environment.default.css.color.background}
+
+
+wx.config.environment.availableTypes=DEV
+wx.config.environment.availableTypes=CI
+wx.config.environment.availableTypes=TEST
+wx.config.environment.availableTypes=UAT
+wx.config.environment.availableTypes=QA
+wx.config.environment.availableTypes=PROD

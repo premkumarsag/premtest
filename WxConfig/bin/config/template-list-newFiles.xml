@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>  <!-- The root element is ignored for XPath queries -->
+  <templateFileList>
+	  <pathBase>${package.cfg.dir}/template-</pathBase>
+	  
+	  <!-- All auto-setup templates can be found in asConfig.xml -->
+	  
+	  
+	  <templateFile id="valuesFromDB">
+          <name>Values from Database (.cnf)</name>
+          <fileBaseName>database.cnf</fileBaseName>
+      </templateFile>
+      <templateFile id="auditCfg">
+          <name>Audit Configuration for Package</name>
+          <fileBaseName>audit.xml</fileBaseName>
+		  <license>Auditing</license>
+      </templateFile>
+	  <templateFile id="publishCfg">
+          <name>Publish Configuration for Package</name>
+          <fileBaseName>publish.xml</fileBaseName>
+		  <license>Publish</license>
+      </templateFile>
+	  <templateFile id="registerTemplates">
+          <name>Register Templates from other Packages</name>
+          <fileBaseName>registerTemplates.xml</fileBaseName>
+      </templateFile>
+  </templateFileList>
+</config>

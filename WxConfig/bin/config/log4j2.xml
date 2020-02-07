@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?><Configuration monitorInterval="30">
+<Appenders>
+		<RollingFile fileName="./logs/WxConfig.log" filePattern="logs/WxConfig.log.%d{yyyyMMdd}" name="WxConfig">
+			<PatternLayout>
+				<pattern>%d %-5p - %m%n</pattern>
+			</PatternLayout>
+			<Policies>
+				<TimeBasedTriggeringPolicy interval="1" modulate="true"/>
+			</Policies>
+		</RollingFile>
+		 <Null name="Null"/>
+	</Appenders>
+<Loggers>
+		
+<Logger additivity="false" level="Info" name="WxConfig">
+		<AppenderRef ref="WxConfig"/>
+	</Logger>
+<Logger additivity="false" level="Info" name="Startup">
+		<AppenderRef ref="WxConfig"/>
+	</Logger>
+<Logger additivity="false" level="Info" name="LicenseManager">
+		<AppenderRef ref="WxConfig"/>
+	</Logger>
+<Logger additivity="false" level="Info" name="Deactivation">
+		<AppenderRef ref="WxConfig"/>
+	</Logger>
+<Logger additivity="false" level="Info" name="Loading">
+		<AppenderRef ref="WxConfig"/>
+	</Logger>
+<Logger additivity="false" level="Info" name="Reloading">
+		<AppenderRef ref="WxConfig"/>
+	</Logger>
+<Logger additivity="false" level="Info" name="CRUD">
+		<AppenderRef ref="WxConfig"/>
+	</Logger>
+<Logger additivity="false" level="Info" name="Interpolators">
+		<AppenderRef ref="WxConfig"/>
+	</Logger>
+<Logger additivity="false" level="Info" name="ConfigFileList">
+		<AppenderRef ref="WxConfig"/>
+	</Logger>
+<Logger additivity="false" level="Info" name="FileLocation">
+		<AppenderRef ref="WxConfig"/>
+	</Logger>
+<Logger additivity="false" level="Info" name="FileInclusionDirectives">
+		<AppenderRef ref="WxConfig"/>
+	</Logger>
+<Logger additivity="false" level="Info" name="PassMan">
+		<AppenderRef ref="WxConfig"/>
+	</Logger>
+<Logger additivity="false" level="Info" name="Miscellaneous">
+		<AppenderRef ref="WxConfig"/>
+	</Logger>
+<Logger additivity="false" level="Info" name="Central">
+		<AppenderRef ref="WxConfig"/>
+	</Logger>
+<Logger additivity="false" level="Info" name="Cluster">
+		<AppenderRef ref="WxConfig"/>
+	</Logger>
+<Logger additivity="false" level="Off" name="InternalTracing">
+		<AppenderRef ref="WxConfig"/>
+	</Logger>
+<Logger additivity="false" level="Info" name="AutoSetup.ExtendedSettings">
+		<AppenderRef ref="WxConfig"/>
+	</Logger>
+<Logger additivity="false" level="Info" name="AutoSetup.ACLs">
+		<AppenderRef ref="WxConfig"/>
+	</Logger>
+<Logger additivity="false" level="Info" name="AutoSetup.CentralUsers">
+		<AppenderRef ref="WxConfig"/>
+	</Logger>
+<Logger additivity="false" level="Info" name="AutoSetup.JMS">
+		<AppenderRef ref="WxConfig"/>
+	</Logger>
+<Logger additivity="false" level="Info" name="AutoSetup.Messaging">
+		<AppenderRef ref="WxConfig"/>
+	</Logger>
+<Logger additivity="false" level="Info" name="AutoSetup.Scheduler">
+		<AppenderRef ref="WxConfig"/>
+	</Logger>
+<Logger additivity="false" level="Info" name="AutoSetup.Ehcache">
+		<AppenderRef ref="WxConfig"/>
+	</Logger>
+<Logger additivity="false" level="Info" name="AutoSetup.Adapter">
+		<AppenderRef ref="WxConfig"/>
+	</Logger>
+<Logger additivity="false" level="Info" name="AutoSetup.PackageListener">
+		<AppenderRef ref="WxConfig"/>
+	</Logger>
+<Logger additivity="false" level="Info" name="AutoSetup.TN">
+		<AppenderRef ref="WxConfig"/>
+	</Logger>
+<Logger additivity="false" level="Info" name="AutoSetup.FileAccessControl">
+		<AppenderRef ref="WxConfig"/>
+	</Logger>
+<Logger additivity="false" level="Info" name="AutoSetup.UI">
+		<AppenderRef ref="WxConfig"/>
+	</Logger>
+<Logger additivity="false" level="Info" name="AutoSetup.Proxy">
+		<AppenderRef ref="WxConfig"/>
+	</Logger>
+<Logger additivity="false" level="Info" name="AutoSetup.JDBC">
+		<AppenderRef ref="WxConfig"/>
+	</Logger>
+<Logger additivity="false" level="Info" name="AutoSetup.WebServices">
+		<AppenderRef ref="WxConfig"/>
+	</Logger>
+<Logger additivity="false" level="Info" name="AutoSetup.RemoteServer">
+		<AppenderRef ref="WxConfig"/>
+	</Logger>
+<Logger additivity="false" level="Info" name="AutoSetup.PortGeneral">
+		<AppenderRef ref="WxConfig"/>
+	</Logger>
+<Logger additivity="false" level="Info" name="AutoSetup.EmailPort">
+		<AppenderRef ref="WxConfig"/>
+	</Logger>
+<Logger additivity="false" level="Info" name="AutoSetup.FilePort">
+		<AppenderRef ref="WxConfig"/>
+	</Logger>
+<Logger additivity="false" level="Info" name="AutoSetup.HttpPort">
+		<AppenderRef ref="WxConfig"/>
+	</Logger>
+<Logger additivity="false" level="Info" name="AutoSetup.MFT">
+		<AppenderRef ref="WxConfig"/>
+	</Logger>
+<Logger additivity="false" level="Info" name="AutoSetup.SFTP">
+		<AppenderRef ref="WxConfig"/>
+	</Logger>
+<Logger additivity="false" level="Info" name="Update">
+		<AppenderRef ref="WxConfig"/>
+	</Logger>
+<Logger additivity="false" level="Info" name="Audit">
+		<AppenderRef ref="WxConfig"/>
+	</Logger>
+<Logger additivity="false" level="Info" name="Publish">
+		<AppenderRef ref="WxConfig"/>
+	</Logger>
+<Logger additivity="false" level="Debug" name="ScreenOutput">
+		<AppenderRef ref="Null"/>
+	</Logger>
+		
+	</Loggers>
+</Configuration>

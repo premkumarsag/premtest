@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Values version="2.0">
+  <value name="shared">CQ0KCQkNCgkNCgkNCgkNCgkNCgkNCg==</value>
+  <value name="encodeutf8">true</value>
+  <array name="imports" type="value" depth="1">
+    <value>java.util.ArrayList</value>
+    <value>java.util.Collections</value>
+    <value>java.util.Iterator</value>
+    <value>java.util.List</value>
+    <value>org.apache.commons.io.FilenameUtils</value>
+    <value>org.apache.commons.lang.ArrayUtils</value>
+    <value>org.apache.commons.lang.StringUtils</value>
+    <value>com.softwareag.wx.is.config.Access</value>
+    <value>com.softwareag.wx.is.config.PkgConfig</value>
+    <value>com.softwareag.wx.is.config.PkgStatus</value>
+    <value>com.softwareag.wx.is.config.Result</value>
+    <value>com.softwareag.wx.is.config.Ui</value>
+    <value>com.softwareag.wx.is.config.WxConfig</value>
+    <value>com.softwareag.wx.is.config.environment.Stage</value>
+    <value>com.softwareag.wx.is.config.file.ConfigFile</value>
+    <value>com.softwareag.wx.is.config.file.ConfigFileList</value>
+    <value>com.softwareag.wx.is.config.file.ConfigFilePersistMode</value>
+    <value>com.softwareag.wx.is.config.flow.FlowServiceBuilder</value>
+    <value>com.softwareag.wx.is.config.flow.FlowUtils</value>
+    <value>com.softwareag.wx.is.config.interpolation.InterpolationUtils</value>
+    <value>com.softwareag.wx.is.config.log.CfgLog</value>
+    <value>com.softwareag.wx.is.config.security.EncryptedValue</value>
+    <value>com.softwareag.wx.is.config.util.UiUtils</value>
+  </array>
+</Values>

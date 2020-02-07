@@ -1,0 +1,3003 @@
+<changeList>
+	<change date="2018-11-01" type="enhancement" issueId="185256"
+			name="Auto-setup: Log missing scheduler as INFO">
+		When a scheduler that is not a delete-only configuration, 
+		is not found this is currently logged as an error. 
+		Following various other changes (e.g. #155082) this 
+		has beeb changed to INFO.
+	</change>
+	<change date="2018-09-28" type="fix" issueId="181171"
+			name="Auto-setup: HTTP port creation shows wrong error">
+		When the message from the system after creation of an HTTP 
+		port is "&lt;LISTENER_KEY&gt; disabled.", it was falsely 
+		interpreted as an error. This is now fixed.
+	</change>
+	<change date="2018-09-25" type="fix" issueId="180017"
+			name="Auto-setup: TN profile &quot;externalIds&quot; mandatory">
+		The section "externalIds" was mandatory, which does not make 
+		sense for e.g. adding users to a profile. It was therefore 
+		made optional.
+	</change>
+	<change date="2018-08-30" type="enhancement" issueId="174945"
+			name="Improve error output for getDocumentList">
+		Rather than simply putting the plain exception into the 
+		IS error log, the full stacktrace is placed there. 
+		In addition the latter will also be sent to WxConfig.log 
+		with code (0020.0071).
+	</change>
+	<change date="2018-08-14" type="feature" issueId="171769"
+			name="Auto-setup: Manage TN properties">
+		It is now possible to manage TN properties.
+	</change>
+	<change date="2018-06-01" type="feature" issueId="164752"
+			name="REST API to check for unresolved interpolators">
+		It is now possible to check for unresolved interpolators
+		via a REST call. The URL is 
+		HOSTNAME:PORT/rest/wx/config/interpolators/checkUnresolved[/PACKAGE_NAME] .
+		So if you omit the package name, all packages will be checked,
+		which is probably what most people need. The use-case for this
+		service is operational monitoring by external systems. So it
+		is possible to check, if a new deployment or human error
+		introduced a situation where application will most likely
+		fail because of an interpolation not being resolved.
+		A new ACL and local group (both named WxConfigCheckInterpolators)
+		were introduced to allow for custom authentication.
+	</change>
+	<change date="2018-06-01" type="enhancement" issueId="164747"
+			name="Exclude inactive files from check for unresolved 
+			interpolators">
+		It is now possible to exclude inactive files from the
+		check for unresolved interpolators.
+	</change>
+	<change date="2018-04-09" type="fix" issueId="159952"
+			name="AutoSetup: UM jndi connection is established
+			without credentials">
+		AutoSetup for messaging is not using the configured 
+		credentials when connecting to UM jndi.
+		This is now fixed.
+	</change>
+	<change date="2018-04-04" type="enhancement" issueId="159766"
+			name="Log package for unresolved interpolation">
+		When logging message 0030.0002 the name of the respective 
+		package will now be at the beginning of the line.
+	</change>
+	<change date="2018-03-23" type="fix" issueId="158991"
+			name="AutoSetup: Setup for UM connection factories 
+			misses field autoCreateResource">
+		Setup of UM connection factories does not support modification
+		of the parameter autoCreateResource.
+		This is now supported.
+	</change>
+	<change date="2018-03-23" type="fix" issueId="158440"
+			name="AutoSetup: Ehcache searchable fields missing 
+			configuration for custom extractors">
+		Searchable attributes did not support definition of custom
+		extractors.
+		This is now supported.
+	</change>
+	<change date="2018-03-15" type="fix" issueId="144077"
+			name="Auto-setup: Missing parameter maxEntriesInCache
+			in ehcache auto-setup">
+		Parameter maxEntriesInCache was not mapped correctly.
+		This is now fixed.
+	</change>
+	<change date="2018-02-10" type="enhancement" issueId="155082"
+			name="Auto-setup: Missing connection logged as warning 
+			on package unload">
+		So far, when a configured connection was not found during 
+		package unload, this was logged as FATAL. Instead it is 
+		now logged as WARN.
+	</change>
+	<change date="2018-02-10" type="fix" issueId="155081"
+			name="Auto-setup: Adapter connection not deleted when 
+			also configured for shutdown">
+		When an adapter connection was configured for both shutdown 
+		and destruction on package unload, the destruction was not 
+		being performed. This is now fixed.
+	</change>
+	<change date="2018-02-01" type="enhancement" issueId="89313"
+			name="Enable WxConfig in Package: Sort package names">
+		The list of packages available for WxConfig enablement
+		(at the bottom of the package list) is now sorted
+		alphabetically.
+	</change>
+	<change date="2018-01-31" type="enhancement" issueId="152586"
+			name="Auto-setup: Check existence of cache manager to 
+			avoid exception">
+		Instead of simply trying to create a cache manager it will now
+		be checked whether the latter already exists. This avoids a 
+		potential service error.
+	</change>
+	<change date="2018-01-28" type="enhancement" issueId="152393"
+			name="Encrypted values: Skip inactive files for checks">
+		Even for inactive files, a missing encrypted value was shown
+		as an error. Instead it is now displayed as a warning (yellow
+		indicator instead of red).
+	</change>
+	<change date="2018-01-07" type="fix" issueId="150672"
+			name="Auto-setup: Auto-resume for scheduler after package 
+					reload does not work">
+		When a package was reloaded a suspended scheduler was not resumed
+		even if configured so. This is now fixed.
+	</change>
+	<change date="2018-01-02" type="fix" issueId="150401"
+			name="Auto-setup: Only data from first file used">
+		For various auto-setup types (e.g. adapters) the XPath expression 
+		is such that only data from the first configuration file found 
+		was returned. This is now fixed.
+	</change>
+	<change date="2018-01-02" type="fix" issueId="150190"
+			name="NPE when getting default format for date interpolator at IS startup">
+		There was an NPE during IS startup when the default format was retrieved. 
+		This is	now fixed.
+	</change>
+	<change date="2017-12-02" type="fix" issueId="148180"
+			name="Auto-setup: Missing group reported as error on package startup">
+		When a group, which is configured for deletion on package shutdown, 
+		does not exist, this was falsely reported as an error. This is
+		now fixed in that the message will be reported as INFO.
+	</change>
+	<change date="2017-12-02" type="fix" issueId="148179"
+			name="Auto-setup: Missing ACL reported as error on package startup">
+		When an ACL, which is configured for deletion on package shutdown, 
+		does not exist, this was falsely reported as an error. This is
+		now fixed in that the message will be reported as INFO.
+	</change>
+	<change date="2017-11-24" type="feature" issueId="147569"
+			name="Auto-setup: Enable/disable ART polling notifications">
+		It is now possible to have ART-based polling notifications
+		enabled/disabled on startup/shutdown of a package.
+	</change>
+	<change date="2017-11-13" type="fix" issueId="146013"
+			name="Auto-setup: Typos in UM log messages">
+		The log messages 0335.0056 and 0335.0057 contained typos.
+		This is now fixed.
+	</change>
+	<change date="2017-11-13" type="feature" issueId="145815"
+			name="Auto-setup: Deletion of UM topic">
+		It is now possible to have a delete-only operation for UM topics.
+		This will typically be used when, as part of some re-factoring, the
+		name of a topic was changed.
+	</change>
+	<change date="2017-11-08" type="enhancement" issueId="145813"
+			name="Auto-setup: Support update of existing JMS trigger">
+		When a trigger already existed, it had not been touched so far. 
+		It is now possible to optionally have it re-created with the 
+		latest properties.
+	</change>
+	<change date="2017-10-10" type="feature" issueId="142620"
+			name="Return list of packages providing certain key">
+		It is now possible to get a list of packages that provide a certain
+		key. The typical use-case will be for packages that provide general
+		functionality while also relying on WxConfig to do so.
+	</change>
+	<change date="2017-09-21" type="feature" issueId="141029"
+			name="Encrypted values: Disable set/update via semaphore file">
+		In the context of system automation it is now possible to 
+		lock specific encrypted values from changes. This happens 
+		via semaphore files that are to be place into the same directory 
+		as for bulk-import files. The filename must follow the pattern 
+		&lt;PackageName&gt;_&lt;Handle&gt;.lock. The file can be empty, 
+		any content will be ignored. If the file exists, any attempt 
+		to change the respective encrypted value will cause an error.
+	</change>
+	<change date="2017-09-16" type="enhancement" issueId="140266"
+			name="Auto-setup: Use hostname in messaging template">
+		The auto-setup template for messaging used localhost as default 
+		hostname in URLs. Instead the real hostname will be used now,
+		to allow correct address resolution from other hosts.
+	</change>
+	<change date="2017-09-01" type="enhancement" issueId="138274"
+			name="Auto-setup: TN document type update">
+		It is now possible to update an existing TN document type 
+		(setting the optional attribute updateIfExists to true). 
+		The primary use-case is adding attributes. The default behavior 
+		is not to update an existing document type.
+	</change>
+	<change date="2017-09-01" type="fix" issueId="138272"
+			name="Auto-setup: TN document type creation service has 
+				wrong output signature">
+		The service wx.config.impl.autoSetup.tn.documents:newDocType 
+		declared an output field named newDocTypeFlatFile, although 
+		it should be newDocType. This is now fixed.
+	</change>
+	<change date="2017-08-29" type="fix" issueId="137719"
+			name="Auto-setup: Remote servers partly ignored">
+		Due to the change in how auto-setup data were retrieved, 
+		only remote servers from within the first element remoteServerList 
+		in the first file were taken into account. This is now fixed.
+	</change>
+	<change date="2017-08-27" type="enhancement" issueId="137512"
+			name="Encrypted values: get defined status for more than one">
+		The service wx.config.impl.util.passman:passmanValueDefined
+		allows to retrieve the defined status for one specific encrypted
+		value. It can now also return the same information for an
+		entire package or all packages.
+	</change>
+	<change date="2017-08-25" type="feature" issueId="137387"
+			name="Encrypted values: REST service to set value">
+		It is now possible to set encrypted values via a REST call. 
+		The URL is "/rest/wx/config/encrypted". This
+		is primarily intended to be used by automation tools.
+	</change>
+	<change date="2017-08-24" type="enhancement" issueId="137308"
+	name="Auto-setup: Set deletion of local user to SUCCESS 
+				if user does not exist">
+		If a local user is to be deleted, but does not exist in the first place,
+		this is not an error for the delete operation. So the operation shall
+		report this is as SUCCESS from now on.
+	</change>
+	<change date="2017-08-16" type="feature" issueId="136583"
+			name="Encrypted values: Service to trigger bulk-import">
+		It is now possible to trigger the processing of a bulk-import
+		file for encrypted values via a REST call. The URL is 
+		"/rest/wx/config/encrypted/import/files/PKG_NAME". This
+		is primarily intended to be used by automation tools.
+	</change>
+	<change date="2017-08-14" type="enhancement" issueId="135730"
+			name="Migrate logging to log4j v2">
+		Logging is now handled by Log4J v2.
+	</change>
+	<change date="2017-08-07" type="enhancement" issueId="135727"
+			name="Encrypted values: Unify log messages">
+		When an automated check for to-be-imported files with encrypted values
+		is executed, the log messages were confusing. Per search two messages
+		appeared with the same log code (0060.0031) but different values.
+		One contained the directory (defined by the respective location
+		alias) where the search takes place. The other message contained the
+		wildcard pattern for the file name. Both parts are now unified into a
+		single cohesive message.
+	</change>
+	<change date="2017-07-29" type="fix" issueId="135326"
+		name="Auto-setup: Port-related services not executed by UI simulation">
+		When simulating an auto-setup execution from the UI, the port-related
+		services were not executed. This is now fixed.
+	</change>
+	<change date="2017-07-28" type="fix" issueId="135293"
+		name="Auto-setup: Local group's members mandatory">
+		The docType for a local group defined its member element as mandatory, 
+		although it should be optional. This is now fixed.
+	</change>
+	<change date="2017-07-25" type="fix" issueId="135093"
+		name="Auto-setup: TN document type attributes not optional">
+		Although they are optional, an NPE was thrown if no extracted attributes 
+		were defined. This is now fixed.
+	</change>
+	<change date="2017-07-23" type="enhancement" issueId="135012"
+		name="Auto-setup: Check if MWS user exists before trying to create it">
+		Until now an MWS user was just created without prior checking whether it
+		already existed. Should it exist, this caused an error in the log file. 
+		Instead a check	is now performed and the creation skipped if appropriate.
+	</change>
+	<change date="2017-07-22" type="enhancement" issueId="134432"
+		name="Auto-setup: Add MWS users to role one by one">
+		When an MWS role is configured to contain members, the former
+		implementation tried to add all of them in one atomic operation. If
+		there was a problem with only one of those users (typically because it
+		did not exist), the entire operation failed and all the other users
+		were also not added to the role. Instead there is now be a loop that adds
+		each user individually.
+	</change>
+    <change date="2017-07-22" type="enhancement" issueId="134737"
+		name="Encrypted values: Check result of file rename">
+		After processing a file with encrypted values it gets renamed. 
+		So far the success of this rename operation had not been checked.
+		From now on errors will be logged with code "0060.0040".
+    </change>
+    <change date="2017-07-11" type="feature" issueId="133432"
+		name="Encrypted values: Delete files from bulk-import after grace period">
+		WxConfig will now automatically delete bulk-import files for 
+		encrypted values that have been processed after a grace period
+		(default: 2 days; configurable with 
+		wx.config.encryptedValues.bulkImport.deleteFilesOlderThanDays).
+    </change>
+    <change date="2017-07-11" type="enhancement" issueId="134427"
+		name="Auto-setup: Deletion of MWS role on update now configurable">
+		When an MWS role was configured for being updated if it already 
+		existed, the role first got deleted (which also removed all custom 
+		settings in MWS, esp. privileges). This deletion is now configurable. 
+		The default behavior has not changed, so unless specified
+		otherwise (@updateDeletesRole="false"), the role will
+		be deleted if it exists and @updateIfExists="false".
+    </change>
+    <change date="2017-07-07" type="fix" issueId="134244"
+		name="Auto-setup: Adding local user to existing group does not work">
+		When a local user was created with existing groups associated, 
+		this adding to groups failed due a mapping error.
+		This is now fixed.
+    </change>
+    <change date="2017-06-10" type="fix" issueId="129439"
+		name="Auto-setup: TN docType causes NPE when referring 
+		to missing attribute">
+		When a TN docType declares an attribute that does not exist 
+		on the system, an NPE occurred. This is now fixed in that an
+		IllegalStateException is thrown instead, which also gives the reason.
+    </change>
+    <change date="2017-05-21" type="fix" issueId="131048"
+		name="Auto-setup: Adapter connections partly ignored">
+		Due to the change in how auto-setup data were retrieved, 
+		only adapter connections from within the first element 
+		"adapter" in the first file were taken into account.
+		This is now fixed.
+    </change>
+    <change date="2017-05-04" type="fix" issueId="129689"
+		name="Auto-setup: Central Users elements all mandatory">
+		All elements of the Central Users configuration are defined as mandatory.
+		This is now fixed.
+    </change>
+    <change date="2017-05-04" type="fix" issueId="129680"
+		name="Auto-setup: Port processing starts before loading of 
+		existing configuration is complete">
+		When a package gets loaded, the port configuration is visible 
+		to the API a short while after the post-load event gets triggered. 
+		On Linux (and possible also UNIX) this causes conflicts when the 
+		JVM tries to allocate a port. The result is that the port cannot 
+		be used at all and the entire sever needs to be restarted.
+		This is now fixed: Run port configuration asynchronously with delay
+		(key: wx.config.autoSetup.ports.sleepMillis.startup).
+    </change>
+    <change date="2017-05-01" type="fix" issueId="129441"
+		name="Auto-setup: Port enabled even if not found">
+		When WxConfig enables or disables a port (of any type) 
+		it does so, even if the port is not found.
+		This is now fixed.
+    </change>
+    <change date="2017-04-21" type="fix" issueId="128931"
+		name="Global values not updated on package load/unload">
+		When a package was enabled/disabled/reloaded, configuration 
+		values in the virtual package GLOBAL were not refreshed. 
+		A complete re-scan was necessary for that.
+		This is now fixed.
+    </change>
+    <change date="2017-04-13" type="fix" issueId="128170"
+		name="Auto-setup: Ports must be processed when startup is complete">
+		When IS starts up, port setup will be performed before the startup is 
+		complete. This interferes with IS and causes issues that may render 
+		the port non-operational.
+		This is now fixed.
+    </change>
+     <change date="2017-04-13" type="fix" issueId="128168"
+		name="Auto-setup: HTTP port enabled even if alrady running">
+		When an HTTP port was set to auto-start, WxConfig tried to enable 
+		it without checking whether it was already active. The net result 
+		was that the port got disabled and the JVM needed to be restarted 
+		before it could be enabled again.
+		This is now fixed.
+    </change>
+    <change date="2017-04-11" type="fix" issueId="127984"
+		name="Auto-setup: NPE when checking existing ports">
+		When the listener admin returned an empty list of ports, the 
+		various methods in com.softwareag.wx.is.config.util.PortListenerUtils 
+		could not handle this. Instead they threw an NPE.
+		This is now fixed.
+    </change>
+    <change date="2017-03-22" type="enhancement" issueId="126650"
+		name="Auto-setup: Rename TN document attribute">
+		It is now possible (usually as part of an upgrade) to
+		rename existing TN document attributes.
+    </change>
+    <change date="2017-03-20" type="fix" issueId="126545"
+		name="Encrypted value in old internal format breaks UI">
+		If there still existed an entry in PassMan that used the 
+		old format (underscore instead of colon as internal separator), 
+		it broke the UI (no entries shown at all). This is now fixed.
+    </change>
+    <change date="2017-03-19" type="fix" issueId="126482"
+		name="Auto-setup: TN docType mandatory">
+		In the auto-setup configuration for Trading Networks, the documentType 
+		element was falsely declared mandatory.	This is now fixed.
+    </change>
+    <change date="2017-03-18" type="fix" issueId="126477"
+		name="Bulk import of encrypted value files does not process new 
+		files if legacy format is found">
+		If the bulk import facility detects an import file with the legacy name 
+		it only processes this, but no files that follow the new scheme.
+		This is now fixed.
+    </change>
+    <change date="2017-03-16" type="fix" issueId="126209"
+		name="Database for configuration values: JDBC aliases also created if file is inactive">
+		The JDBC aliases for connection to the database were created even if the
+		config file was not active. This is now fixed.
+    </change>
+    <change date="2017-03-14" type="fix" issueId="125652"
+		name="Correct spelling parameter suppressDefaultAcls in auto setup messaging template">
+		Parameter suppressDefaultAcls was spelled incorrectly in the template. 
+		This is now fixed.
+    </change>
+  	<change date="2017-03-14" type="enhancement" issueId="125647"
+		name="Add support for custom rname in Universal Messaging connection factories">
+		When using auto setup for Universal Messaging it is now possible to specify
+		a custom Connection URL (RNAME) for connection factories. 
+    </change>
+    <change date="2017-03-14" type="enhancement" issueId="125648"
+		name="Support parameter sendSyncPersistent in connection factories for UM">
+		When using auto setup for Universal Messaging it is now possible to set the
+		parameter syncSendPersistent for connection factories. 
+    </change>
+    <change date="2017-03-14" type="fix" issueId="125942"
+		name="Universal Messaging autosetup leaves unspecified variables in the output">
+		When running into an exception the auto setup for Universal Messaging
+		did not drop the variable "code" from the pipeline. 
+		This is now fixed.
+    </change>
+    <change date="2017-03-14" type="fix" issueId="126021"
+		name="Disabling of connection restart does not work when creating triggers">
+		Setting disableConnectionReload did not suppress the connection reload. 
+		This is now fixed.
+    </change>
+    <change date="2017-02-27" type="enhancement" issueId="124879"
+		name="Auto-setup: Skip ART connection creation when password is empty">
+		In order to avoid automatic lock-outs, the creation of 
+		ART connections will be skipped if no password is defined 
+		(typically the encrypted value is not defined on the current 
+		system). This needs to be enabled per adapter type and is
+		currently available for WmJDBCAdapter and WmSalesforceAdapter.
+		Additions need to go into the file ./packages/WxConfig/config/asConfig.xml
+		in the section /autoSetup/art/connection/password/ .
+    </change>
+    <change date="2017-02-24" type="fix" issueId="124807"
+		name="NPE when getting file details">
+		Similar to #122594 the check of the hashtable does not 
+		operate against the key but the content. This is now fixed.
+    </change>
+    <change date="2017-01-31" type="fix" issueId="108914"
+		name="Log messages 20.* do not contain package name">
+		The following log messages lacked the package name at the 
+		beginning: 0020.0011, 0020.0020, 0020.0030, 0020.0050,
+		0020.0051 . This is now fixed.
+    </change>
+	<change date="2017-01-30" type="feature" issueId="55304"
+		name="Auto-setup: Support for SFTP aliases">
+		It is now possible to manage SFTP aliases with WxConfig.
+    </change>
+    <change date="2017-01-26" type="fix" issueId="122303"
+		name="Auto-setup: Error if JNDI alias already exists">
+		When a JNDI alias existed on IS, a run-time exception
+		was logged (E 335.22). Instead there is now a
+		warning (335.23) saying that the alias already
+		exists.
+    </change>
+    <change date="2017-01-26" type="fix" issueId="122594"
+		name="Auto-setup: Package listener tries to access 
+		config data for disabled packages">
+		As part of the postunload(String) method, the 
+		WxConfigPackageListener tries to execute the auto-setup, 
+		irrespective whether the package was originally active. 
+		This is now fixed.
+    </change>
+    <change date="2017-01-25" type="fix" issueId="100022"
+		name="Editor: Search in text file does not work">
+		The search (using CTRL-F) did not work.
+		This is now fixed.
+    </change>
+    <change date="2017-01-25" type="enhancement" issueId="122580"
+		name="Editor: Update to latest version">
+		The built-in editor was updated to the latest version.
+    </change>
+    <change date="2017-01-25" type="enhancement" issueId="122449"
+		name="Editor: Syntax highlighting in view mode">
+		The built-in editor now also supports syntax highlighting
+		when files are viewed only.
+    </change>
+    <change date="2017-01-24" type="fix" issueId="122449"
+		name="File location directive only recognized in upper-case">
+		While earlier versions (at least v1.4) supported the use of lower-case 
+		for location aliases, it did not work for later ones (at least v1.6).
+		This is now fixed.
+    </change>
+    <change date="2017-01-20" type="enhancement" issueId="122301"
+		name="File edit: Remove update link to avoid loosing work">
+		The link for updating WxConfig was removed from the file edit 
+		page. This avoids the risk that someone accidentally looses work.
+    </change>
+    <change date="2017-01-15" type="enhancement" issueId="121970"
+		name="File edit: Jump back to file list after save">
+		The original decision to view a file after saving changes, turned 
+		out not to match the normal workflow. Typically after a save, 
+		one wants to go back to the file list for the next change. 
+		So this happens now instead of showing a file in view mode.
+    </change>
+    <change date="2017-01-15" type="feature" issueId="121961"
+		name="Encrypted values: Run bulk-import during package load">
+		It is now possible to activate the execution of bulk-import
+		as part of the package loading. So when the property 
+		wx.config.encryptedValues.bulkImport.runOnPackageLoad is 
+		set to true in the package's wxconfig.cnf file, the 
+		directory defined by the file location alias 
+		BULK_IMPORT_ENCRYPTED_VALUES will be scanned for files to import.
+		Also, the files that are being imported can be defined
+		with the property wx.config.encryptedValues.bulkImport.fileFilterWildcard.
+    </change>
+    <change date="2017-01-04" type="feature" issueId="121231"
+		name="Auto-setup: File-polling port">
+		It is now possible to define file-polling ports via auto-setup.
+    </change>
+    <change date="2017-01-04" type="fix" issueId="121245"
+		name="Auto-setup: Selecting a template file enables checkbox for Global Values">
+		Although the checkbox for "Global Values" was initially disabled, when a new 
+		auto-setup file is created, the selection of a template enables it. 
+		This is now fixed.
+    </change>
+    <change date="2017-01-03" type="fix" issueId="121201"
+		name="Encrypted values: Wrong default import location in comments for export">
+		In the data created for bulk export of encrypted values, the default import 
+		location was mentioned with a wrong value. This is now fixed.
+    </change>
+    <change date="2017-01-02" type="enhancement" issueId="107722"
+		name="Show file location for license">
+		The exact path for the license file for WxConfig is now
+		displayed underneath the license content.
+    </change>
+    <change date="2017-01-01" type="fix" issueId="120371"
+		name="Auto-setup: Debug code left in TN part">
+		Removed invoke of pub.flow:tracePipeline from 
+		wx.config.impl.autoSetup.tn:createTradingpartner .
+    </change>
+    <change date="2016-12-30" type="fix" issueId="121110"
+		name="Auto-setup: Last 'show' extended setting stays invisible">
+		If multiple extended settings were changed to "show", the last 
+		one staid invisible. This is now fixed.
+    </change>
+    <change date="2016-12-27" type="feature" issueId="121041"
+		name="Encrypted values: Edit undefined values from package list">
+		 It is now possible to directly see/edit all undefined encrypted values
+		 of a package when clicking the magnifying glass next to the red ball, 
+		 which indicates that not all are defined.
+    </change>
+    <change date="2016-12-26" type="feature" issueId="119990"
+		name="Encrypted values: Mechanism to deliver descriptions for operations">
+		There is now a mechanism to add context to the various encrypted values
+		of solutions. Those values (typically passwords) need to be set by operations 
+		staff. The latter have a another view and will typically need information 
+		in their "language".
+    </change>
+    <change date="2016-12-26" type="fix" issueId="121034"
+		name="Result check of add/update of value ignores specified config file">
+		It is possible to have a value added/updated for a specific ConfigFile. 
+		However, the code to verify the result of such an operation, did not 
+		take this into account (check was performed against all in-memory 
+		values instead). This is now fixed.
+    </change>
+    <change date="2016-12-25" type="fix" issueId="121028"
+		name="License: Update requires package reload">
+		On a fresh installation, after the initial provisioning
+		of the license, a package reload of WxConfig was
+		necessary. This is now fixed.
+    </change>
+    <change date="2016-12-25" type="fix" issueId="121031"
+		name="Wrong log code for converting IData to XML">
+		When an exception occurs while trying to convert an IData object 
+		to an XML string, a wrong code (0001.0060) was used for logging 
+		(correct is 0090.0060).	This is now fixed.
+    </change>
+    <change date="2016-12-24" type="fix" issueId="121029"
+		name="License: Invalid license causes NPE for GLOBAL values">
+		An invalid license caused an NPE to show up in the log file.
+		This is now fixed.
+    </change>
+    <change date="2016-12-21" type="fix" issueId="120909"
+		name="Programmtic add/update of values: Validation reports 
+		error for interpolators">
+		Since interpolation cannot be disabled with the 
+		out-of-the-box functionality of Apache Commons Configuration v1.x, 
+		the re-read of a given key will always produce results different 
+		from the input. This is now fixed by interpolating the new value
+		before comparing it. Messages 0020.0032 and 0020.0033 will be logged.
+    </change>
+    <change date="2016-12-20" type="fix" issueId="120753"
+		name="Auto-setup: JDBC SQL exection makes DB server unresponsive">
+		The execution of SQL scripts via a functional alias made the DB server 
+		unresponsive (at least for MS SQL Express 2012).This is now fixed.
+    </change>
+    <change date="2016-12-18" type="fix" issueId="120675"
+		name="Auto-setup: Optional fields for JDBC SQL exection declared as mandatory">
+		All optional fields within the 'executeSqlList' context were 
+		declared as mandatory. This is now fixed.
+    </change>
+    <change date="2016-12-18" type="enhancement" issueId="99445"
+		name="UI: When creating file from template, use template name as file name">
+		So far, the file name was populated only for auto-setup templates.
+		This is now extended to all files. 
+    </change>
+    <change date="2016-12-15" type="enhancement" issueId="120576"
+		name="Do not throw exception if cross-package interpolator 
+		cannot resolve expression">
+		So far, whenever a cross-package interpolation could not be 
+		resolved, an exception was thrown and logged. Instead a 
+		regular error (30.1) will be logged now.
+    </change>
+    <change date="2016-12-14" type="fix" issueId="120535"
+		name="Including the same file for different environments does not work">
+		When a files was included multiple times (e.g. for DEV and TEST) 
+		it would only get loaded on the environment matching the first 
+		inclusion. This is now fixed.
+    </change>
+    <change date="2016-12-13" type="fix" issueId="120519"
+		name="Scheduler for automatic loading of files matching wildcard
+		file pattern executed on wrong cluster node">
+		The scheduler to re-scan an inclusion statement with wildcards 
+		was configured to run on ANY node in a cluster. This meant that 
+		it was not predictable where it would run. This is now fixed.
+    </change>
+    <change date="2016-12-13" type="feature" issueId="120457"
+		name="Package version and build automatically available">
+		Similar to the built-in variable 'package.name' that gets 
+		populated automatically, there are now also be the following 
+		values: 'package.version' and 'package.build'.
+    </change>
+    <change date="2016-12-12" type="fix" issueId="120392"
+		name="Auto-setup: Error at modification of local user stops 
+		overall auto-setup execution">
+		When an error occurred during then invoke of wm.server.access:userUpdate
+		(to set the password and add groups), a real boolean variable 
+		(name: success) was put onto the pipeline. This got picked by the next 
+		wx.config.impl.logging:log and caused an input validation error.
+		This is now fixed.
+    </change>
+    <change date="2016-12-12" type="fix" issueId="120388"
+		name="Auto-setup: Error at deletion of local user stops overall 
+		auto-setup execution">
+		The attempt to delete a local user for later recreation may throw 
+		an exception during the execution of wm.server.access:userDelete,
+		which stopped the overall execution of auto-setup.
+		This is now fixed.
+    </change>
+    <change date="2016-11-25" type="fix" issueId="119443"
+		name="Auto-setup: Alias not logged for result of WS endpoint operations">
+		The name of the alias was not logged for WS endpoint operations 
+		(log code 0420.0004) due to a missing input variable. This is now fixed.
+    </change>
+    <change date="2016-11-23" type="enhancement" issueId="119392"
+		name="Rename solution to 'Configuration Management'">
+		Instead of "Config" WxConfig is now listed as 
+		"Configuration Management" under Solutions.
+    </change>
+    <change date="2016-11-12" type="enhancement" issueId="118717"
+		name="Guide user for initial configuration of environment type">
+		On a fresh installation the drop-down box for the
+		environment type now shows "-Select-" instead of
+		"DEV", which makes it clear where the user should make
+		a selection.
+    </change>
+    <change date="2016-11-02" type="fix" issueId="117964"
+		name="Auto-setup: Updating an invisible extended 
+		setting causes NPE">
+		An add/update operation had not been defined as one 
+		of those cases, when the respective key would be needed 
+		to be added to the list "new" settings. This is now fixed.
+    </change>
+    <change date="2016-10-30" type="enhancement" issueId="117746"
+		name="Audit: Old file may miss comments">
+		The implementation to create a file with the "old" content 
+		was such that it used the old configuration data but not 
+		the old file content. Since configuration data do not 
+		contain comments and may also differ in terms of layout, 
+		the "old" file saved by the audit, was potentially
+		different from the real old file. Now, the old file is
+		used on a byte-level.
+    </change>
+    <change date="2016-10-30" type="fix" issueId="117744"
+		name="Audit: No audit event written for 'addDocument' 
+		and 'removeDocument' services">
+		No audit events were written for invocations of the
+		services wx.config.pub:addDocument and 
+		wx.config.pub:removeDocument. This is now fixed.
+    </change>
+    <change date="2016-10-29" type="fix" issueId="117738"
+		name="Audit: Change of default settings requires WxConfig reload">
+		Changes to the default settings for auditing required
+		a reload of WxConfig. This is now fixed.
+    </change>
+    <change date="2016-10-17" type="enhancement" issueId="116894"
+		name="Auto-setup: Add package name to UM logs">
+		The log messages for UM-related activities now contain the
+		package name.
+    </change>
+     <change date="2016-10-17" type="fix" issueId="116916"
+		name="Auto-setup: Wrong log message for existing UM realm ACL">
+		The log message for an already existing UM realm ACL 
+		contained a copy-paste error. Its code (335.46) was used 
+		for duplicate queues already. This has been fixed and
+		a new code assigned (335.63).
+    </change>
+    <change date="2016-10-17" type="fix" issueId="116897"
+		name="Auto-setup: Wrong log message for existing UM security group">
+		The log message for an already existing UM security 
+		contained a copy-paste error. Its code (335.46) was used 
+		for duplicate queues already. This has been fixed and
+		a new code assigned (335.62).
+    </change>
+    <change date="2016-10-12" type="feature" issueId="116687"
+		name="Auto-setup: JMS trigger in messaging">
+		The ability to adjust JMS triggers to specific environments
+		is now also available in the context of "messaging",
+		which is the successor of "jms".
+    </change>
+	<change date="2016-10-12" type="fix" issueId="116692"
+		name="Auto-setup: JMS trigger can only be updated but 
+		not be created">
+		Due to mapping errors the code that creates a new JMS 
+		trigger (as opposed to updating an existing one) did 
+		not work. This is now fixed.
+    </change>
+    <change date="2016-10-11" type="fix" issueId="116610"
+		name="Auto-setup: UM security group creation does not 
+		check if member	list is empty">
+		When creating a UM security group, there was no check 
+		whether the member list is empty or not, possibly
+		creating an NPE. This is now fixed.
+    </change>
+    <change date="2016-10-11" type="fix" issueId="116609"
+		name="Auto-setup: Error from creating UM security logged 
+		with wrong message">
+		Errors from trying to create a UM security group were 
+		logged with id 0335.0050, which is actually used for 
+		errors during queue creation. A new log message (0335.0061)
+		was created to fix this.
+    </change>
+    <change date="2016-10-05" type="feature" issueId="115990"
+		name="Command Central: Sync environments to WxConfig">
+		 It is now possible in the WxConfig UI to sync the CCE environments 
+		 to WxConfig. Technically this means replacing the environments 
+		 currently defined in WxConfig with those available from CCE.
+    </change>
+    <change date="2016-09-30" type="enhancement" issueId="116021"
+		name="Query services can hide encrypted values">
+		The following services are now optionally able to "hide" 
+		encrypted values (i.e. return their handle instead of the 
+		actual value): wx.config.pub:getValue,
+    	wx.config.pub:getValueList,
+    	wx.config.pub:getDocumentList . This is done through
+    	a new optional input parameter (showEncryptedValues),
+    	which defaults to "true".
+    </change>
+    <change date="2016-09-23" type="feature" issueId="115120"
+		name="NPE in wx.config.impl.admin:getFileDetails">
+		So far, when a file's values are loaded into memory, 
+		they were always added. In addition, it is now possible 
+		to optionally have a file override what is already there. 
+		Technically this means to remove content from memory that 
+		has the same keys.
+    </change>
+    <change date="2016-09-21" type="fix" issueId="115126"
+		name="NPE in wx.config.impl.admin:getFileDetails">
+		When a package does not exist any more, the respective 
+		PkgConfig instance will be removed. However, there was 
+		no check if it still exists, possibly leading to an NPE.
+		This is now fixed.
+    </change>
+    <change date="2016-09-20" type="fix" issueId="115066"
+		name="Auto-setup: Search attributes for Ehcache only in last cache">
+		If a series of caches got created for a single cache manager 
+		and each of those caches had search attributes defined, they 
+		only got created successfully for the last cache.
+		This is now fixed.
+    </change>
+    <change date="2016-09-16" type="enhancement" issueId="114915"
+		name="UI: Display reason if config file cannot be loaded">
+		If a file cannot be loaded (probably because of an XML 
+		error) the reason is now readily available in the UI 
+		and not only the log file. A magnifying glass will show up
+		next to the red ball that indicates the error. Hovering over
+		that magnifying glass will display the error message.
+    </change>
+    <change date="2016-09-08" type="enhancement" issueId="114142"
+		name="License: Allow activation of changes in UI after saving">
+		To avoid interrupting currently running services 
+		(esp. on production systems) changes to the license 
+		that are performed in the UI will not automatically 
+		be activated. There is now an additional link shown 
+		after saving, which allows that.
+    </change>
+    <change date="2016-09-02" type="fix" issueId="113921"
+		name="Inactive missing config file logged as ERROR">
+		If a config file that was supposed to be loaded as inactive 
+		(typically because it is for another environment than the 
+		current system), this was logged as an error. 
+		Instead it should be an INFO. This is now fixed.
+    </change>
+    <change date="2016-08-21" type="fix" issueId="113354"
+		name="Auto-setup: Typo in error message 410.60">
+		There was a typo in the error message. This is now fixed.
+    </change>
+    <change date="2016-08-10" type="enhancement" issueId="112969"
+		name="Auto-setup: Fall-back mapping of user for JMS 
+		connection alias">
+		If credentials are used for an IS JMS connection alias, 
+		there is now be a fall-back mapping for the username. 
+		Until 1.4.x this value was provided via the attribute 
+		"username" and since Version 1.5.0 (#83826) this is "user". 
+		As a fall-back, when "user" is not provided, it shall be 
+		checked if "username" contains a value and use the latter.
+    </change>
+	<change date="2016-07-26" type="fix" issueId="112314"
+		name="getValue does not work for config files without path">
+		When limiting the retrieval of values to the content of
+		a specific file, the input parameter configFile (contrary 
+		to what it implies) required a path. The expected behavior 
+		would be, equivalent to including files, that without a path 
+		files are taken from the package's ./config directory.
+		This is now fixed.
+    </change>
+    <change date="2016-07-29" type="fix" issueId="112313"
+		name="Encrypted values do not work when configuration 
+		file is provided">
+		An encrypted value could not be obtained when the 
+		configuration file was specified in the getValue service.
+		This is now fixed.
+    </change>
+    <change date="2016-07-26" type="feature" issueId="112118"
+		name="REST: Set current environment settings">
+		It is now possible to change the current environment
+		settings via a REST call.
+    </change>
+    <change date="2016-07-25" type="feature" issueId="112114"
+		name="REST: Get current environment settings">
+		It is now possible to retrieve the current environment
+		settings via a REST call.
+    </change>
+	<change date="2016-07-01" type="fix" issueId="95885"
+		name="Auto-setup: Duplicate schedulers in a cluster">
+		When running an IS cluster it was possible that a scheduler
+		got created multiple times due to a race condition. This is now fixed.
+    </change>
+    <change date="2016-06-26" type="fix" issueId="110423"
+		name="Auto-setup: Email port not handled by run-all service">
+		When cancelling a file edit operation, the type of the file 
+		(properties, XML) got lost. This is now fixed.
+    </change>
+    <change date="2016-06-26" type="fix" issueId="110039"
+		name="Auto-setup: Email port not handled by run-all service">
+		The email port service was not added to 
+		wx.config.pub.autoSetup:_all. This is now fixed.
+    </change>
+    <change date="2016-05-26" type="fix" issueId="107140"
+		name="Auto-setup: Adapter actions not performed from UI">
+		The adapter service was removed from 
+		wx.config.pub.autoSetup:_all to cater for package 
+		loading side-effects. Since the aforementioned service
+		is the one called when auto-setup is simulated from the
+		UI, the testing of adapter setup was effectively disabled.
+		This is now fixed by explicitly calling the adapter
+		service.
+    </change>
+    <change date="2016-05-22" type="fix" issueId="106984"
+		name="Auto-setup: WS endpoint alias extract invalid">
+		The extraction data for WS endpoint aliases were invalid. 
+		Root cause was that pub.xml:documentToXMLString creates 
+		empty tags for elements that are null. So in the roundtrip 
+		a null value becomes an empty string, which is causing a 
+		ClassCastException when the alias should be created.
+		This is now fixed by removing fields with null values.
+    </change>
+    <change date="2016-04-19" type="enhancement" issueId="92664"
+		name="File rename: Use old name as default for new one">
+		The input field for the new filename is now pre-populated 
+		with the old one.
+    </change>
+    <change date="2016-04-14" type="enhancement" issueId="102431"
+		name="Add solution even if part of startup fails">
+		Upon a startup error WxConfig was not added as a solution. 
+		That was changed so that whenever possible the solution appears.
+    </change>
+    <change date="2016-04-13" type="enhancement" issueId="102294"
+		name="Add &quot;administrator&quot; to WxConfig ACLs">
+		The MWS user "administrator" is technically different from 
+		the local user "Administrator" and was therefore added to 
+		the respective ACLs (technically all MWS administrator were
+		added).
+    </change>
+    <change date="2016-03-24" type="fix" issueId="100392"
+		name="Error in setup of WxConfig schedulers aborts startup">
+		When an error occurred during the setup of WxConfig's own 
+		schedulers, it aborted the startup service. This is now fixed.
+    </change>
+    <change date="2016-03-16" type="fix" issueId="99607"
+		name="UI: Undefined default for update-check after save of settings">
+		The default value for the update check immediately after saving
+		the main settings was undefined. It is now set to "No" by default.
+    </change>
+    <change date="2016-03-16" type="enhancement" issueId="99602"
+		name="UI: Ship with check for update disabled">
+		People were sometimes irritated by the message that 
+		they should change the settings for the update-check.
+		This is now disabled by shipping WxConfig with check
+		for update disabled.
+    </change>
+    <change date="2016-03-12" type="fix" issueId="99441"
+		name="Retrieval of value for unavailable package causes
+		NullpointerException">
+		When a value is requested from a package that is inactive 
+		or does not exist, a causes	NullpointerException is thrown 
+		in Access.java. This is now fixed.
+    </change>
+    <change date="2016-03-12" type="fix" issueId="99386"
+		name="UI: Arrow for indicating active screen stays in 
+		start position">
+		The arrow for indicating the active screen stayed in 
+		start position This is now fixed.
+    </change>
+	 <change date="2016-03-08" type="enhancement" issueId="98870"
+		name="Package dependency: Log messages with package name 
+		in brackets before text">
+		The log messages for handling of the package dependency 
+		to WxConfig (90.20-27) were changed, so that they now
+		have the package name at the beginning and in brackets.
+    </change>
+    <change date="2016-03-07" type="fix" issueId="98862"
+		name="Auto-Setup: Adapter connections not processed 
+		on package shutdown">
+		Adapter connection processing requires the package to 
+		be still active. The processing used to happen after the
+		package unload and not right before it. This is now fixed.
+    </change>
+    <change date="2016-03-06" type="fix" issueId="91711"
+		name="Cross-package interpolator: No exception thrown 
+		if referenced encrypted value is undefined">
+		If the value in the other package was a handle to an 
+		encrypted value, no exception was thrown when expected
+		but a NULL value returned. This is now fixed.
+    </change>
+    <change date="2016-03-01" type="fix" issueId="98361"
+		name="Auto-Setup: Adapter Connection not updated if package is 
+		deployed by Deployer with repository-based project">
+		When a package is deployed via Deployer from a 
+		repository (as opposed to a run-time system where this
+		issue does not occur),
+		Deployer updates the configuration of adapter connections
+		after the package loading is completed. This can lead
+		to the situation that WxConfig has just updated the
+		connection with the correct values for a given environment,
+		when Deployer overwrites those changes with the values
+		that are in the repository. This effectively looks as
+		if WxConfig had never touched the connection. This  
+		is now fixed by optionally executing the auto-setup for
+		adapters asynchronously and with a configurable delay. 
+    </change>
+    <change date="2016-02-27" type="feature" issueId="97920"
+		name="Automatic loading of files matching wildcard file pattern">
+		It is now possible (using ALIAS* or PATH*; asterisk appended)
+		to have the system add files dynamically by invoking the 
+		service "wx.config.impl.reload:rescanForAdd". In contrast
+		to the long existing rescan option in the UI, this will not
+		interrupt currently running services. So it can be used
+		to monitor directories automatically using a scheduler.
+    </change>
+    <change date="2016-02-21" type="feature" issueId="91625"
+		name="Mark files using [[environment:OS_ENV_VARIABLE]] as invalid">
+		Files using the old interpolator for accessing environment
+		variables ("[[environment:OS_ENV_VARIABLE]]") will now be 
+		marked as invalid. The interpolator to be used instead is
+		"${env:OS_ENV_VARIABLE}" (case-sensitive, e.g. Path on Windows
+		instead of PATH)
+    </change>
+     <change date="2016-02-21" type="enhancement" issueId="89771"
+		name="Switch from Auto-Setup overview to package files">
+		It is now possible to directly jump from the Auto-Setup 
+		overview screen to the file list of a certain package 
+		by clicking on that package's name.
+    </change>
+     <change date="2016-02-19" type="fix" issueId="91771"
+		name="Update check tries to connect without password">
+		The update check tried to establish a network connection
+		event of the required credentials were not defined.
+		This is now fixed and a message (0600.0014) will be
+		logged.
+    </change>
+    <change date="2016-02-19" type="enhancement" issueId="94846"
+		name="Auto-setup: Support append and remove parts for 
+		extended settings">
+		It is now possible to append discrete values to an already
+		existing setting. Likewise, specific part of that setting
+		can be removed.
+    </change>
+    <change date="2016-02-19" type="enhancement" issueId="96701"
+		name="Auto-setup: Delete-only for scheduler">
+		It is now possible to simply delete a scheduler
+		(as part of package startup and shutdown). The initial 
+		use-case is the migration of scheduler descriptions 
+		to include hostname and port for proper operation in 
+		a cluster.
+    </change>
+	<change date="2016-02-18" type="fix" issueId="96597"
+		name="Auto-Setup: Schedulers for WxConfig do not work 
+		on all cluster nodes">
+		Schedulers created by WxConfig for its own maintenance 
+		do not run on all nodes of a stateless IS cluster. 
+		The root cause is that they have the same description
+		(using to check for existence) and are therefore
+		created only for one cluster node. This is now fixed
+		by adding hostname and primary port. 
+    </change>
+    <change date="2016-02-17" type="feature" issueId="39475"
+		name="Auto-setup: Email port">
+		It is now possible to manage email ports with WxConfig.
+    </change>
+	<change date="2016-02-16" type="enhancement" issueId="95755"
+		name="Auto-setup: Set scheduler start date to the future 
+		if suspendAfterCreation is true">
+		If no startTime is provided, it will now be set to
+		a value 10 seconds in the future, when the scheduler
+		will be suspended after creation. This will avoid the
+		initial execution that otherwise occurs.
+    </change>
+    <change date="2016-02-16" type="feature" issueId="92983"
+		name="Stage-specific filter for files in UI">
+		It is now possible to limit the display of config files
+		to those relevant for the current system or a given 
+		stage (global, environment type, host, host+port).
+    </change>
+    <change date="2016-02-15" type="feature" issueId="92984"
+		name="Wildcard config file name search in UI">
+		It is now possible to limit the display of config files
+		to those matching a filter with wildcards.
+    </change>
+    <change date="2016-02-04" type="feature" issueId="95394"
+		name="Auto-setup: Remote Server creation">
+		It is now possible to manage remote server aliases
+		with WxConfig.
+    </change>
+    <change date="2016-01-31" type="fix" issueId="95389"
+		name="Auto-setup: Complex scheduler can only be deleted 
+		on package shutdown if repeating scheduler exists">
+		It was not possible to have auto-setup delete a complex
+		task on package shutdown when there was not also a 
+		repeating/simple task. This is now fixed.
+    </change>
+    <change date="2016-01-31" type="enhancement" issueId="93618"
+		name="Auto-setup: Scheduler can be updated if it exists">
+		If a scheduler already exists (determined by description), 
+		it is now possible to update it.
+    </change>
+    <change date="2016-01-22" type="fix" issueId="92981"
+		name="XML files with non-ASCII characters cannot be
+		saved in UI">
+		When files were edited in the UI, they were always saved 
+		in the current environment's default encoding. This meant 
+		that on Windows also XML files, which are usually UTF-8, 
+		were saved as CP1202, causing errors. This is now fixed
+		by always saving files as UTF-8.
+    </change>
+    <change date="2016-01-09" type="enhancement" issueId="91710"
+		name="Cross-package interpolator: check if referenced 
+		package is available">
+		Before an attempt is made to retrieve a value from a
+		referenced package, it is now checked whether that
+		package is available to WxConfig. If not, the 
+		non-interpolated value is returned.
+    </change>
+    <change date="2016-01-06" type="fix" issueId="90919"
+		name="Encrypted values: Values are shown in overview 
+		when referenced from another package">
+		When an encrypted value was referenced from another
+		package using the cross-package interpolator, the actual
+		value was shown in the UI instead of the handle.
+		This is now fixed.
+    </change>
+    <change date="2015-12-11" type="fix" issueId="91044"
+		name="Auto-setup: &quot;JMS&quot; configuration executed on package shutdown">
+		All configuration defined underneath the jms element
+		(IS and Broker) was executed during shutdown, although 
+		it was meant to be run during startup only.
+		This is now fixed.
+    </change>
+    <change date="2015-12-05" type="fix" issueId="90886"
+		name="Auto-setup: High CPU load after re-creation of JMS 
+		triggers from package reload">
+		When a package that defined a JMS trigger for auto-setup 
+		got reloaded multiple times, the permanent CPU load from 
+		IS increased and did not go back. A restart of IS was necessary 
+		to solve this. This is now fixed.
+    </change>
+    <change date="2015-12-05" type="fix" issueId="90884"
+		name="Auto-setup: UM sample has typo in hostname">
+		There was a typo in the sample entry  /messaging/um/hosts .
+		This is now fixed.
+    </change>
+    <change date="2015-11-21" type="feature" issueId="89561"
+		name="Support wildcards for file inclusion">
+		It is now possible to not only specify discrete files for
+		inclusion, but sets of them using wildcards.
+    </change>
+    <change date="2015-11-16" type="enhancement" issueId="89872"
+		name="License: Do not interrupt operation when updating in UI">
+		Until now after the update of the license in the UI there was 
+		a forced reload of all configuration files and values, which 
+		possibly interrupted regular operation. That reload will now
+		be skipped.
+    </change>
+    <change date="2015-11-16" type="enhancement" issueId="89870"
+		name="License: Automatically pick up new license 
+		from file system">
+		A new scheduler was added that will automatically re-read
+		the license file every day at 00:00.
+    </change>
+    <change date="2015-11-07" type="fix" issueId="89560"
+		name="Auto-setup: Changes to file not saved">
+		When an auto-setup file was edited from the 
+		"Auto-Setup / Overview" menu, the changes were not 
+		saved. This is now fixed.
+    </change>
+    <change date="2015-10-30" type="fix" issueId="89197"
+		name="Auto-setup: Access control crashes on 9.8">
+		The output of wm.server.access:userUpdate now contains 
+		a Java boolean that caused the following 
+		wx.config.impl.logging:log to fail. This is now fixed.
+    </change>
+    <change date="2015-10-23" type="feature" issueId="88851"
+		name="Automatically add package name to each configuration">
+		When the key "package.name" does not exist it is add automatically
+		and contains the current package's name. This is useful for
+		access to the files, forcing a reload of package's files
+		through a service, etc.
+    </change>
+    <change date="2015-10-17" type="feature" issueId="88631"
+		name="Allow other packages to register template files">
+		Packages that use WxConfig can now register their own template
+		files, which are then displayed in the template drop-down
+		list of the file creation dialogue.
+    </change>
+    <change date="2015-10-10" type="fix" issueId="88221"
+		name="Config to Flow does not work when only one key is defined">
+		When a package had defined only a single value, it was not possible 
+		to add it to Flow service via the "Config to Flow Service" UI. 
+		It returned "No key defined". This is now fixed.
+    </change>
+    <change date="2015-10-09" type="fix" issueId="88143"
+		name="Audit: Changes to default configuration cannot be saved">
+		An exception occurred when trying to save changes to the default 
+		configuration from the "Auditing" menu. This is now fixed.
+    </change>
+    <change date="2015-10-09" type="fix" issueId="88134"
+		name="Auto-setup: JDBC functional alias always deleted on 
+		package unload">
+		JDBC functional alias were always deleted on package unload, 
+		irrespective of the setting.
+		This is now fixed.
+    </change>
+    <change date="2015-10-08" type="fix" issueId="88044"
+		name="Config to Flow shows no values">
+		When a developer wanted to add configuration values to a 
+		Flow service using the "Config to Flow" UI, it was possible 
+		that no values were shown although they were defined.
+		This is now fixed.
+    </change>
+    <change date="2015-09-30" type="fix" issueId="87615"
+		name="WxConfig startup fails on new installations">
+		On systems where WxConfig has never been installed before, 
+		the startup failed. More specifically, this happened on systems 
+		where the file locationAliases.xml did not exist in 
+		./config/WxConfig/ .
+		This is now fixed.
+    </change>
+    <change date="2015-09-30" type="fix" issueId="87613"
+		name="Location alias: Wrong log level for creation of 
+		config file from template">
+		When the config file holding location aliases, does not exist 
+		yet, it will be created from a template. The log message to 
+		indicate that had a wrong log level of (ERROR instead of INFO).
+		This is now fixed.
+    </change>
+    <change date="2015-09-09" type="fix" issueId="86351"
+		name="Auto-setup: Files for WxConfig are always shown">
+		Even if the WxConfig package was configured to be hidden, the 
+		auto-setup files still showed up in the auto-setup overview.
+		This is now fixed.
+    </change>
+    <change date="2015-09-03" type="enhancement" issueId="85868"
+		name="Log: Package name in square brackets">
+		Log messages contained the package name at the beginning
+		either in square brackets or followed by a colon. This
+		is now unified to always be in square brackets.  
+    </change>
+    <change date="2015-09-02" type="fix" issueId="85868"
+		name="Auto-setup: Wrong log facility in package listener">
+		In the postload(String) method of WxConfigPackageListener 
+		a log call is made with facility 10 instead of 370. This means that an 
+		operator will miss information, if only increasing the log 
+		level for the package listener (as one will probably expect 
+		to suffice). This is now fixed.
+    </change>
+    <change date="2015-09-01" type="fix" issueId="85821"
+		name="Auto-setup: IS JMS connection alias logging for JNDI 
+		uses webMethods API logging">
+		When an IS JMS connection alias is created using JNDI 
+		(as opposed to the webMethods API), the logging tried to 
+		use the webMethods API values instead of the (correct) JNDI 
+		ones. This is now fixed.
+    </change>
+    <change date="2015-09-01" type="fix" issueId="85818"
+		name="Auto-setup: Existing IS JMS connection alias' name not logged">
+		When a JMS connection alias already exists, so that nothing 
+		needs to be done, the log message saying so did not contain 
+		the name. This is now fixed.
+    </change>
+	<change date="2015-08-26" type="feature" issueId="61130"
+		name="Encrypted values: Allow to remove existing but not 
+		used handles">
+		It is a security risk to have passwords on the system that 
+		nobody is aware about. Therefore it is now possible to 
+		remove "unknown" passwords.
+    </change>
+    <change date="2015-08-19" type="fix" issueId="85270"
+		name="Auto-setup: Password not mapped for creation of local user">
+		The password was not mapped for the creation of local users.
+		This is now fixed.
+    </change>
+	<change date="2015-08-18" type="feature" issueId="85182"
+		name="Auto-setup: Split template into functional blocks">
+		The rather big template for auto-setup is now split into 
+		several small ones, each for a functional area. Also,
+		the file name gets populated from the selection. 
+    </change>
+    <change date="2015-08-17" type="feature" issueId="84936"
+		name="UI: Package overview">
+		There is now an additional level of overview for packages 
+		(as opposed to files). It is the new start screen and shows
+		overview information for each package that uses WxConfig.
+		Also, it is possible to enable packages for WxConfig.
+    </change>
+    <change date="2015-08-03" type="fix" issueId="84170"
+		name="Encrypted values: bulk export may show duplicates">
+		If the same handler was defined in multiple files (e.g. for 
+		different environments/hosts) it showed up multiple times in 
+		the export content.	This is now fixed.
+    </change>
+	<change date="2015-08-01" type="feature" issueId="84559"
+		name="Enable/disable automated log4j config reload ">
+		It is now possible to enable/disable the automated 
+		reload of log4j configuration. Background is that every 
+		package start/reload creates another thread watching the 
+		file, which can grow too many on long-running systems. 
+		These threads can only be stopped by a complete 
+		JVM restart (does not happen by IS restart via UI).
+		By default the file is still watched, because that was
+		the behavior in earlier versions. To disable the automated
+		reload, go to "Logging / Settings" and uncheck the box for
+		"Automatic Reload Active". A manual change is possible by 
+		going to WxConfig's main config file (wxconfig.cnf)
+		and changing the value of the key
+		"wx.config.log.cfgFile.enableAutoReload" to 'false'.
+	</change>
+	<change date="2015-07-31" type="feature" issueId="59957"
+		name="Only display menu entries allowed for user">
+		When the menu structure for the UI is created, entries
+		will now be checked against the respective ACL if
+		applicable. Adjustments to local needs are possible
+		through menu.xml and auto-setup.xml in WxConfig/config.
+	</change>
+	<change date="2015-07-29" type="feature" issueId="84278"
+		name="Display log file in UI">
+		It is now possible to view the last n lines of WxConfig's
+		log file and filter per log level.
+		Go to menu "Logging / Display Logfile" for access.
+	</change>
+	<change date="2015-07-26" type="feature" issueId="80603"
+		name="Auditing of configuration changes">
+		It is now possible to have WxConfig automatically
+		record all changes to configuration files. Each
+		audit event will cause the creation of three files:
+		description of change (in XML for automated processing
+		if desired), old file, and new file.
+		Files go into a configurable location from where they
+		will be moved to an archive location (grouped by 
+		year and month). There is a default configuration, which
+		applies to all packages that do not specify their own.
+		Go to menu "Logging / Auditing" for access.
+	</change>
+	<change date="2015-07-26" type="fix" issueId="84270"
+		name="File list: No files shown if file with higher sort score 
+		than wxconfig.cnf exists">
+		The sort order of wxconfig.cnf was so far intentionally 
+		not in alphabetical order. This was a deliberate decision 
+		to have this file in a slightly more "prominent" position. 
+		That is a violation of the comparator contract, which so far 
+		went undetected by Java. But with Java 7 the sort algorithm 
+		for Collections was changed, which now leads to an exception 
+		in such cases. The net result is that the file list appears 
+		empty.
+		(Workaround was to not have a file "that comes after wxconfig.cnf" 
+		in the sort list.)
+		This is now fixed.
+    </change>
+    <change date="2015-07-25" type="enhancement" issueId="84269"
+		name="File location: Syntax documentation">
+		The page "Info / Config Files" (also shown below the editor
+		when files are changed) now contains a section 
+		"File Locations" where the syntax is documented, when a
+		file shall be loaded not from the package's "config"
+		directory but an external location. 
+		Although most people will not need this information,
+		because they create these files from the UI that
+		takes care of things, it may be useful when file inclusions
+		are added and/or changed programmatically.
+    </change>
+    <change date="2015-07-24" type="enhancement" issueId="84218"
+		name="Log WxConfig version on startup">
+		In addition to license information the package's version 
+		and build will be logged upon startup as well 
+		(to WxConfig.log and server.log). 
+    </change>
+     <change date="2015-07-23" type="fix" issueId="84213"
+		name="License: No error in UI if license file is missing">
+		When the license file was missing at all, no error
+		was displayed in the UI. This is now fixed. 
+    </change>
+	<change date="2015-07-23" type="feature" issueId="82502"
+		name="Auto-setup: execution of SQL scripts">
+		It is now possible to execute SQL scripts after the
+		creation of a functional alias. The SQL content can
+		be read from a file or be provided directly in the
+		auto-setup file. Since for both ways (file name as
+		well as file content) the normal rules
+		of variable interpolation apply. It is very easy to
+		cater for different database types and/or environments.
+		(Using the creation/update of JDBC adapter connections
+		a coherent and robust mechanism exists to prepare all
+		database-related configurations.)
+		Also, the ${service: ???} interpolation can be used
+		to feed back the result of a service. The auto-setup
+		template contains further information in the 
+		"functionalAlias" section.
+    </change>
+    <change date="2015-07-15" type="fix" issueId="83826"
+		name="Auto-setup: JMS connection alias created 
+		without username">
+		When creating a JMS connection alias, the value for
+		"user" was not set correctly. This is now fixed. 
+    </change>
+    <change date="2015-07-15" type="fix" issueId="83825"
+		name="Auto-setup: JNDI alias created without 
+		provider URL failover list">
+		When creating a JNDI provider alias, the value for
+		"providerURLFaileroverList" was not set correctly. 
+		This is now fixed. 
+    </change>
+	<change date="2015-06-30" type="enhancement" issueId="82240"
+		name="Package dependency: do not create">
+		It is now possible, though generally not recommended, to 
+		instruct WxConfig that it should NOT create and/or update
+		a dependency to itself altogether. A typical use-case 
+		would be that WxConfig serves as an editor to files 
+		(e.g. SQL scripts), but does not provide any functionality 
+		other than that. So on systems that have WxConfig installed, 
+		there is an added value, while the package with e.g. the SQL 
+		scripts does not get "tainted" by an automatically created 
+		dependency to WxConfig; the latter would make it unusable on 
+		systems that do not have WxConfig.
+    </change>
+	<change date="2015-06-28" type="enhancement" issueId="82190"
+		name="Editor: update to latest version">
+		The built-in editor (ACE, http://http://ace.c9.io)
+		was updated to the latest version (v1.1.9).
+    </change>
+    <change date="2015-06-28" type="enhancement" issueId="82189"
+		name="Editor: use properties mode for non-XML files">
+		For non-XML files the properties mode will be used.
+    </change>
+	<change date="2015-06-26" type="feature" issueId="80795"
+		name="Provide message catalog">
+		A list of all log messages in WxConfig is now available
+		in XML format from the menu "Logging / Message Catalog".
+    </change>
+    <change date="2015-06-26" type="fix" issueId="67827"
+		name="Numeric keys don't work in value list">
+		When showing the values of a package, a numerical
+		key would cause an exception that stopped the
+		available values be shown completely. This is now
+		fixed.
+    </change>
+    <change date="2015-06-14" type="enhancement" issueId="81076"
+		name="File list: show special content (auto-setup etc.)">
+		The file list now shows an icon after the file name,
+		if the file contains special content. Currently this
+		may be audit configuration, auto-setup, or a 
+		database source.
+    </change>
+    <change date="2015-06-23" type="enhancement" issueId="80606"
+		name="Successful creation of directory now logged with INFO 
+		instead of DEBUG">
+		When a directory (e.g. to contain server instance-based 
+		configuration files in ./config/WxConfig) is dynamicaly 
+		created, the successful creation will now be logged with 
+		level INFO and not DEBUG.
+    </change>
+    <change date="2015-06-14" type="enhancement" issueId="80605"
+		name="File list: Use non-bold font for view/edit links next to file name">
+		The view/edit links next to the file name are now displayed
+		in a non-bold font for better readability of the actual
+		file name.
+    </change>
+    <change date="2015-06-14" type="enhancement" issueId="80604"
+		name="File list: Show alias instead of path">
+		For files that are included via an alias, the file list
+		now shows that alias (in parentheses after the file name) 
+		instead of the resolved path.
+    </change>
+    <change date="2015-06-13" type="feature" issueId="80601"
+		name="Limit retrieval of values to specific config file">
+		It is now possible to limit the retrieval of values to 
+		a specific config file (may be inactive), instead of 
+		going over all values that are defined in the package.
+    </change>
+	<change date="2015-06-07" type="fix" issueId="80321"
+		name="Deletion of environment types does not work in UI">
+		The link to delete individual environment types did not contain 
+		the name, so the deletion failed.This is now fixed.
+    </change>
+    <change date="2015-05-17" type="fix" issueId="79378"
+		name="Changes to wxconfig.cnf not read after saving">
+		Changes applied to the main config file (wxconfig.cnf) were
+		not read after the save button was pressed. They were only  
+		made effective by a complete re-scan of all packages or when 
+		the background re-load interval kicked in.This is now fixed.
+    </change>
+    <change date="2015-05-17" type="fix" issueId="79377"
+		name="Rename config file: new name in inclusion statement 
+		prepended by &quot;null&quot;">
+		When a config file (sitting in the package's config directory,
+		so that no special inclusion directives were used) was renamed 
+		via the UI, the new name in the inclusion statement was prepended 
+		by "null". This is now fixed.
+    </change>
+    <change date="2015-04-18" type="fix" issueId="69151"
+		name="Auto-setup: Create JMS connection before trigger">
+		There was a sequence issue when creating both the connection 
+		alias and the trigger via AutoSetup. This is now fixed.
+    </change>
+	<change date="2015-04-17" type="feature" issueId="77244"
+		name="Test for unresolved interpolators">
+		There is now a service (wx.config.impl.admin:checkUnresolvedInterpolators)
+		that checks for unresolved interpolators for a given package. Files
+		can optionally be excluded from the check using the special property 
+		"wx.config.interpolator.checkUnresolved.excludeFile=fileName".
+		The service is intended to be used primarily in the context of
+		automated tests.
+    </change>
+	<change date="2015-03-21" type="enhancement" issueId="74310"
+		name="File list: Catch invalid setting for favorite package">
+		It may be possible that WxConfig defines a favorite package 
+		that does not exist on the current system. In that case 
+		various issues come up that in total may render WxConfig unusable. 
+		Therefore a check was added, whether the defined favorite 
+		package actually exists on the current system. If no, the
+		setting will be cleared.
+    </change>
+    <change date="2015-03-10" type="enhancement" issueId="73695"
+		name="File list: Show additional information for invalid license">
+		When displaying the file list, an additional error message
+		is shown, when no valid license is found. It specifies
+		that no config files will be displayed in this case and
+		that run-time error are very likely.
+    </change>
+	<change date="2015-02-04" type="enhancement" issueId="66994"
+		name="AutoSetup JMS: JMS Trigger service disabled JMS Connection">
+		On previous version in order to create jms triggers with up to date 
+		jndi data the jms connection was disabled before trigger creation and 
+		re-enabled afterwards. In larger installations this behaviour leads to
+		long start times, as all existing Triggers on the connection will
+		be stopped before creation and restarted afterwards. On recent environments
+		(checked against 8.2 with core fix 7, 9.0 and later) the generation of
+		jms triggers works properly also without having to reload the connection.
+		To keep backward compatibility the behavious is now controlled by the
+		WxConfig flag wx.config.autoSetup.jms.trigger.disableConnectionReload
+		with default value "false". Switch to "true" to suppress the connection
+		reload and speed up server startup.		
+    </change>
+    <change date="2015-01-31" type="fix" issueId="69238"
+		name="File list: Interpolators show green for key 
+		defined in multiple files with only first one being 
+		resolved">
+		Root cause is the Apache Commons Configuration default 
+		behavior to only return keys from the first sub-configuration. 
+		The same key defined in "later" configurations is ignored. This
+		is now fixed.
+    </change>
+    <change date="2015-01-29" type="fix" issueId="69225"
+		name="File list: Interpolators always show green for 
+		inactive files">
+		There was the false assumption that an inactive file
+		could not contain unresolved interpolators. This
+		is now fixed.
+    </change>
+    <change date="2015-01-28" type="fix" issueId="69200"
+		name="Update check: Error is logged for missing update 
+		password although update is disabled">
+		Root cause is that many services rely on ConfigFile.asIData(), 
+		which checks for undefined password handles, regardless 
+		of whether they are really needed. A new property 
+		(wx.config.encrypted.skipLogForMissingHandle) was
+		added to defined a list of password handles that shall
+		not be logged if they are undefined.
+    </change>
+    <change date="2015-01-28" type="fix" issueId="69148"
+		name="Auto-setup: Access denied exception during 
+		IS startup">
+		On 9.x versions the new parallel package loader caused 
+		an "com.wm.app.b2b.server.AccessException: [ISS.0084.9004]
+		Access Denied" in certain auto-setup scenarios, but only 
+		when IS was starting up. This is now fixed.
+    </change>
+	<change date="2015-01-27" type="feature" issueId="55303"
+		name="Auto-setup: Support for WS endpoint aliases">
+		It is now possible to create Web Service Endpoint
+		aliases with auto-setup. This includes the extraction
+		of settings defined with the normal UI into XML
+		that can be pasted directly into an auto-setup
+		config file.
+    </change>
+    <change date="2015-01-21" type="fix" issueId="68665"
+		name="Invalid XML file prevents start of WxConfig">
+		An invalid XML config file could stop WxConfig from
+		starting up. This is now fixed.
+    </change>
+    <change date="2015-01-19" type="fix" issueId="68626"
+		name="Environment: Settings for comment are not treated 
+		as optional">
+		The check performed at startup of WxConfig did falsely
+		check for the existence of value for the comment. In
+		their absence an error was reported and the existing
+		"environment.cnf" file deleted without a new one
+		being created from the template. This is now fixed,
+		including improved logging.
+    </change>
+    <change date="2015-01-06" type="enhancement" issueId="67915"
+		name="Change log level for fall-back to global values 
+		from INFO to DEBUG">
+		To reduce the clutter in the log file, the log level
+		is changed from INFO to DEBUG when a fall-back to 
+		 global values is tried.
+    </change>
+    <change date="2015-01-03" type="enhancement" issueId="67878"
+		name="Error message for scheduler to load/unload files 
+		with complete stacktrace">
+		For time-based configuration values one-time schedulers will
+		be created to load/unload the file. In case of an exception,
+		so far only the exception message was reported back, but 
+		not the entire stacktrace. The latter will happen from now on.
+    </change>
+    <change date="2015-01-03" type="fix" issueId="67877"
+		name="Wrong return message for one-time scheduler 
+		that already exists">
+		By using wrong indices when filling the array holding
+		the parts of the return message, only the description
+		was returned without further information. This is now
+		fixed.
+    </change>
+    <change date="2015-01-02" type="feature" issueId="67798"
+		name="Support database for configuration values">
+		It is now possible to hold configuration values in
+		a database table rather than ordinary files. To use
+		this, create a new config file and chose the template 
+		"Values from database (.cnf)". The resulting file,
+		which includes further documentation,
+		allows to define the connection to the database
+		that ultimately holds the configuration values.
+    </change>
+    <change date="2014-12-19" type="enhancement" issueId="67703"
+		name="Package dependency: Do not update existing 
+		general dependency">
+		It is now possible, though generally not recommended, to 
+		instruct WxConfig that it should NOT change an existing, 
+		not version-specific dependency. So if package "A" already
+		has a dependency to "WxConfig (*.*)" the latter will not be
+		touched. The net result will be that package "A" runs with all
+		versions of WxConfig.
+    </change>
+    <change date="2014-12-19" type="enhancement" issueId="67721"
+		name="Access.getProperties(String key, String configID) 
+		shall not fall back to global values">
+		When a key does not return a value for a given config
+		ID (i.e. package) it is no longer checked whether
+		there is a global value as fall-back. This also affects
+		Access.getProperty(String key, String configID),
+		which is a wrapper around Access.getProperties.
+    </change>
+	 <change date="2014-12-09" type="fix" issueId="67405"
+		name="ServiceException in createConfigFile when creating 
+		first configuration for new package">
+		Root-cause is that when a package is first used with WxConfig, 
+		the initial (i.e. main) config file must be named wxconfig.cnf. 
+		With #66849 some JavaScript logic was introduced to make things 
+		more comfortable. The bug is that rather than setting the 
+		field to read-only, it gets disabled. This is now fixed.
+    </change>
+    <change date="2014-11-24" type="fix" issueId="66936"
+		name="Auto-setup: Template for complex scheduler misses days">
+		The template for auto-setup does not contain samples for
+		days of week/month. This is now fixed.
+    </change>
+    <change date="2014-11-18" type="fix" issueId="63581"
+		name="AutoSetup JMS: JMSAdmin sessions remain active">
+		When using the JMS auto setup feature some of the 
+		JMS and Broker admin sessions remained active. 
+		This is now fixed.
+    </change>
+	<change date="2014-11-09" type="fix" issueId="62731"
+		name="Encrypted values: Success at saving only returns 
+		&quot;true&quot; in UI">
+		When an encrypted value was either created or updated
+		in the UI, a successful operation would only return
+		"true" in the UI. This is now fixed.
+    </change>
+	<change date="2014-11-04" type="fix" issueId="63389"
+		name="Invalid configuration file causes NPE">
+		An invalid configuration file (esp. XML) used to cause an 
+		NPE when checking for missing encrypted values, which 
+		effectively rendered WxConfig unusable until the file was 
+		corrected from outside the UI. This is now fixed.
+	</change>
+	 <change date="2014-11-04" type="enhancement" issueId="51818"
+		name="File creation: only pre-set file to wxconfig.cnf 
+		if it does not exist yet">
+		There is now a check whether the selected package already
+		uses WxConfig. If no, the file name will still be set to 
+		"wxconfig.cnf"" and options like stage be disabled. Otherwise
+		the name is now just ".cnf". 
+    </change>
+	<change date="2014-10-14" type="fix" issueId="62731"
+		name="Encrypted values: undefined handle does not cause 
+			ServiceException">
+		When wx.config.pub:getValue etc. is invoked for an encrypted 
+		value that is not defined, it should behave like for normal 
+		values; i.e. it should throw a ServiceException, unless the 
+		input noServiceException is set to "true". Instead it returned 
+		a null value. This is now fixed and the error messages asks
+		to check whether the key is defined or the encrypted value set.
+    </change>
+    <change date="2014-10-09" type="feature" issueId="61500"
+		name="Compare properties between multiple environments">
+		It is now possible to compare properties (does not work for 
+		XML at the moment) for different environments or hosts.
+		There is a new menu for this "Development / Values per Stage" 
+    </change>
+    <change date="2014-10-08" type="enhancement" issueId="61494"
+		name="Ability to search for keys">
+		It is now possible to retrieve values not only for a
+		given package but across all packages. In the "Show 
+		Value" package list there is now an entry "-All Packages-".
+		With the browser search functionality it is then
+		possible to easily find certain key. 
+    </change>
+    <change date="2014-09-27" type="fix" issueId="59620"
+		name="Encrypted values: file shows green with 
+		undefined value">
+		In the file list, a file containing an undefined 
+		encrypted value was shown with green, whereas in
+		the encrypted values overview the status was shown
+		correctly. This is now fixed. 
+    </change>
+	<change date="2014-09-27" type="feature" issueId="61122"
+		name="Auto-setup: Support for Universal Messaging">
+		It is now possible to create assets/configurations for
+		Universal Messaging.
+    </change>
+	<change date="2014-09-21" type="enhancement" issueId="54890"
+		name="Config to Flow: Hide file include statements">
+		All keys that are used for including files are now
+		hidden when selecting keys to be added to a given Flow
+		service.
+    </change>
+    <change date="2014-09-20" type="fix" issueId="55948"
+		name="Show values: Error when going there from file list 
+		with explicit setting &quot;-All Packages-&quot;">
+		When a package is set as preferred, the selection of
+		all packages made the link to show values appear for
+		all packages. This is now fixed.
+    </change>
+    <change date="2014-09-20" type="fix" issueId="59956"
+		name="Performance-critical services must be stateless 
+		when possible">
+		The "stateless" attribute of the performance critical
+		services (e.g. wx.config.pub:getValue) had been changed
+		to false by Designer. This is now fixed.
+    </change>
+    <change date="2014-09-20" type="fix" issueId="59951"
+		name="UI not accessible with WxConfigStandard ACL">
+		The UI was effectively not accessible without the
+		user belonging to the Administrators group. This
+		is now fixed and the WxConfigStandard ACL is sufficient
+		for access (unless more specific ACLs apply, e.g. for
+		editing files).
+    </change>
+    <change date="2014-09-18" type="fix" issueId="59879"
+		name="Usage of the property providerURLFailoverList in 
+		Autosetup of JNDIAlias leads to exception">
+		Parse the parameter providerURLFailoverList as array.
+    </change>
+	 <change date="2014-09-11" type="enhancement" issueId="52296"
+		name="Editor: Display conditions when files is loaded">
+		It is now visible for a user who is editing a config 
+		file, when the latter becomes active.
+    </change>
+    <change date="2014-09-09" type="enhancement" issueId="58537"
+		name="License: Returns reason for failure">
+		In case the license check fails, the reason is now
+		returned and displayed in the UI.
+    </change>
+    <change date="2014-09-09" type="fix" issueId="58369"
+		name="License: Strict version check">
+		The license version is now compared with the current
+		version of WxConfig. The license version must be
+		equal or higher (backward compatibility) than the
+		version of WxConfig. Example: A v1.4 license can be
+		used for WxConfig 1.3 but not vice versa.
+    </change>
+    <change date="2014-09-03" type="fix" issueId="53326"
+		name="File that was not found, cannot be deleted">
+		If a config was not found (e.g. because it was deleted
+		outside the UI), it could not be deleted from the UI
+		(incl. the inclusion). This is now fixed. 
+    </change>
+	 <change date="2014-08-25" type="fix" issueId="53543"
+		name="Auto-setup: JNDI provider alias created with 
+		wrong value for otherProps">
+		When creating a JNDI provider alias, the value for
+		"otherProps" was not set correctly. This is now fixed. 
+    </change>
+     <change date="2014-08-22" type="fix" issueId="57745"
+		name="Software AG logo missing in about page on v9.6">
+		The Software AG logo did not show up in v96.
+		This is now fixed. 
+    </change>
+     <change date="2014-08-21" type="feature" issueId="57741"
+		name="Make hostname available to variables">
+		The current machine's hostname is now available via
+		variable substitution. Syntax is ${sys:wxConfig.hostname}
+    </change>
+	 <change date="2014-08-10" type="enhancement" issueId="56545"
+		name="Auto-setup: Extended settings changes for shutdown">
+		As an interim step towards allowing dedicated changes
+		being performed for a package shutdown, changes are
+		now only performed during package startup.
+    </change>
+	 <change date="2014-08-10" type="fix" issueId="56550"
+		name="Auto-setup: Extended settings not executed">
+		Due to an erroneous space in the condition statement,
+		changes to the extended settings were effectively never
+		executed. This is now fixed.
+    </change>
+	<change date="2014-07-25" type="enhancement" issueId="56035"
+		name="Location aliases: description available">
+		It is now possible to add a description to a location alias.
+    </change>
+    <change date="2014-07-22" type="feature" issueId="55947"
+		name="GUI: Mark package as current favorite for file list">
+		It is now possible to mark a selected package as favorite in
+		the file list. There is a new pin/unpin icon next to refresh
+		on the right-hand side of the package selection dropdown box.
+    </change>
+    <change date="2014-07-08" type="fix" issueId="55529"
+		name="Encrypted values: Download of bulk-export does not work on v8.2">
+		Due to the use of service not available in v8.2, the download
+		of an encrypted values bulk-export produced an error.
+		This is now fixed.
+    </change>
+	<change date="2014-06-29" type="feature" issueId="54734"
+		name="Encrypted values: bulk import/export">
+		It is now possible to perform a bulk export/import
+		of encrypted values. The import can be performed
+		manually from the web UI or automatically during
+		startup of WxConfig.
+    </change>
+    <change date="2014-06-25" type="fix" issueId="55250"
+		name="Missing environment configuration causes startup error">
+		Before the environment configuration is created from a template, 
+		if required, it is already tried to check it for the old format.
+		This is now fixed.
+    </change>
+    <change date="2014-06-10" type="fix" issueId="54573"
+		name="Auto-setup: For users/groups/ACLs an error is 
+		reported if they already exist">
+		For users/groups/ACLs an error was reported if they already 
+		existed. This is now fixed.
+    </change>
+    <change date="2014-06-09" type="fix" issueId="40418"
+		name="Exclude file from automated, in-active addition">
+		It is now possible to exclude files from being loaded
+		(as inactive). Those files must be specified using the
+		new "wx.config.excl" property. 
+    </change>
+    <change date="2014-06-01" type="fix" issueId="54578"
+		name="Package interpolator: self-reference does not work">
+		When the package interpolator references a value from the 
+		package it is sitting in, a StackOverflowError was caused.
+		This is now detected and the file marked as invalid.
+    </change>
+    <change date="2014-05-30" type="fix" issueId="54574"
+		name="Update user is persisted into the template file">
+		Rather than persisting the user into the actual file, 
+		it happenend into the template. This is now fixed.
+    </change>
+	<change date="2014-05-30" type="enhancement" issueId="51819"
+		name="Extend DSP security to cover new features">
+		The following functional areas are now secured with
+		dedicated ACLs (by default containing admin user and group):
+		update, file locations, license, templates, file rename.
+		As a functional change groups and ACLs will not be changed
+		if they already exist on the system; this will preserve
+		custom changes across package updates. 
+    </change>
+    <change date="2014-05-29" type="enhancement" issueId="54548"
+		name="Encrypted values: removed empty lines from list">
+		When clicking on "Configuration / Encrypted Values" empty 
+		lines appeared for files that hold only ordinary, i.e. 
+		non-encrypted values. Those empty lines are now removed.
+    </change>
+	<change date="2014-05-10" type="fix" issueId="53894"
+		name="Unresolved interpolator not always recognized">
+		The pattern (regular expression) to detect an unresolved
+		interpolator was missing several possible combinations.
+		This is now fixed.
+    </change>
+    <change date="2014-05-07" type="fix" issueId="53802"
+		name="Variable interpolation in file inclusion falsely 
+		interpreted as location directive">
+		The logic to check for an inclusion directive just looked for 
+		the character "{" anywhere in the value. This also triggered 
+		the location detection if a variable interpolation was part 
+		of the value and failed.
+    </change>
+    <change date="2014-05-05" type="fix" issueId="53702"
+		name="Location aliases: backslashes in path interfere with UI">
+		When a path contains a backslash (e.g. coming from default 
+		JVM temp dir), the input field for editing did not work.
+		This is now fixed by converting backslashes to forward
+		slashes.
+    </change>
+    <change date="2014-05-03" type="fix" issueId="53689"
+		name="Null pointer exception in config file creation UI, 
+		if only one package uses WxConfig">
+		An additional check was added to avoid an exception in the
+		template drop-down list, when only one package was using
+		WxConfig.
+    </change>
+    <change date="2014-05-03" type="fix" issueId="53325"
+		name="Location aliases: migration from old file format fails if 
+		backup already exists">
+		The backup file is now created with a timestamp as part of
+		the filename. So an arbitrary number of backups is possible.
+    </change>
+    <change date="2014-04-20" type="enhancement" issueId="53325"
+		name="Location aliases: check path before add/update">
+		There is now a check performed whether a location path
+		exists, before it is added or updated.
+    </change>
+    <change date="2014-04-17" type="enhancement" issueId="53310"
+		name="File list: Configurable whether to show alias or path">
+		If a file is included via an alias, it is now configurable
+		in "Settings / Main" whether that alias or the path it refers
+		to shall be shown in the file list. If the alias is undefined 
+		or points to a non-existing directory, the alias will be shown 
+		regardless of the setting.
+    </change>
+    <change date="2014-04-17" type="enhancement" issueId="53308"
+		name="Location aliases: Indicate invalid aliases">
+		If an alias points to a non-existing directory, this is
+		now highlighted in the UI.
+    </change>
+    <change date="2014-04-11" type="enhancement" issueId="53182"
+		name="File list: Indicate missing location (alias, path)">
+		There is now a warning shown if the location itself (as opposed
+		to the file it is hosting) does not exist.
+    </change>
+    <change date="2014-04-06" type="enhancement" issueId="53030"
+		name="File list: Show conditions for activating file">
+		There is now a columns to show the conditions checked before
+		activating a file.
+    </change>
+    <change date="2014-04-06" type="enhancement" issueId="53029"
+		name="File list: Show stage (global, env, host)">
+		There is now a pair of columns to show the stage type and value that were
+		used to reference the file.
+    </change>
+    <change date="2014-04-05" type="enhancement" issueId="53028"
+		name="File list: Show location type (package, path, alias)">
+		There is now a column to show the location type that was
+		used to reference the file.
+    </change>
+    <change date="2014-04-03" type="enhancement" issueId="52910"
+		name="File list: Remove column &quot;Active&quot;">
+		Inactive files are now flagged next to the view/edit link, 
+		hence this column is not needed any more.
+    </change>
+	<change date="2014-04-02" type="fix" issueId="40180"
+		name="corrupted condition">
+		fixed condition in branch
+    </change>
+	<change date="2014-03-28" type="fix" issueId="52679"
+		name="Autosetup Queue doesnt work in single Broker without clustername">
+		The unhandled exception is now catched. And creates the queue on the single Broker.
+    </change>
+	<change date="2014-03-21" type="enhancement" issueId="52290"
+		name="List files that were not found">
+		Missing files are now shown and clearly marked in the
+		file list.
+    </change>
+    <change date="2014-03-14" type="enhancement" issueId="52280"
+		name="File alias location: show using files">
+		In the list of location aliases, the files using them are
+		now listed and also be viewed/edited directly from there.
+    </change>
+    <change date="2014-03-14" type="enhancement" issueId="52092"
+		name="Reload interval for log configuration configurable">
+		It is now possible to configure the reload interval,
+		after which changes to log level thresholds will come
+		into effect.
+    </change>
+    <change date="2014-03-10" type="enhancement" issueId="51977"
+		name="Allow to skip a particular update of WxConfig">
+		There are times when a particular update shall be ignored.
+		It is now possible to remove the link to the
+		update for a particular version. Later updates will
+		be shown again.
+    </change>
+    <change date="2014-03-10" type="fix" issueId="52010"
+		name="wx.config.pub:addDocument ignores top-level attributes">
+		When a document (IData) was parsed, attributes on the top
+		level were ignored. This is now fixed.
+    </change>
+    <change date="2014-03-08" type="feature" issueId="48126"
+		name="Add, remove, or update XML configurations programmatically">
+		It is now possible to remove XML configurations (or parts
+		thereof) based on XPath expression programmatically.
+    </change>
+	<change date="2014-03-07" type="enhancement" issueId="51584"
+		name="Auto-setup: Password encrypted for extracted 
+		adapter connections">
+		The password for extracted adapter connections 
+		("Development / Extract Adapter Connection" in web UI)
+		is now created as an encrypted value
+    </change>
+    <change date="2014-03-01" type="enhancement" issueId="51817"
+		name="New config file: Location type path assumes 
+		no trailing slash">
+		There is now a check to avoid double slashes as part
+		of a new config file's name.
+    </change>
+    <change date="2014-02-25" type="enhancement" issueId="48204"
+		name="File alias location editable">
+		It is now possible to edit file location aliases,
+		i.e. change the path they are pointing to.		
+    </change>
+    <change date="2014-02-23" type="fix" issueId="51481"
+		name="Constuctor of com.softwareag.wx.is.config.Result 
+		falsely declared to throw ServiceException">
+		The constructor of com.softwareag.wx.is.config.Result
+		falsely declared to throw ServiceException. This is now fixed.		
+    </change>
+    <change date="2014-02-23" type="fix" issueId="51431"
+		name="File list: Message that no files exist, does 
+		not span entire table">
+		When no config files were found, the message saying so
+		was not spanning the entire table. Also, it did not take
+		into account the optional display of the timestamp of
+		the last file change. This is now fixed.		
+    </change>
+    <change date="2014-02-21" type="fix" issueId="51426"
+		name="File location aliases: backslashes in path returned 
+		from java.io.tmpdir must converted into forward slashes">
+		The initial content of the file location aliases uses
+		the system property "java.io.tmpdir", which on Windows
+		systems contains backslashes. Those will now be converted
+		to forward slashes, otherwise the resolution will not
+		work. 		
+    </change>
+    <change date="2014-02-12" type="fix" issueId="50271"
+		name="File creation dialogue on update installation shows 
+		error for list of available environment types">
+		When updating from a sufficiently old version of WxConfig,
+		the format of the old file environment.cnf is incompatible.
+		This caused a run-time exception that showed up in the
+		dialogue for creating new config files. A check was
+		added to the package startup that resolves this.		
+    </change>
+    <change date="2014-02-12" type="fix" issueId="50460"
+		name="Log message 10:43 is wrong">
+		The text of log message 10:43 was referring to the old format,
+		thus giving false instructions. It was updated accordingly.		
+    </change>
+    <change date="2014-02-07" type="fix" issueId="50461"
+		name="If WxMWS not installed, an error is logged even 
+		if nothing to do">
+		Before checking the availability of WxMWS there is now first 
+		a check whether anything should be done on MWS.
+    </change>
+    <change date="2014-02-06" type="fix" issueId="50272"
+		name="Output of &quot;Extract Adapter Connection&quot;
+		 does not match auto-setup template">
+		The output of "Extract Adapter Connection" now matches
+		what is expected for auto-setup.
+    </change>
+    <change date="2014-02-01" type="enhancement" issueId="49835"
+		name="Code to check validity of license is duplicated">
+		A duplicate of code to check for validity of license was
+		removed.
+    </change>
+    <change date="2014-02-01" type="fix" issueId="49831"
+		name="Expired license is logged as &quot;expiring very soon&quot;">
+		An expired license is now logged as invalid license.
+    </change>
+    <change date="2014-01-31" type="fix" issueId="49829"
+		name="Manual check for update from About page only works if 
+		scheduled update is active">
+		Even for a manual check for updates, it was required to
+		have to scheduled checks enabled. This is no longer required.
+    </change>
+    <change date="2014-01-26" type="enhancement" issueId="49418"
+		name="Have sub-directory per package underneath 
+		file location alias">
+		When a config file was placed into a File Location Alias, until
+		now it was put directly into the directory assigned to that alias.
+		This, however, effectively required to have one alias per package
+		in order to avoid mixing and potentially overwriting files. From now
+		on a sub-directory with the package's name will be created and the
+		file be placed in there.
+    </change>
+    <change date="2014-01-24" type="fix" issueId="48206"
+		name="Menu not refreshed after update">
+		Changes to the menu were not automatically reflected after an
+		update; instead a manual reload was necessary. This is now fixed.
+    </change>
+    <change date="2014-01-24" type="fix" issueId="48727"
+		name="Update resets &quot;check for update&quot; to no">
+		The default value coming from updates de-activated further
+		update checks. This is now fixed.
+    </change>
+    <change date="2014-01-23" type="feature" issueId="49357"
+		name="New queues must be created on all cluster nodes">
+		On queue Creation a step is build in, checking if the Broker
+		is organized in a cluster. The new queue will be created in
+		all brokers of the cluster.
+    </change>
+	<change date="2014-01-22" type="feature" issueId="49306"
+		name="ClusterConnectionFactory is initialized with only current Broker">
+		In a ClusterConnectionFactory all current nodes of a 
+		cluster should be initialized.
+    </change>
+	<change date="2014-01-16" type="feature" issueId="49146"
+		name="Method to retrieve property in Java conveniently">
+		For easy retrieval of values from within Java code, there is now
+		the method Access.getProperty(key, configId)
+    </change>
+    <change date="2014-01-16" type="fix" issueId="48853"
+		name="Autosetup queue not possible because of corrupted ClientGroup-Tag">
+		Following bug of Resolving IssueId 48627.
+    </change>
+	<change date="2014-01-14" type="fix" issueId="48634"
+		name="Add Priority-Ordering and SharedState-Options to JNDI-Destination">
+		Extension of JNDI-Destination-Objects to configure 
+		SharedState and Priority-Ordering
+    </change>
+	<change date="2014-01-14" type="fix" issueId="48627"
+		name="Update-Acl-Destination-ClientGroup">
+		added "clientGroup" to array-tag at 2nd 
+		wx.config.pub:getDocumentList in wx.config.pub.autoSetup:jms
+		changed tag from "clientGroups" to "clientGroup in documents 
+		wx.config.impl.autoSetup.jms:destinationACL and 
+		wx.config.impl.autoSetup.jms:topic
+    </change>
+	<change date="2014-01-05" type="fix" issueId="48192"
+		name="Messages 10:104/105 need to be moved to category 40 
+		(ConfigFileList)">
+		The messages 10:104/105 were moved to 40:35/36 because they
+		belong to ConfigFileList and not Loading.
+    </change>
+    <change date="2014-01-05" type="feature" issueId="48126"
+		name="Add XML configurations programmatically">
+		It is now possible to add XML configurations based on
+		documents (IData) programmatically.
+    </change>
+    <change date="2014-01-05" type="fix" issueId="48189"
+		name="ConfigFileList.getFilesForPersistMode(ConfigFilePersistMode.FIRST_FILE) 
+		throws NPE if no files are in list">
+		Before a config file is added to the result of 
+		ConfigFileList.getFiles(int[]), a check for the current
+		size of the underlying Vector is performed.
+    </change>
+    <change date="2013-12-31" type="fix" issueId="48080"
+		name="wx.config.pub:getDocumentList returns empty list 
+		instead of null if nothing is found">
+		The service wx.config.pub:getDocumentList now returns null,
+		if nothing is found and no exception is to be thrown.
+    </change>
+    <change date="2013-12-30" type="feature" issueId="42881"
+		name="Log to server.log that WxConfig uses its own log 
+		file and where it is">
+		There is now a an entry (containing "[ISP.0090.0003I] WxConfig: (0001.0012)")
+		in IS server.log to inform about WxConfig's own log file.'
+    </change>
+    <change date="2013-12-30" type="feature" issueId="48049"
+		name="Unified validation for auto-setup configurations">
+		There is now a unified and configurable validation service
+		for auto-setup configuration.
+    </change>
+    <change date="2013-12-30" type="enhancement" issueId="45019"
+		name="Add information to license setting how a license 
+		can be obtained">
+		Below the license content there is now a short
+		instruction how to obtain licenses.
+    </change>
+    <change date="2013-12-26" type="fix" issueId="48054"
+		name="Auto-setup: Package listener does not fire if 
+		WxConfig gets reloaded">
+		Auto-setup was not triggered via package listener if
+		WxConfig itself was reloaded. This is now fixed.
+    </change>
+    <change date="2013-12-25" type="enhancement" issueId="48053"
+		name="Optimization for logging">
+		Special parameters in case of logging a success or failure
+		are only retrieved from the pipeline, if they are potentially
+		needed (codeSuccess and codeFailure are used). 
+    </change>
+    <change date="2013-12-22" type="enhancement" issueId="48037"
+		name="Orphaned keys: Analyze pipeline substitution for key">
+		By default entries where the key is built using runtime
+		pipeline variable substitution are now hidden. It is by
+		not possible to determine the value here, so these
+		instances are false positives for orphaned keys. There
+		is a link at the top of the page to also show entries
+		with variable substitution. 
+    </change>
+    <change date="2013-12-22" type="enhancement" issueId="42833"
+		name="Orphaned keys: Use service name + position in
+		Flow service for ignore list">
+		From now on the ignore list maintains separate entries
+		for each access to config values. Before, only the entire
+		service could be added; now it is the combination of
+		service and position within that service.
+    </change>
+    <change date="2013-12-22" type="enhancement" issueId="46577"
+		name="Use wx.config.impl.ui:buildOutputFromMessageList 
+		where possible">
+		Internal code improvement to avoid code duplication.
+    </change>
+    <change date="2013-12-21" type="fix" issueId="47708"
+		name="Adding a map step to the config sequence breaks
+		&quot;Config to Flow&quot;">
+		Adding a step type other than Invoke caused the UI of
+		"Config to Flow" to break. This is now fixed.
+    </change>
+    <change date="2013-12-21" type="enhancement" issueId="44469"
+		name="Log add/remove of values with level INFO">
+		Execution of wx.config.pub:addValue, wx.config.pub:removeValue,
+		and wx.config.pub:updateValue will be logged at level INFO now
+	    (was DEBUG). This improves the auditing, since changes are
+	    captured with the default log setting, which is INFO.
+    </change>
+    <change date="2013-12-21" type="enhancement" issueId="47511"
+		name="Auto-Setup scheduler: add &quot;target&quot; to template">
+		The template for schedulers now contains the target for
+		execution behavior in a cluster.
+    </change>
+    <change date="2013-12-21" type="fix" issueId="48035"
+		name="Assignment of execute ACL to services does not work">
+		There was a mapping error that caused the execute ACL to 
+		not be set. This is now fixed.
+    </change>
+    <change date="2013-12-21" type="fix" issueId="48034"
+		name="Invalid folder for ACL settings causes exception">
+		When an invalid was specified to assign an ACL, an exception was
+		thrown that stopped all further processing. This is now fixed
+		and an error will be logged (code: 310.31) that shows the
+		invalid folder.
+    </change>
+    <change date="2013-12-21" type="fix" issueId="48033"
+		name="Services to determine success of adding user/group/ACL fail">
+		The creation of local users, groups, and ACLs did only work for
+		WxConfig itself. The reason was that the services to determine
+		success or failure tried to query the respective reference message
+		from the package from which those objects were defined. Since those
+		packages naturally did not have those values, the entire chain
+		would fail. This is now fixed.
+    </change>
+    <change date="2013-11-17" type="enhancement" issueId="46082"
+		name="Link to show all files of package after creation of new file">
+		In addition to the direct links for editing/viewing a newly
+		created config file, there is now also one for listing all
+		config files of the respective package.
+    </change>
+    <change date="2013-11-17" type="feature" issueId="34908"
+		name="Aliases / logical names for file locations">
+		It is now possible to describe the location of a config file
+		by an alias (logical name). Compared to free-form input of
+		arbitrary paths, this ensures that files end up in pre-defined
+		locations. Also, people creating files do not need to know
+		the actual location. Finally, the same alias can point to
+		different paths on different machines/stages, which further
+		improves the staging capabilties.
+    </change>
+    <change date="2013-11-07" type="enhancement" issueId="46081"
+		name="Prevent deletion of wxconfig.cnf, if other config files exist">
+		It is no longer possible to accidentally delete a package's
+		main config file (wxconfig.cnf) while other config files
+		still exist.
+    </change>
+	<change date="2013-11-05" type="fix" issueId="46170"
+		name="Autosetup-JMS in multiple files is mixing indices">
+		If multiple autosetup-files are active at the same time, it is possible, 
+		that entries with the same indexed Xpath like autoConfig/jms/jndiAlias[1]
+		are mixing up attributes and created with corrupt values. The solution 
+		changed loops not to use indices. Autosetup-Elements are loaded only one
+		time with getDocumentList and loops are using the subDocuments instead of
+		reloading substructures with indices.
+    </change>
+	<change date="2013-11-03" type="enhancement" issueId="44772"
+		name="Removed unneeded code from update logic">
+		Unneeded code was removed from the logic underpinning
+		wx.config.pub:updateValue
+    </change>
+    <change date="2013-11-03" type="enhancement" issueId="46080"
+		name="Support WxMWS">
+		The functionality provided by WxCDS (create user, groups, and
+		rols in MWS) has been moved to a new package called 
+		WxMWS and also been extended. Since this will be the version going 
+		forward, WxConfig now has support for it. WxCDS is marked as
+		deprecated but will also work, although a warning will be logged.
+    </change>
+    <change date="2013-11-02" type="fix" issueId="46079"
+		name="Consolidation of multiple CRUD results does not check for null">
+		The logic to determine the overall result from several operations
+		did not check for NULL value. This is now fixed.
+    </change>
+    <change date="2013-11-02" type="fix" issueId="46078"
+		name="Logic to add values by refKey does not check whether 
+		file is active">
+		Only the first invocation worked, after that the modified file 
+		became unavailable until the automatic reload kicked in. This is
+		now fixed.
+    </change>
+    <change date="2013-11-02" type="fix" issueId="46077"
+		name="Multiple invocations of wx.config.pub:addValue do not work">
+		Only the first invocation worked, after that the modified file 
+		became unavailable until the automatic reload kicked in. This is
+		now fixed.
+    </change>
+    <change date="2013-11-02" type="fix" issueId="46076"
+		name="try-catch block in shutdown service does not work">
+		The "exit on" properties were all falsely set to "failure",
+		this is now fixed.
+    </change>
+    <change date="2013-11-02" type="fix" issueId="46075"
+		name="wx.config.pub:removeValue deletes from inactive files">
+		The service wx.config.pub:removeValue no longer deletes 
+		values from inactive files but only active ones.
+    </change>
+    <change date="2013-10-30" type="fix" issueId="39941"
+		name="Auto-setup JMS: nothing happens if no Broker server hostname defined">
+		geValueList Service now checks instead of the 
+		/autoConfig/jms/hostname the shortend key /autoConfig/jms.
+		The Problem is the second	XPath is a Xml-Subtree and not
+		a Value, so the getValueList returns null everytime.
+		Fixed by using getDocumentList instead of getValueList.
+    </change>
+	<change date="2013-10-29" type="enhancement" issueId="45877"
+		name="Autosetup of other ConnectionFactory-Types">
+		The current Implementation creates everytime a "normal" 
+		ConnectionFactory. It should be possible to choose another
+		ConnectionFactory, like XAConnectionFactory, as optional
+		parameter and the "normal" ConnectionFactory is only default.
+    </change>
+	<change date="2013-10-04" type="fix" issueId="44468"
+		name="wx.config.pub:addValue shows error after successfully 
+		adding encrypted value">
+		An error was shown after adding an encrypted value using
+		wx.config.pub:addValue .This is now fixed.
+    </change>
+    <change date="2013-10-01" type="enhancement" issueId="44410"
+		name="Retrieval of values with variable interpolation turned off">
+		It is now possible to retrieve values in a non-interpolated fashion.
+    </change>
+    <change date="2013-09-24" type="feature" issueId="43920"
+		name="Bulk-update of values">
+		It is now possible to update a number of values in one go
+		and get a consolidated result using the service
+		wx.config.pub:updateValuesBulk .
+    </change>
+    <change date="2013-09-18" type="enhancement" issueId="43594"
+		name="Move all environment-related configuration into 
+		environment.cnf">
+		The file environment.cnf now contains not only the type of
+		the environment for file inclusion purposes. It also holds
+		configuration data for displaying environment information
+		in the UI.
+    </change>
+    <change date="2013-09-18" type="enhancement" issueId="43595"
+		name="Handle environment.cnf as any other config file">
+		File is now included as any other. Some additional handling
+		is still required during package startup to avoid a
+		deadlock, but this is transparent.
+    </change>
+    <change date="2013-09-17" type="enhancement" issueId="43479"
+		name="Environment type not set - indicate how to set">
+		If the environment type is not set yet, a link is displayed
+		at the top the leads people to settings' page.
+    </change>
+    <change date="2013-09-16" type="enhancement" issueId="43402"
+		name="Auto-setup: Support for search attributes in Ehcache">
+		It is now possible to define search attributes for
+		caches that are created by WxConfig.
+    </change>
+    <change date="2013-09-15" type="enhancement" issueId="42832"
+		name="Warning in &quot;Show Values&quot; if interpolation 
+		cannot be resolved">
+		A warning sign is shown before values that contain an
+		unresolved interpolation.
+    </change>
+    <change date="2013-09-15" type="enhancement" issueId="43308"
+		name="Show files in list that have a non-resolvable interpolator">
+		A column was added for file lists, that shows whether a file
+		contains an unresolved interpolator.
+    </change>
+    <change date="2013-09-15" type="fix" issueId="43307"
+		name="Getting a value throws JXPathInvalidSyntaxException if 
+		interpolation cannot be resolved">
+		If an interpolator cannot be resolved, the error is logged
+		an the un-interpolated value returned.
+    </change>
+    <change date="2013-09-15" type="enhancement" issueId="43306"
+		name="Add try-catch to startup/shutdown service">
+		In order to easier spot issues (no need to check error log 
+		any more) a global try-catch block was added to the startup 
+		and shutdown services of the package.
+    </change>
+    <change date="2013-09-15" type="enhancement" issueId="43305"
+		name="File content interpolation: Add check if file exists">
+		If a file does not exist in the specified location or
+		cannot be read, specific error messages are logged
+		rather than a FileNotException.	
+    </change>
+    <change date="2013-09-15" type="enhancement" issueId="42930"
+		name="Display environment type in page head with 
+		different colors">
+		Working with different environments in parallel is now
+		much easier, because the name is shown at the top
+		in different colors. The display configuration can
+		be customized in 
+		./IntegrationServer/config/WxConfig/environment-display.xml		
+    </change>
+    <change date="2013-09-11" type="enhancement" issueId="43083"
+		name="When package is selected for file list, pre-select
+		this package for new config files">
+		When a new config file is created and a package is already
+		selected to list only files of that package, the same
+		package will be pre-selected for the new file.
+    </change>
+    <change date="2013-09-11" type="enhancement" issueId="43175"
+		name="Do not log errors for non-existent keys if 
+		&quot;noServiceException&quot; is true">
+		The services that query data from wx.config.pub now only
+		log an error if they would also throw a ServiceException.
+    </change>
+    <change date="2013-09-10" type="enhancement" issueId="43127"
+		name="Delete update-check scheduler on package shutdown 
+		rather then suspend it">
+		Instead of suspending and resuming, the scheduler for
+		update checks will now be deleted and re-created.
+		This avoids confusion when WxConfig is not active.
+    </change>
+    <change date="2013-09-10" type="fix" issueId="43123"
+		name="Auto-setup: Suspending an already suspended 
+		scheduler logs an error">
+		An additional check was added and a message is logged
+		(0340:0022), if the scheduler is already disabled.
+    </change>
+    <change date="2013-09-10" type="fix" issueId="43124"
+		name="Service invoked by update-check scheduler does 
+		not check whether check is enabled">
+		An additional check was added and a message is logged
+		(0600:0013), if the check is disabled.
+    </change>
+    <change date="2013-09-10" type="fix" issueId="43125"
+		name="File list has column &quot;PassMan&quot; but menu 
+		is &quot;Encrypted Values&quot;">
+		Column in file list was renamed to "Encrypted"
+    </change>
+	<change date="2013-09-06" type="feature" issueId="42891"
+		name="Extract adapter connection details from manually
+		configured connection">
+		It is now possible to use an existing adapter connection
+		(configured via UI) as a starting point for defining a
+		connection in XML format for auto-setup. Menu is
+		"Development / Extract Adapter Connection"
+    </change>
+	<change date="2013-08-30" type="enhancement" issueId="42747"
+		name="Setting to hide WxConfig's files and values 
+		shall include WxConfigTest">
+		The setting "Show Files and Values of WxConfig" now also
+		includes WxConfigTest (list can be extended via property
+		"showWxConfigFiles.includePkg")		
+	</change>
+	<change date="2013-08-30" type="enhancement" issueId="42794"
+		name="Issue log statement if a package cannot be scanned 
+		due to ACL">
+		If the browse ACL does not allow to scan the package,
+		WxConfig will never look into it whether a config file
+		exists or not. This will now be logged with key (0001:0007).
+	</change>
+	<change date="2013-08-29" type="fix" issueId="42785"
+		name="Adding a key with a white space causes an NPE">
+		The null-pointer exception is caught now.
+	</change>
+	<change date="2013-08-29" type="enhancement" issueId="42749"
+		name="Set key-value separator to &quot;=&quot; 
+		only (no colon or white space)">
+		Since everybody uses "=" in property files to separate
+		key and value, this will be the only allowed separator.
+		Removing colon and white space means that both can be used
+		as part of the key. They still need to be escaped when
+		entered manually; but when added programmatically this
+		is done automatically. 
+	</change>
+	<change date="2013-08-27" type="fix" issueId="42596"
+		name="File reload after edit shows no effect when edit 
+		was started from &quot;Show Values&quot;">
+		Different variable names in the DSPs are used. 
+		This is now fixed.
+	</change>
+	<change date="2013-08-24" type="fix" issueId="42429"
+		name="wx.config.pub:getValue throws NPE for empty results">
+		When noServiceException=true and no result is found,
+		a null-pointer exception was thrown due to a missing 
+		check for NULL.	This is now fixed.
+	</change>
+	<change date="2013-08-17" type="feature" issueId="33668"
+		name="License Manager">
+		There is now a license manager to track usage. 
+	</change>
+	<change date="2013-08-05" type="feature" issueId="41327"
+		name="Autosetup for Proxies">
+		Autosetup of Proxies is implemented. Usage is analog to
+		schedulers, ehacahe,.... 
+	</change>
+	<change date="2013-07-14" type="enhancement" issueId="40466"
+		name="Update settings can be changed with 
+		automatic update disabled">
+		Users who want to check for updates only manually and 
+		not via the scheduler can now enter the required 
+		parameters, even if automatic update is disabled.
+	</change>
+	<change date="2013-07-11" type="fix" issueId="40417"
+		name="wx.config.impl.util.passman:passmanDisplay 
+		exits with NPE">
+		XML config files may contain text that during the 
+		scan for existing keys causes an XPath exception. 
+		The latter triggers a null-pointer exception in
+		wx.config.impl.util.passman:passmanDisplay.
+		This is now fixed.
+	</change>
+	<change date="2013-07-06" type="fix" issueId="40258"
+		name="wx.config.pub:updateValue: Error when trying to 
+		update empty XML element">
+		When trying to update an empty XML element a
+		null-pointer exception was thrown. This is now fixed.
+	</change>
+	<change date="2013-07-04" type="fix" issueId="40180"
+		name="Startup without any scheduler throws Exception">
+		The merge of list of schedulers failed, when first list
+		was empty.
+	</change>
+	<change date="2013-07-01" type="enhancement" issueId="40062"
+		name="Auto-update: Allow to remove error message">
+		When the settings UI is invoked after an erroneous
+		try to check for updates, the update status is cleared
+		so that no error message is shown any more.
+	</change>
+	<change date="2013-06-27" type="fix" issueId="39941"
+		name="Auto-setup JMS: Broker hostname required
+		even for pure IS-related activity">
+		The "autoConfig/jms/hostname" (for Broker server)
+		element had to be defined, even if no Broker-related
+		activity was carried out. This is now fixed.
+	</change>
+	<change date="2013-06-21" type="fix" issueId="39818"
+		name="Config to Flow Service: key not dropped 
+		from pipeline for global values">
+		The key was not dropped from the pipeline in the
+		generated invocations of wx.config.pub:getValue
+		etc. This is now fixed.
+	</change>
+	<change date="2013-06-21" type="fix" issueId="39812"
+		name="Config to Flow Service: values from hidden 
+		files falsely seen as global values">
+		In the list of available values, those from hidden
+		files were treated as global values, even if they
+		were not. This is fixed by a dedicated attribute per 
+		key that determines whether it is global or not.
+	</change>
+	<change date="2013-06-21" type="fix" issueId="39803"
+		name="File with ignored services for orphaned keys 
+		can only be edited once services were added">
+		The file is now created automatically, if missing,
+		as part of the package startup process.
+	</change>
+	<change date="2013-06-20" type="feature" issueId="38358"
+		name="Log threshold for screen output configurable">
+		The message output on the screen is controlled by the 
+		threshold of the normal logging categories. There is
+		now an additional filter/threshold configurable only 
+		for the screen output (category 0910). 
+		It will be applied on top of
+		the threshold of the loggers.
+		This will avoid cluttering the screen
+	</change>
+	<change date="2013-06-15" type="enhancement" issueId="39601"
+		name="Show status of &quot;ignoreGlobalValues&quot;
+		in key usage details">
+		When looking at the details of key usage an additional
+		column shows if "ignoreGlobalValues" is set.
+	</change>
+	<change date="2013-06-15" type="fix" issueId="38385"
+		name="shwoValues.dsp had false positives on 
+		cross-package use of keys">
+		Fixed by adding additional comparison of provided
+		package with current package.
+	</change>
+	<change date="2013-06-13" type="fix" issueId="39318"
+		name="getValueList/shwoValues.dsp only list values
+		from first file">
+		The getStringArray(String) method from Apache Commons
+		Configuration only returns values from the first
+		sub-configuration. Added logic to check on all
+		sub-configurations.
+	</change>
+	<change date="2013-06-09" type="fix" issueId="38953"
+		name="getDocumentList puts data fom different 
+		files in separate IData">
+		Adjusted logic slightly to fix this.
+	</change>
+	<change date="2013-06-08" type="fix" issueId="38833"
+		name="Auto-setup: false errors logged for Ehcache">
+		Rather than relying on the status output of the
+		built-in services (which can be misleading in the
+		context of auto-setup), a catalog with results messages
+		was added that constitute success.
+	</change>
+	<change date="2013-06-05" type="enhancement" issueId="39132"
+		name="Usability improvements for &quot;Config to Flow&quot;">
+		Added explanations how this works. Cursor is now placed
+		directly into the input field for the service name.
+		Error is shown, if service does not exist.
+	</change>
+	<change date="2013-06-05" type="feature" issueId="34335"
+		name="Samples">
+		There is now a sample package that can be installed
+		from within the WxConfig UI (Info / Samples).
+	</change>
+	<change date="2013-06-01" type="feature" issueId="38949"
+		name="PackageListener to add/remove configuration">
+		When packages are loaded or unloaded, it is no longer
+		necessary to manually perform a re-scan to add/remove
+		the package's configuration. This is done automatically 
+		using a PackageListener.
+	</change>
+	<change date="2013-06-01" type="feature" issueId="34008"
+		name="Auto-setup: Groups for Central Users">
+		Groups can be created/removed for Central Users
+	</change>
+	<change date="2013-05-31" type="feature" issueId="37081"
+		name="Auto-setup: File permissions">
+		The allow-paths for file services in WmPublic (persisted
+		in $IS_HOME/packages/WmPublic/config/fileAccessControl.cnf)
+		can be updated.
+	</change>
+	<change date="2013-05-30" type="feature" issueId="38275"
+		name="Auto-setup: UI">
+		Dedicated UI to work with auto-setup: enable/disable; 
+		add/delete files; execute test-runs for package
+		startup/shutdown/reload 
+	</change>
+	<change date="2013-05-27" type="fix" issueId="38687"
+		name="Conditional File Inclusion: 'Linux or Unix' condition">
+		Removed logic, which was not working properly. No functional 
+		reduction, since the Unix filter is also true for Linux.
+	</change>
+	<change date="2013-05-17" type="feature" issueId="38275"
+		name="Auto-setup: Trigger execution via property">
+		Instead of having to define startup/shutdown services for
+		auto-setup, this can now be turned on by a special property
+		(wx.config.autoSetup.execute=true)
+	</change>
+	<change date="2013-05-14" type="fix" issueId="38128"
+		name="Message of wx.config.pub:updateValue refers to wrong file">
+		Message of wx.config.pub:updateValue refered to wrong file, 
+		if file is external to package.
+	</change>
+	<change date="2013-05-13" type="fix" issueId="36111"
+		name="Package selection ignored after file deletion/rename in UI">
+		A selected package was not handed over properly to rename/
+		delete operations.
+	</change>
+	<change date="2013-04-28" type="feature" issueId="34907"
+		name="Global values">
+		Files can be declared to contain global values. Those
+		can be retrieved from any package without any additional
+		configuration.
+	</change>
+	<change date="2013-04-10" type="fix" issueId="35959"
+		name="Bug at createClientGroup">
+		Re-created service signatures (silently removed by faulty Designer
+		installation), which had caused input validation exceptions
+	</change>
+	<change date="2013-03-31" type="fix" issueId="36100"
+		name="Show all files for key" >
+		The logic in showValues.dsp (and the underlying service 
+		wx.config.impl.ui:getValuesForPackage) until now only returned 
+		the first file and also did not check whether it is active or 
+		not. The net effect was that if a key was defined in multiple files,
+		the first file was shown, even if the value was taken from
+		another one. Now all files are returned including a flag whether 
+		they are active.
+	</change>
+	<change date="2013-03-31" type="enhancement" issueId="36102"
+		name="Refresh for list 'Files'" >
+		There is now a refresh button available for the list 'Files' 
+		functionality.
+	</change>
+	<change date="2013-03-30" type="feature" issueId="31554"
+		name="Rename config files">
+		It is now possible to rename config files in the UI.
+	</change>
+	<change date="2013-03-28" type="fix" issueId="35959"
+		name="Bug at createClientGroup">
+		default storage type, doesn't work when storage type is not 
+		set in the client-group xml-description. Difference between 
+		declared clientgroup-documents and java-service.
+	</change>
+	<change date="2013-03-16" type="feature" issueId="35357"
+		name="Refresh for 'Show Values'" >
+		There is now a refresh button available for the 'Show Values' 
+		functionality.
+	</change>
+	<change date="2013-03-12" type="enhancement" issueId="35286"
+		name="updateValue: Throw error for list and no oldValue" >
+		When the key provided returns a list and no oldValue is provided,
+		all list entries would be replaced by single one containing
+		the new value. This is prevented and an error thrown.
+	</change>
+	<change date="2013-03-12" type="enhancement" issueId="35283"
+		name="updateValue: change one value from list" >
+		When the key provided returns a list it is now possible to
+		provide the old value that shall be replaced.
+	</change>
+	<change date="2013-03-10" type="enhancement" issueId="35155"
+		name="File list: Last Save Date" >
+		The column with the date/timestamp of the last save operation
+		was moved to the right and can be hidden from the
+		Settings/Main screen.
+	</change>
+	<change date="2013-03-08" issueId="35082" type="feature"
+		name="Variable interpolation to read value from other package" >
+		It is now possible to reference values from other packages with the
+		interpolator "${pkg:packageName;key}".
+	</change>
+	<change date="2013-03-07" issueId="34421" name="Auto-setup: JNDI with BasicAuthentification on Broker" type="fix">
+		Minor bugs fixed.
+	</change>
+	<change date="2013-03-07" issueId="34962" name="Interpolation for wx.config.pub:getDocumentList" type="fix">
+		Encrypted passwords worked in most but not all situations; 
+		no other kind of interpolation worked. This is now fixed.
+	</change>
+	<change date="2013-03-05" type="fix" issueId="34890" 
+		name="Deal with invalid XML files when showing values">
+		Invalid XML files no longer cause a null-pointer exception
+		(NPE) when showing the values of a package.
+	</change>
+	<change date="2013-03-05" type="feature" issueId="34768" 
+		name="Add inactive file to list">
+		One can now add a file to the list shown in the main overview
+		without loading it (key is "wx.config.incl.inactive=").
+		This file can then easily be edited without going to
+		the file system.
+	</change>
+	<change date="2013-03-02" type="enhancement" issueId="34771" 
+		name="Config to Flow: Direct links to package files, values, and latest service">
+		After having added values to a service, it is now possible 
+		to switch directly to the files and values
+		of the package the service belongs to. Also
+		a direct link is shown to add more values to the same
+		service.
+	</change>
+	<change date="2013-03-01" type="enhancement" issueId="34686" 
+		name="Config to Flow: Support for CTRL-S">
+		It is now possible to simply press CTRL-S to add the selected
+		configuration values to a Flow service. This means that it is
+		no longer required to scroll down to the bottom of the
+		potentially long page to finish the operation.
+	</change>
+	<change date="2013-02-28" type="feature" issueId="33103" 
+		name="Auto-setup: Adapter connections">
+		Adapter connections (for WmART-based adapters) can be 
+		created or updated.
+	</change>
+	<change date="2013-02-28" type="enhancement" issueId="33960" 
+		name="Auto-setup: Support update of enabled JMS connection alias">
+		An existing JMS connection alias will be restarted to
+		make new settings effective immediately.
+	</change>
+	<change date="2013-02-27" type="enhancement" issueId="33964" 
+		name="Auto-setup: ACL for client groups">
+		ACLs can be configured for client groups on the Broker.
+	</change>
+	<change date="2013-02-27" type="enhancement" issueId="34421" 
+		name="Auto-setup: Basic auth for JNDI">
+		Basic authentication can be applied	to objects
+		created on the Broker.
+	</change>
+	<change date="2013-02-25" type="enhancement" issueId="34416" 
+		name="Auto-setup: JMS connection alias security">
+		Connections done via the webMethods API can now be
+		secured with SSL and user/password.
+	</change>
+	<change date="2013-02-19" type="feature" issueId="34132" 
+		name="Auto-setup: Groups for Central Users">
+		It is now possible to create/remove groups for
+		Central Users. This requires a build of the WxCDS
+		package from Feb 19, 2013 or newer.
+	</change>
+	<change date="2013-02-18" type="feature" issueId="34070" 
+		name="Editor: Allow save with CTRL-S">
+		It is now possible to save the config file by
+		pressing CTRL-S. 
+	</change>
+	<change date="2013-02-17" type="feature" issueId="33734" 
+		name="Log levels configurable in UI">
+		It is now possible to configure the 
+		log levels for the different facilities in the UI.  
+	</change>
+	<change date="2013-02-16" type="feature" issueId="34069" 
+		name="Dedicated menu part for settings">
+		There is now a separate menu part for settings.   
+	</change>
+	<change date="2013-02-16" type="feature" issueId="34066" 
+		name="Dedicated logger per area of concern">
+		Each facility now has its own logger. This allows to
+		set the threshold individually and gives a more
+		granular control.   
+	</change>
+	<change date="2013-02-15" type="enhancement" issueId="33999" 
+		name="More accurate log levels from auto-setup ACL operations">
+		The log level for adding users, groups, and ACLs is
+		no longer always set to error (to make sure that
+		nothing is missed) but no analyzes the output message
+		and sets the log level accordingly 
+	</change>
+	<change date="2013-02-15" type="enhancement" issueId="34059" 
+		name="Reduce log output regarding file reload interval">
+		The amount of log output regarding the interval to
+		check for file modifications has been reduced.
+	</change>
+	<change date="2013-02-15" type="feature" issueId="33667" 
+		name="Log based on catalog">
+		Instead of sending free text to the log file, the
+		messages are now based on a well-defined catalog.
+		Also, the output no longer goes to server.log 
+		but into a dedicated log file (WxConfig.log).
+	</change>
+	<change date="2013-02-09" type="feature" issueId="15397" 
+		name="Find all Flow services that use certain key">
+		In the list of values for a package, there is now a counter
+		indicating how often a key is used. If the counter is not
+		zero, there is a magnifying glass next to it. Clicking
+		there brings up a list with all the Flow services using the
+		key. Also the position within those Flow services is shown.
+	</change>
+	<change date="2013-01-26" type="enhancement" issueId="33021" 
+		name="Update: Multiple release channels">
+		It is now possible to choose between multiple release
+		channels (e.g. trunk, v1.0) for update checks.
+	</change>
+	<change date="2013-01-26" type="enhancement" issueId="33012" 
+		name="Update: Anonymous access">
+		It is now possible to access the update URL anonymously.
+	</change>
+	<change date="2013-01-24" type="feature" issueId="31552" 
+		name="Remember package selection in UIs">
+		It is now possible to seamlessly switch between the following
+		dialogues while preserving the package selection:
+		file list, show values, view file, edit file.
+		Also, links were added to directly start editing a file
+		instead of first having to view it and then start the edit.
+	</change>
+	<change date="2013-01-24" type="feature" issueId="30216" 
+		name="Auto-setup: Extended settings">
+		Extended settings can be added, updated, and removed.
+		Independently their visibility can be changed (show or hide
+		values in editor of IS admin console).
+	</change>
+	<change date="2013-01-24" type="enhancement" issueId="32639" 
+		name="Auto-setup: Ehcache optional fields">
+		Template completed and deprecated fields removed.
+	</change>
+	<change date="2013-01-24" type="fix" issueId="32883" 
+		name="Auto-setup: Ehcache with single cache manager">
+		The behavior that the logic did not work for a single
+		cache manager is fixed.
+	</change>
+	<change date="2013-01-24" type="fix" issueId="32996" 
+		name="New file template editor shows interpolators">
+		The interpolators (e.g. ${sys:os.name}) are not executed any more,
+		instead the plain file content is shown.
+	</change>
+	<change date="2013-01-22" type="enhancement" issueId="32079" 
+		name="Remove inclusions when deleting a config file">
+		When a file is deleted, for which an inclusion exists, this
+		inclusion is also removed. The to-be-removed inclusion is
+		shown together with the content when the user confirmation
+		is asked for confirmation to delete the file.
+	</change>
+	<change date="2013-01-21" type="feature" issueId="32806" 
+		name="Variable interpolation for current date/time">
+		It is now possible to use the current date/time with the new
+		interpolator "${date:[FORMAT]}". Format is optional (default defined
+		in wx.config.dateInterpolator.defaultFormat) and follows the
+		format of java.text.SimpleDateFormat
+	</change>
+	<change date="2013-01-19" type="enhancement" issueId="32794" 
+		name="Conditional File Inclusion: 'Linux or Unix' condition">
+		In addition to distinct conditions for Linux and Unix, there is
+		now one for either OS.
+	</change>
+	<change date="2013-01-18" type="enhancement" issueId="32708" 
+		name="Update: integrated installation">
+		The self-update no longer uses the standard package management DSP
+		but brings its own.
+	</change>
+	<change date="2013-01-18" type="enhancement" issueId="32709" 
+		name="Expand menus on startup">
+		All menus are displayed expanded when the WxConfig page opens up.
+	</change>
+	<change date="2013-01-18" type="fix" issueId="32717" 
+		name="Property for file reload interval">
+		The property is now adjusted to the package namespace convention
+		("wx.config.reloadInterval").
+	</change>
+	<change date="2013-01-18" type="enhancement" issueId="32691" 
+		name="Allow removal of specific property from list">
+		When a key is defined multiple times, it is now possible to 
+		specify not only the key but also the value, which is to be deleted.
+		The default behavior (from Apache Commons Configuration) is to
+		delete all occurrences of the key.
+	</change>
+	<change date="2013-01-17" type="fix" issueId="32651" 
+		name="Success check for changes (add, delete, update value) works for lists">
+		When a value is added/updated/deleted the result check only worked
+		if the key did not exist multiple times, i.e. it did not work for
+		lists. This is now fixed.
+	</change>
+	<change date="2013-01-17" type="fix" issueId="32647" 
+		name="Create new config file: check result from adding inclusion">
+		When a newly created config file is added for inclusion from
+		wxconfig.cnf, the return status is now checked and any error message
+		shown on the screen.
+	</change>
+	<change date="2013-01-17" type="fix" issueId="32646" 
+		name="Create new config file: check result from save">
+		When the contents of the new config file are saved,
+		the return status is now checked and any error message
+		shown on the screen.
+	</change>
+	<change date="2013-01-16" type="enhancement" issueId="32639" 
+		name="Auto-setup: Ehcache optional fields">
+		All optional fields (esp. around persistence and timeouts)
+		are now supported.
+	</change>
+	<change date="2013-01-16" type="enhancement" issueId="24208" 
+		name="Search for config sequence not only at beginning of Flow">
+		The sequence containing all queries to WxConfig is now detected
+		wherever it is located in the Flow service. 
+	</change>
+	<change date="2013-01-16" type="feature" issueId="13968" 
+		name="Default content of new config files configurable">
+		It is now possible to change the content that newly created
+		files have (if they are not created using another file as template).
+		This helps people to follow corporate or project guidelines.
+	</change>
+	<change date="2013-01-16" type="fix" issueId="32579" 
+		name="Show Values causes 'null' entry in error log">
+		When switching to "Show Values" it is now checked whether a
+		package is set before calling the service to retrieve the values.
+		Also, the respective service now validates the input.
+	</change>
+	<change date="2013-01-15" type="fix" issueId="32570" 
+		name="Update: properties for check result missing">
+		The empty properties to store the result of the update check
+		are available in update.cnf again.
+	</change>
+	<change date="2013-01-15" type="fix" issueId="32562" 
+		name="Update settings: fields wrongly active on load">
+		Even with update checks disabled, the fields for URL and credentials were
+		active. This is fixed now.
+	</change>
+	<change date="2013-01-15" type="fix" issueId="32493" 
+		name="Auto-setup: Correct log level for delete of local users/groups/ACLs">
+		When a local user, group, or ACL cannot be deleted as part of the re-creation 
+		on package startup, there are cases when those objects should not exist,
+		because they have been deleted as part of the shutdown of the exact same package. 
+		In that case their non-existence is not an error but expected. 
+		This is now reflected in the log level and log message.
+	</change>
+	<change date="2013-01-15" type="enhancement" issueId="32481" 
+		name="Log value of key not found for update/remove of value">
+		If wx.config.pub:removeValue or wx.config.pub:updateValue are called with a 
+		key that cannot be found in any currently active file, the error logged
+		now contains that key.
+	</change>
+	<change date="2013-01-15" type="enhancement" issueId="32444" 
+		name="Access for Administrators group">
+		By default the Administrators group gets access to all functions of WxConfig
+		(so far only the user Administrator was	granted this).
+	</change>
+	<change date="2013-01-14" type="fix" issueId="32390" 
+		name="Conditional File Inclusion: Schedulers to unload for date/time runs on any server">
+		Following the logic of the standard scheduler UI, the schedulers are set up to
+		run on the "current" machine only
+	</change>
+	<change date="2013-01-14" type="fix" issueId="32375" 
+		name="Conditional File Inclusion: Multiple schedulers to unload for date/time">
+		If a file was to be unloaded in the future, the respective scheduler was created 
+		on each package (re-)load
+	</change>
+	<change date="2013-01-13" type="enhancement" issueId="32293" name="Self-update: Show errors">
+		When the update check fails (e.g. wrong credentials or URL) this is saved and
+		shown in the UI
+	</change>
+	<change date="2013-01-13" type="fix" issueId="32332" name="updateValue with NULL removes key">
+		Instead of removing the key a message is returned by default. Optionally the key
+		can still be removed from the file. Also, additional checks for NULL were added. 
+	</change>
+	<change date="2013-01-13" type="enhancement" issueId="32117" name="Auto-setup: JMS trigger">
+		Added all possible parameters at the trigger creation as optional parameters. 
+	</change>
+	<change date="2013-01-10" type="fix" issueId="32278" name="Folders created in packages folder">
+		Fixed wrong creation of directories directly in IntegrationServer/packages 
+	</change>
+	<change date="2013-01-10" type="fix" issueId="32214" name="NullPointerException while creating config file">
+		Occured when creating a config file for a package without dependencies to other packages 
+	</change>
+	<change date="2013-01-09" type="fix" issueId="32184" name="Self-update: Save disabled">
+		Saving disabled self-update without an update URL caused an error in the UI 
+	</change>
+	<change date="2013-01-05" type="enhancement" issueId="26999" name="Documentation: Info">
+		The "Info" pages now contain basic information on staging and auto-setup 
+	</change>
+	<change date="2013-01-05" type="feature" issueId="31800" name="Auto-update WxConfig: Improvements">
+		Credentials "survive" the update; About page supports immediate check for updates;
+		existing password detected, so no need to provide it while changing other settings
+	</change>
+	<change date="2013-01-05" type="feature" issueId="30055" name="Conditional File Inclusion: webMethods Version">
+		Allow inclusion of files for specific version (major, minor, service-pack) of webMethods Integration Server
+	</change>
+	<change date="2013-01-04" type="feature" issueId="30055" name="Conditional File Inclusion: UI">
+		Added conditions to UI for creating new config files
+	</change>
+	<change date="2013-01-04" type="feature" issueId="30055" name="Conditional File Inclusion: Operating System">
+		Allow inclusion of files for specific operating system (Windows, Linux, Unix)
+	</change>
+	<change date="2013-01-03" type="feature" issueId="32031" name="Editor">
+		Instead of a simple textarea field, there is now a full-blown editor (ACE).
+	</change>
+	<change date="2013-01-02" type="feature" issueId="31987" name="Auto-setup: assign ACLs to service">
+		ACLs (execute, browse, read, write) can be assigned to all services in folder 
+		(with or without recursion of sub-folders). Exclusion of individual services
+		possible.
+	</change>
+	<change date="2012-12-30" type="feature" issueId="31987" name="Auto-setup: assign ACLs to service">
+		ACLs (execute, browse, read, write) can be assigned to services.
+	</change>
+	<change date="2012-12-29" type="feature" issueId="24981" name="Show used keys in 'Config To Flow'">
+		An additional column shows a green check, if a key is already used in the
+		config sequence at the top of a service.
+	</change>
+	<change date="2012-12-28" type="feature" issueId="31980" name="Show Changes in About">
+		Show list of recent changes in about.dsp
+	</change>
+	<change date="2012-12-28" type="fix" issueId="31971" name="Reload after Edit">
+		File and configuration reload didn't work after saving a file. 
+	</change>
+	<change date="2012-12-24" type="feature" issueId="31800" name="Auto-update WxConfig">
+		WxConfig now contains the functionality to self-update itself
+		from an arbitrary URL (usually LabCase) using configurable
+		credentials.
+	</change>
+</changeList>

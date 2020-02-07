@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Values version="2.0">
+  <value name="name">switchTag</value>
+  <array name="sig" type="value" depth="1">
+    <value>[i] field:0:optional debug</value>
+    <value>[i] field:0:required sessionId</value>
+    <value>[i] field:0:required action</value>
+    <value>[i] field:0:required variable</value>
+  </array>
+  <value name="sigtype">java 3.5</value>
+  <value name="encodeutf8">true</value>
+  <value name="body">CklEYXRhTWFwIHBpcGVNYXAgPSBuZXcgSURhdGFNYXAocGlwZWxpbmUpOwkJCQkKSURhdGEgcmVx
+dWVzdCA9IHBpcGVsaW5lOwoKYm9vbGVhbiBkZWJ1ZyA9IGdldERlYnVnKCBwaXBlTWFwICk7CQkK
+U3RyaW5nIHNlc3Npb25JZCA9IGdldFNlc3Npb25JZCggcGlwZU1hcCApOwpTdHJpbmcgYWN0aW9u
+ID0gZ2V0QWN0aW9uKCBwaXBlTWFwICk7ClN0cmluZyB0YWdTdmNOYW1lID0gZ2V0VGFnU3ZjTmFt
+ZShwaXBlTWFwKTsKClN0cmluZyB2YXIgPSBwaXBlTWFwLmdldEFzU3RyaW5nKCAidmFyIiApOyAv
+LyBDb25zdGFudHMuVkFSSUFCTEVfUCAKCgoKSlNQU3dpdGNoVG9rZW4gdG9rZW4gPSBudWxsOwoK
+UmVwb3J0ZXIgcmVwb3J0ZXIgPSBKU1BNYW5hZ2VyLmdldEluc3RhbmNlKCkuZ2V0UmVwb3J0ZXIo
+c2Vzc2lvbklkLCB0YWdTdmNOYW1lKTsKaWYgKCByZXBvcnRlciA9PSBudWxsICkgewoJcmVwb3J0
+ZXIgPSBKU1BNYW5hZ2VyLmdldEluc3RhbmNlKCkuY3JlYXRlUmVwb3J0ZXIoc2Vzc2lvbklkLCB0
+YWdTdmNOYW1lLCByZXF1ZXN0KTsKfQkJCQpyZXBvcnRlci5zZXRXcml0ZXIoIGdldFdyaXRlcigg
+cGlwZU1hcCApICk7CgppZiAoIGRlYnVnICkgewoJU3lzdGVtLmVyci5wcmludGxuKFN0cmluZy5m
+b3JtYXQoIlxuWyVzXTolcyIsICJzd2l0Y2hUYWciLCBuZXcgamF2YS51dGlsLkRhdGUoKSkpOwoJ
+U3lzdGVtLmVyci5wcmludGxuKFN0cmluZy5mb3JtYXQoIlJlcG9ydGVyOiAlcyIsIHJlcG9ydGVy
+KSk7CglTeXN0ZW0uZXJyLnByaW50bG4oU3RyaW5nLmZvcm1hdCgiU2Vzc2lvbklkOiAlcyIsIHNl
+c3Npb25JZCkpOwoJU3lzdGVtLmVyci5wcmludGxuKFN0cmluZy5mb3JtYXQoImFjdGlvbjogJXMi
+LCBhY3Rpb24pKTsKCVN5c3RlbS5lcnIucHJpbnRsbihTdHJpbmcuZm9ybWF0KCJWYXJzOiB2YXI9
+JXMiLCB2YXIgKSk7CglTeXN0ZW0uZXJyLnByaW50bG4oU3RyaW5nLmZvcm1hdCgiY3VycmVudFRv
+a2VuOiAlcyIsIEpTUE1hbmFnZXIuZ2V0SW5zdGFuY2UoKS5nZXRUZW1wbGF0ZVRva2VuKHNlc3Np
+b25JZCwgdGFnU3ZjTmFtZSkpKTsKfQoKaWYgKCAic3RhcnQiLmVxdWFscyhhY3Rpb24pKSB7Cgl0
+b2tlbiA9IG5ldyBKU1BTd2l0Y2hUb2tlbih2YXIpOwoJdG9rZW4uZXZhbChyZXBvcnRlcik7CglK
+U1BNYW5hZ2VyLmdldEluc3RhbmNlKCkudXBkYXRlVG9rZW4oIHNlc3Npb25JZCwgdGFnU3ZjTmFt
+ZSwgdG9rZW4pOwoJdG9rZW4uZ2V0TWF0Y2gocmVwb3J0ZXIsIHZhcik7CgkKfSBlbHNlIHsKCQp9
+Cgo=</value>
+</Values>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Values version="2.0">
+  <value name="shared">CQ0KCQ0KCQ0KCQ0K</value>
+  <value name="encodeutf8">true</value>
+  <array name="imports" type="value" depth="1">
+    <value>java.util.ArrayList</value>
+    <value>java.util.Collections</value>
+    <value>java.util.List</value>
+    <value>java.util.Set</value>
+    <value>org.apache.logging.log4j.LogManager</value>
+    <value>com.softwareag.wx.is.config.Access</value>
+    <value>com.softwareag.wx.is.config.WxConfig</value>
+    <value>com.softwareag.wx.is.config.autoSetup.AutoSetupResources</value>
+    <value>com.softwareag.wx.is.config.log.CfgLog</value>
+    <value>com.softwareag.wx.is.config.log.FacilitiesBundle</value>
+    <value>com.softwareag.wx.is.config.log.LogFileReader</value>
+    <value>com.softwareag.wx.is.config.log.LogMessage</value>
+    <value>com.softwareag.wx.is.config.log.MessageBundle</value>
+  </array>
+</Values>

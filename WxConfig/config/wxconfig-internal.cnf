@@ -1,0 +1,136 @@
+#show.info.menu=true
+
+
+accessConfigValuesService=wx.config.pub:getValue
+accessConfigValuesService=wx.config.pub:getValueList
+accessConfigValuesService=wx.config.pub:getDocumentList
+accessConfigValuesService=wx.config.pub:addValue
+accessConfigValuesService=wx.config.pub:addDocument
+accessConfigValuesService=wx.config.pub:removeValue
+accessConfigValuesService=wx.config.pub:removeDocument
+accessConfigValuesService=wx.config.pub:updateValue
+
+ignoreOrphanedKeysPath=${package.cfg.dir}/ignore-list-orphaned-keys.cnf
+ignoreOrphanedKeysNewFileContents=# This file contains items to be skipped when checking for potentially orphaned keys
+ignoreOrphanedKeysNewFileContents=#
+ignoreOrphanedKeysNewFileContents=# Format:  PACKAGE_NAME/SERVICE_NAMESPACE
+ignoreOrphanedKeysNewFileContents=
+
+# XML elements for which an array must be created in IData
+# (typically used by wx.config.pub:getDocumentList)
+
+# Auto-Setup for Web Services
+wx.config.makeArray.autoSetup.ws=providerEndpoint
+wx.config.makeArray.autoSetup.ws=attributes
+wx.config.makeArray.autoSetup.ws=referenceParameters
+wx.config.makeArray.autoSetup.ws=elements
+wx.config.makeArray.autoSetup.ws=extensibleElements
+wx.config.makeArray.autoSetup.ws=responseToMap
+wx.config.makeArray.autoSetup.ws=consumerEndpoint
+wx.config.makeArray.autoSetup.ws=messageAddressingEndpoint
+
+
+wx.config.autoSetup.jdbc.poolAlias.logCode.create.success=5
+wx.config.autoSetup.jdbc.poolAlias.logCode.create.failure=6
+wx.config.autoSetup.jdbc.poolAlias.logCode.update.success=7
+wx.config.autoSetup.jdbc.poolAlias.logCode.update.failure=8
+
+
+wx.config.autoSetup.jdbc.functionalAlias.logCode.create.success=15
+wx.config.autoSetup.jdbc.functionalAlias.logCode.create.failure=16
+wx.config.autoSetup.jdbc.functionalAlias.logCode.update.success=17
+wx.config.autoSetup.jdbc.functionalAlias.logCode.update.failure=18
+
+wx.config.autoSetup.jdbc.functionalAlias.messageNoExecuteSql=No SQL execution configured
+
+
+#The following file is the main file per package and such never needs inclusion
+wx.config.mainFile=wxconfig.cnf
+
+# Property keys to use when auto-including a new config file
+wx.config.includeFile.key.Global=${const:com.softwareag.wx.is.config.file.ConfigFileFinder.KEY_AUTOINCL_FILES}
+wx.config.includeFile.key.Environment=${const:com.softwareag.wx.is.config.file.ConfigFileFinder.KEY_ENV_FILES}
+wx.config.includeFile.key.Host=${const:com.softwareag.wx.is.config.file.ConfigFileFinder.KEY_HOST_FILES}
+wx.config.includeFile.key.HostPort=${const:com.softwareag.wx.is.config.file.ConfigFileFinder.KEY_HOST_PORT_FILES}
+
+# Keys that will be ignored by "Config to Flow"
+wx.config.key.ignoreForAddToFlow=${wx.config.includeFile.key.Global}
+wx.config.key.ignoreForAddToFlow=${wx.config.includeFile.key.Environment}
+wx.config.key.ignoreForAddToFlow=${wx.config.includeFile.key.Host}
+wx.config.key.ignoreForAddToFlow=${wx.config.includeFile.key.HostPort}
+
+# Encrypted values that shall be excluded from logging of they are undefined
+wx.config.encrypted.skipLogForMissingHandle=updatePassword
+
+# When creating a new config file, these packages will be excluded 
+# from the drop-down list for the target packages
+
+wx.config.newFile.ignorePkg=PSUtilities
+wx.config.newFile.ignorePkg=PSUtilities2_3
+wx.config.newFile.ignorePkg=CentraSiteAdapter
+wx.config.newFile.ignorePkg=CentraSiteAdapterSamples
+wx.config.newFile.ignorePkg=Default
+wx.config.newFile.ignorePkg=PSUtilities
+wx.config.newFile.ignorePkg=WmART
+wx.config.newFile.ignorePkg=WmARTExtDC
+wx.config.newFile.ignorePkg=WmAS4
+wx.config.newFile.ignorePkg=WmAssetPublisher
+wx.config.newFile.ignorePkg=WmBPEL
+wx.config.newFile.ignorePkg=WmBrokerDeployer
+wx.config.newFile.ignorePkg=WmBusinessRules
+wx.config.newFile.ignorePkg=WmCEP
+wx.config.newFile.ignorePkg=WmClearcase
+wx.config.newFile.ignorePkg=WmClosedLoopAnalytics
+wx.config.newFile.ignorePkg=WmCloud
+wx.config.newFile.ignorePkg=WmCloudStreams
+wx.config.newFile.ignorePkg=WmCloudStreamsAnalytics
+wx.config.newFile.ignorePkg=WmContentServicePlatform
+wx.config.newFile.ignorePkg=WmDB
+wx.config.newFile.ignorePkg=WmDeployer
+wx.config.newFile.ignorePkg=WmDeployerResource
+wx.config.newFile.ignorePkg=WmDesigner
+wx.config.newFile.ignorePkg=WmDotNet
+wx.config.newFile.ignorePkg=WmEDI
+wx.config.newFile.ignorePkg=WmEDIforTN
+wx.config.newFile.ignorePkg=WmEDIINT
+wx.config.newFile.ignorePkg=WmEstdCommonLib
+wx.config.newFile.ignorePkg=WmFlatFile
+wx.config.newFile.ignorePkg=WmISExtDC
+wx.config.newFile.ignorePkg=WmJDBCAdapter
+wx.config.newFile.ignorePkg=WmJMSAdapter
+wx.config.newFile.ignorePkg=WmLogUtil
+wx.config.newFile.ignorePkg=WmMediator
+wx.config.newFile.ignorePkg=WmMFT
+wx.config.newFile.ignorePkg=WmMobileSupport
+wx.config.newFile.ignorePkg=WmMonitor
+wx.config.newFile.ignorePkg=WmMQAdapter
+wx.config.newFile.ignorePkg=WmMSCodegen
+wx.config.newFile.ignorePkg=WmNUMDeployer
+wx.config.newFile.ignorePkg=WmOptimize
+wx.config.newFile.ignorePkg=WmPipelineCapture
+wx.config.newFile.ignorePkg=WmPIPTools 
+wx.config.newFile.ignorePkg=WmPKI
+wx.config.newFile.ignorePkg=WmPRT
+wx.config.newFile.ignorePkg=WmPublic
+wx.config.newFile.ignorePkg=WmRoot
+wx.config.newFile.ignorePkg=WmRules
+wx.config.newFile.ignorePkg=WmSAP
+wx.config.newFile.ignorePkg=WmSampleAdapter
+wx.config.newFile.ignorePkg=WmServiceMock
+wx.config.newFile.ignorePkg=WmServiceMockSamples
+wx.config.newFile.ignorePkg=WmSubversion
+wx.config.newFile.ignorePkg=WmTaskClient
+wx.config.newFile.ignorePkg=WmTN
+wx.config.newFile.ignorePkg=WmTNExtDC
+wx.config.newFile.ignorePkg=WmTNPKI
+wx.config.newFile.ignorePkg=WmTNWeb
+wx.config.newFile.ignorePkg=WmTomcat
+wx.config.newFile.ignorePkg=WmVCS
+wx.config.newFile.ignorePkg=WmSourceSafe
+wx.config.newFile.ignorePkg=WmWin32
+wx.config.newFile.ignorePkg=WmXSLT
+wx.config.newFile.ignorePkg=WxCDS
+wx.config.newFile.ignorePkg=WxLog
+wx.config.newFile.ignorePkg=WxMWS
+wx.config.newFile.ignorePkg=WxUtilities
+wx.config.newFile.ignorePkg=WxZIP

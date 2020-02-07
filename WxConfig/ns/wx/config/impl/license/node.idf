@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Values version="2.0">
+  <value name="shared">CQ0KCQ0KCQkNCg==</value>
+  <value name="encodeutf8">true</value>
+  <array name="imports" type="value" depth="1">
+    <value>org.apache.commons.lang.StringUtils</value>
+    <value>com.sag.gcs.common.lm.LicenseUtils</value>
+    <value>com.softwareag.wx.is.config.WxConfig</value>
+    <value>com.softwareag.wx.is.config.license.LicenseManager</value>
+  </array>
+</Values>

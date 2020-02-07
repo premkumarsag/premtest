@@ -1,0 +1,8 @@
+wx.config.ignoreFile=wxconfig.cnf
+wx.config.ignoreFile=listeners.cnf
+wx.config.ignoreFile=templates.cnf
+wx.config.ignoreFile=ports.cnf
+wx.config.ignoreFile=assetpublisher.cnf
+wx.config.ignoreFile=nsplugins.cnf
+wx.config.ignoreFile=Rules.cnf
+wx.config.ignoreFile=rulesProperties.cnf

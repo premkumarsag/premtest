@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Values version="2.0">
+  <value name="name">loopSepTag</value>
+  <array name="sig" type="value" depth="1">
+    <value>[i] field:0:optional debug</value>
+    <value>[i] field:0:required sessionId</value>
+    <value>[i] field:0:required action</value>
+    <value>[i] field:0:required sepString</value>
+  </array>
+  <value name="sigtype">java 3.5</value>
+  <value name="encodeutf8">true</value>
+  <value name="body">CklEYXRhTWFwIHBpcGVNYXAgPSBuZXcgSURhdGFNYXAocGlwZWxpbmUpOwkJCQkKSURhdGEgcmVx
+dWVzdCA9IHBpcGVsaW5lOwoKYm9vbGVhbiBkZWJ1ZyA9IGdldERlYnVnKCBwaXBlTWFwICk7CQkK
+U3RyaW5nIHNlc3Npb25JZCA9IGdldFNlc3Npb25JZCggcGlwZU1hcCApOwpTdHJpbmcgYWN0aW9u
+ID0gZ2V0QWN0aW9uKCBwaXBlTWFwICk7ClN0cmluZyB0YWdTdmNOYW1lID0gZ2V0VGFnU3ZjTmFt
+ZShwaXBlTWFwKTsKClN0cmluZyBsb29wU2VwID0gcGlwZU1hcC5nZXRBc1N0cmluZyggInNlcFN0
+cmluZyIgKTsgLy8gQ29uc3RhbnRzLlNFUF9TVFJJTkdfUAoKUmVwb3J0ZXIgcmVwb3J0ZXIgPSBK
+U1BNYW5hZ2VyLmdldEluc3RhbmNlKCkuZ2V0UmVwb3J0ZXIoc2Vzc2lvbklkLHRhZ1N2Y05hbWUp
+OwppZiAoIHJlcG9ydGVyID09IG51bGwgKSB7CglyZXBvcnRlciA9IEpTUE1hbmFnZXIuZ2V0SW5z
+dGFuY2UoKS5jcmVhdGVSZXBvcnRlcihzZXNzaW9uSWQsdGFnU3ZjTmFtZSwgcmVxdWVzdCk7Cn0J
+CQkKcmVwb3J0ZXIuc2V0V3JpdGVyKCBnZXRXcml0ZXIoIHBpcGVNYXAgKSApOwoKaWYgKCBkZWJ1
+ZyApIHsKCVN5c3RlbS5lcnIucHJpbnRsbihTdHJpbmcuZm9ybWF0KCJcblslc106JXMiLCB0YWdT
+dmNOYW1lLCBuZXcgamF2YS51dGlsLkRhdGUoKSkpOwoJU3lzdGVtLmVyci5wcmludGxuKFN0cmlu
+Zy5mb3JtYXQoIlJlcG9ydGVyOiAlcyIsIHJlcG9ydGVyKSk7CglTeXN0ZW0uZXJyLnByaW50bG4o
+U3RyaW5nLmZvcm1hdCgiU2Vzc2lvbklkOiAlcyIsIHNlc3Npb25JZCkpOwoJU3lzdGVtLmVyci5w
+cmludGxuKFN0cmluZy5mb3JtYXQoImFjdGlvbjogJXMiLCBhY3Rpb24pKTsKCVN5c3RlbS5lcnIu
+cHJpbnRsbihTdHJpbmcuZm9ybWF0KCJWYXJzOiBzZXBTdHJpbmc9JXMiLCBsb29wU2VwICkpOwoJ
+U3lzdGVtLmVyci5wcmludGxuKFN0cmluZy5mb3JtYXQoImN1cnJlbnRUb2tlbjogJXMiLCBKU1BN
+YW5hZ2VyLmdldEluc3RhbmNlKCkuZ2V0VGVtcGxhdGVUb2tlbihzZXNzaW9uSWQsdGFnU3ZjTmFt
+ZSkpKTsKfQoKaWYgKCAic3RhcnQiLmVxdWFscyhhY3Rpb24pKSB7CgkKfSBlbHNlIHsKCglpZiAo
+IGxvb3BTZXAgIT0gbnVsbCkgewoJCUxvb3BTZXBUb2tlbiBsc3BUb2tlbiA9IG5ldyBMb29wU2Vw
+VG9rZW4oKTsKCQlsc3BUb2tlbi5zZXRTZXBTdHJpbmcobG9vcFNlcCk7CQoJCWxzcFRva2VuLmV2
+YWwocmVwb3J0ZXIpOwoJCUpTUE1hbmFnZXIuZ2V0SW5zdGFuY2UoKS51cGRhdGVUb2tlbiggc2Vz
+c2lvbklkLHRhZ1N2Y05hbWUsIGxzcFRva2VuKTsKCX0KfQo=</value>
+</Values>

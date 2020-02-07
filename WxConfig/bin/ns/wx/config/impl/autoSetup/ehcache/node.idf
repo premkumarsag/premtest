@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Values version="2.0">
+  <value name="encodeutf8">true</value>
+  <array name="imports" type="value" depth="1">
+    <value>com.wm.app.b2b.server.ServerClassLoader</value>
+    <value>java.io.IOException</value>
+    <value>java.util.ArrayList</value>
+    <value>com.wm.app.b2b.server.cache.config.CacheManagerConfig</value>
+    <value>com.wm.app.b2b.server.cache.config.EhcacheConfigUtil</value>
+    <value>net.sf.ehcache.config.CacheConfiguration</value>
+    <value>net.sf.ehcache.config.Configuration</value>
+    <value>net.sf.ehcache.config.SearchAttribute</value>
+    <value>net.sf.ehcache.config.Searchable</value>
+    <value>net.sf.ehcache.search.attribute.DynamicAttributesExtractor</value>
+  </array>
+  <value name="shared">cHJpdmF0ZSBzdGF0aWMgYm9vbGVhbiBpc1N0cmluZ0VtcHR5KFN0cmluZyBwU3RyaW5nKXsKCXJl
+dHVybiAocFN0cmluZyA9PSBudWxsIHx8ICIiLmVxdWFscyhwU3RyaW5nKSk7Cn0=</value>
+  <value name="extends"></value>
+  <array name="implements" type="value" depth="1">
+  </array>
+</Values>

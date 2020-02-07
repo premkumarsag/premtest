@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Values version="2.0">
+  <value name="encodeutf8">true</value>
+  <array name="imports" type="value" depth="1">
+    <value>com.ibm.icu.text.SimpleDateFormat</value>
+    <value>com.softwareag.util.IDataMap</value>
+    <value>java.lang.reflect.Array</value>
+    <value>java.util.ArrayList</value>
+    <value>java.util.Arrays</value>
+    <value>java.util.Date</value>
+    <value>java.util.HashMap</value>
+    <value>java.util.List</value>
+  </array>
+</Values>

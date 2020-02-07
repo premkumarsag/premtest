@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+  <buttonUrls>
+
+    <sections>
+      <name>Configuration</name>
+      <text>Configuration</text>
+      <submenu>
+        <name>Packages</name>
+        <text>Packages</text>
+        <url>listPackages.dsp</url>
+      </submenu>
+      <submenu>
+        <name>Files</name>
+        <text>Files</text>
+        <url>listFiles.dsp</url>
+      </submenu>
+      <submenu>
+        <name>EncryptedValues</name>
+        <text>Encrypted Values</text>
+        <url>encryptedValues.dsp?calledFromEncryptedValues=true&amp;targetPage=encryptedValues.dsp</url>
+		<acl>WxConfigEncryptedValues</acl>
+      </submenu>
+    </sections>
+	
+	<sections>
+      <name>AutoSetup</name>
+      <text>Auto Setup</text>
+	  <license>Auto Setup</license>
+      <submenu>
+        <name>FilesAS</name>
+        <text>Overview</text>
+        <url>autoSetup.dsp?calledFromAutoSetup=true&amp;targetPage=autoSetup.dsp</url>
+      </submenu>
+      <submenu>
+        <name>Extract Adapter Connection</name>
+        <text>Extract Adapter Connection</text>
+        <url>adapterConnection.dsp?editMode=NEWactionMode=VIEW</url>
+      </submenu>
+	  <submenu>
+        <name>Extract WS Endpoints</name>
+        <text>Extract WS Endpoints</text>
+        <url>asExtractWebServiceEndpoints.dsp?editMode=NEW&amp;actionMode=VIEW</url>
+      </submenu>
+    </sections>
+
+    <sections>
+      <name>Development</name>
+      <text>Development</text>
+      <submenu>
+        <name>Config To Flow Service</name>
+        <text>Config To Flow Service</text>
+        <url>configFlowService.dsp?editMode=NEWactionMode=VIEW</url>
+      </submenu>
+      <submenu>
+        <name>Orphaned Keys</name>
+        <text>Orphaned Keys</text>
+        <url>orphanedKeys.dsp?hideKeySubstitution=true</url>
+      </submenu>
+      <submenu>
+        <name>Show Values</name>
+        <text>Show Values</text>
+        <url>showValues.dsp</url>
+		<acl>WxConfigShowValues</acl>
+      </submenu>
+	  <submenu>
+        <name>Values per Stage</name>
+        <text>Values per Stage</text>
+        <url>valuesPerStage.dsp</url>
+      </submenu>
+    </sections>
+    
+    <sections>
+      <name>Logging</name>
+      <text>Logging</text>
+      <submenu>
+        <name>DisplayLogfile</name>
+        <text>Display Logfile</text>
+        <url>displayLogfile.dsp</url>
+		<acl>WxConfigDisplayLogFile</acl>
+      </submenu>
+      <submenu>
+        <name>Auditing</name>
+        <text>Auditing</text>
+        <url>audit.dsp</url>
+        <license>Auditing</license>
+      </submenu>
+      <submenu>
+        <name>Message Catalog</name>
+        <text>Message Catalog</text>
+        <url>opsLogMessages.dsp</url>
+      </submenu>
+      <submenu>
+        <name>Settings</name>
+        <text>Settings</text>
+        <url>settingsLogging.dsp?doc=edit</url>
+      </submenu>
+    </sections>
+    
+    <sections>
+      <name>Settings</name>
+      <text>Settings</text>
+      <submenu>
+        <name>Main</name>
+        <text>Main</text>
+        <url>settingsMain.dsp</url>
+      </submenu>
+      <submenu>
+        <name>Environment</name>
+        <text>Environment</text>
+        <url>settingsEnvironment.dsp</url>
+      </submenu>
+      <submenu>
+        <name>File Locations Aliases</name>
+        <text>File Locations Aliases</text>
+        <url>settingsFileLocations.dsp</url>
+		<acl>WxConfigFileLocations</acl>
+      </submenu>
+      <submenu>
+        <name>Templates</name>
+        <text>Templates</text>
+        <url>settingsTemplates.dsp</url>
+		<acl>WxConfigTemplates</acl>
+      </submenu>
+      <submenu>
+        <name>License</name>
+        <text>License</text>
+        <url>settingsLicense.dsp</url>
+		<acl>WxConfigLicense</acl>
+      </submenu>
+    </sections>
+
+    <sections>
+      <name>Info</name>
+      <text>Info</text>
+	   <submenu>
+        <name>FAQ</name>
+        <text>FAQ</text>
+        <url>infoFAQ.dsp</url>
+      </submenu>
+      <submenu>
+        <name>Config Files</name>
+        <text>Config Files</text>
+        <url>infoConfigFileContent.dsp</url>
+      </submenu>
+      <submenu>
+        <name>Staging</name>
+        <text>Staging</text>
+        <url>infoStaging.dsp</url>
+      </submenu>
+      <submenu>
+        <name>Auto Setup</name>
+        <text>Auto Setup</text>
+        <url>infoAutoSetup.dsp</url>
+      </submenu>
+    </sections>
+    <sections>
+      <name>Plugins</name>
+      <text>Plugins</text>
+      <submenu>
+        <name>MyVersions</name>
+        <text>MyVersions</text>
+        <url>myversions.dsp</url>
+      </submenu>
+    </sections>
+
+  </buttonUrls>
+  
+</config>

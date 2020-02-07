@@ -1,0 +1,2 @@
+wx.config.central.path.log=./logs/WxConfigCentral
+wx.config.central.path.auditLog=${wx.config.central.path.log}/audit

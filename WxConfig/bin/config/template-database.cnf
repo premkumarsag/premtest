@@ -1,0 +1,81 @@
+# ===============================================
+#
+#    Database-backed Configuration
+#    -----------------------------
+#
+# It is possible with WxConfig to retrieve configuration values from a 
+# database table rather than a file. To keep things as simple as possible
+# this is achieved by checking property-style configuration files for the
+# existence of a special property (wx.config.dbCfg). If this exists and is
+# set to "true", the values in that file will not just be read. 
+# Instead they control how values are retrieved from a database table.
+#
+# WxConfig uses the existing JDBC infrastructure (functional and pool aliases) 
+# from Integration Server. With this, two approaches (examples further below) 
+# are possible to define the database connection:
+#
+#  - Define a new alias:
+#    For standard requirements this is the recommended approach. The alias
+#    will be used to create a pool alias and functional alias, both with
+#    the same name (i.e. the alias value).
+#
+#  - Use an existing functional alias:
+#    Provides maximum flexibility at the cost of a slightly more complex
+#    configuration. It is recommended to have functional and pool aliases
+#    created by WxConfig Auto-Setup, which has support for both alias types.
+#
+# Environment-specific settings are very easy to implement. When WxConfig
+# determines, which files should be loaded, the content is not relevant yet.
+# So at this stage a database configuration file is just an ordinary file
+# to WxConfig and all options, when it should be loaded, can be used.
+#
+# The following limitations come with using a database:
+#  - Values can only be read; add, update and delete is not possible
+#  - Only property-style configurations are supported
+
+
+# ++++++++++++++++++++++++++++++++++++++++++++++++++++
+#
+#     A T T E N T I O N
+#
+# Uncomment the following line to enable database configuration
+#
+# ++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+#wx.config.dbCfg=true
+
+
+
+
+# Example 1: Simple configuration with database settings
+jdbc.alias=MyPackageOrApplication
+jdbc.driverAlias=DataDirect Connect JDBC SQL Server Driver
+#jdbc.driverAlias=DataDirect Connect JDBC DB2 Driver
+#jdbc.driverAlias=DataDirect Connect JDBC Oracle Driver
+jdbc.url=jdbc:wm:sqlserver://localhost:1433;databaseName=WEBMDB
+jdbc.userName=WEBM
+jdbc.password=manage
+#jdbc.password=[[encrypted:dbPasswordConfigValues]]
+jdbc.connections.min=0
+jdbc.connections.max=10
+jdbc.connections.timeout=60000
+jdbc.updateExistingAlias=true
+
+# Example 2: Flexible configuration with functional alias
+#jdbc.functionalAlias=WxConfig
+
+
+# Below are the instructions from which table to retrieve keys and values.
+# They are the same for both ways to define the connection.
+jdbc.tableName=TemplateFieldDefs
+jdbc.keyColumn=TemplateFieldID
+jdbc.valueColumn=Name
+
+# It is also possible to maintain values for multiple configuration
+# domains (usually different environments like DEV, TEST, PROD or
+# multiple packages/applications) in the same table. In this case,
+# two additional parameters must be provided:
+#  - the table column that holds the config domain
+#  - the value in the aforementioned column that must be matched
+#jdbc.configColumn=ENVIRONMENT
+#jdbc.configValue=DEV

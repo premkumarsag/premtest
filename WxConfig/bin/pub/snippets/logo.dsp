@@ -1,0 +1,1 @@
+images/%ifvar ui/isNewFormat equals('true')%sag_logo.png%else%logo-topmenu.gif%endifvar%

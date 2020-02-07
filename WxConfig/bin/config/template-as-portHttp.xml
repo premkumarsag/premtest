@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?><config>
+<autoConfig>
+	<ports>
+		<http alias="httpTest" updateIfExists="true" autoStart="true" autoShutdown="false" destroyOnShutdown="true">
+			<description>Sample HTTP port</description>
+			<port>5554</port>
+			<bindAddress></bindAddress>   <!-- optional -->
+			<backlog>200</backlog>
+			<keepAliveTimeout>20000</keepAliveTimeout>
+			<threadPool>
+				<enabled>true</enabled>   <!-- boolean -->
+				<min>5</min>  <!-- required, if "enabled" == true; otherwise to be removed -->
+				<max>20</max> <!-- required, if "enabled" == true; otherwise to be removed -->
+				<priority>5</priority>  <!-- required, if "enabled" == true; otherwise to be removed -->
+			</threadPool>
+			<serviceAccess>   <!-- optional, default: mode = global default -->
+				<mode>deny</mode>  <!-- allow  = allow by default
+										deny   = deny by default -->
+				<exceptionList cleanBeforeAdding="true">
+					<exception>pub.flow:debugLog</exception>
+					<exception>pub.flow:tracePipeline</exception>
+					<exception>pub.json</exception>  <!-- Entire folder , not only single service-->
+				</exceptionList>
+			</serviceAccess>
+			<ipAccess> <!-- optional, default: mode = global default -->
+				<mode>deny</mode>  <!-- allow  = allow by default
+										deny   = deny by default -->
+				<exceptionList cleanBeforeAdding="true">
+					<exception>www.softwareag.com</exception>
+					<exception>intranet.acme.com</exception>
+				</exceptionList>
+			</ipAccess>
+		</http>
+    </ports>
+</autoConfig>
+</config>
+	

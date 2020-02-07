@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?><config>
+<autoConfig>
+	<fileAccessControl>
+		<allowedWritePath updateMode="append">	<!-- @updateMode can be "append" (default) or "replace"  -->
+			<path name="" />											
+			<path name="" />
+		</allowedWritePath>
+		
+		<allowedReadPath updateMode="replace">
+			<path name="" />
+			<path name="" />
+		</allowedReadPath>
+		
+		<allowedDeletePath>
+			<path name="" />
+			<path name="" />
+		</allowedDeletePath>
+	</fileAccessControl>
+</autoConfig>
+</config>
